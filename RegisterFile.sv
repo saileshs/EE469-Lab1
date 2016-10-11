@@ -7,12 +7,8 @@ module RegisterFile (readReg1, readReg2, writeReg, writeData, regWrite, readData
 	logic reset, clk;
 	logic [31:0] enableRegister;
 	
-	Decoder decode (.in(writeReg), .enable(regWrite), .out(enableRegister));
-	
-	
-	// DFF64 registers[31:0] (.q(writeData), .d(registerOutput), .reset, .clk, .enable(0));
-	//DFF64 registers [31:0];
-
+	Decoder decode (.in(writeReg), .enable(regWrite), .out(enableRegister));	
+	DFF64 registers[31:0] (.q(registerOutput), .d(writeData), .reset, .clk, .enable(0));	
 endmodule
 
 // D flip-flop w/synchronous reset
@@ -61,15 +57,16 @@ module DFF64(q, d, reset, clk, enable);
 endmodule
 
 
+
 module Decoder(in, enable, out);
 	output logic [31:0] out;
 	input logic [4:0] in;
-	input logic enable;
+	input logic enable;	
 	
 	always_comb 
 		begin
 			case(in)
-				0: out = 32'b1;
+				0: out = ;
 			endcase
 		end
 endmodule
