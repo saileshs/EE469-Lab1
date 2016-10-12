@@ -7,11 +7,10 @@ module RegisterFile (readReg1, readReg2, writeReg, writeData, regWrite, readData
 	logic reset, clk;
 	logic [31:0] enableRegister;
 	
-	Decoder decode (.in(writeReg), .enable(regWrite), .out(enableRegister));
+	//Decoder decode (.in(writeReg), .enable(regWrite), .out(enableRegister));
 	
 	
-	// DFF64 registers[31:0] (.q(writeData), .d(registerOutput), .reset, .clk, .enable(0));
-	//DFF64 registers [31:0];
+	DFF64 registers[31:0] (.q(registerOutput), .d(writeData), .reset, .clk, .enable(0));
 
 endmodule
 
@@ -60,7 +59,7 @@ module DFF64(q, d, reset, clk, enable);
 	DFF16 dff4 (.q(q[63:48]), .d(d[63:48]), .reset, .clk, .enable);
 endmodule
 
-
+/*
 module Decoder(in, enable, out);
 	output logic [31:0] out;
 	input logic [4:0] in;
@@ -73,3 +72,52 @@ module Decoder(in, enable, out);
 			endcase
 		end
 endmodule
+*/
+
+
+module decoder_2to4(Y3, Y2, Y1, Y0, A, B, enable);
+
+	output Y3, Y2, Y1, Y0;
+	input A, B;
+	input enable;
+
+	always_comb
+		begin
+		if (enable == 1'b1)
+			case ( {A,B} )
+				2'b00: {Y3,Y2,Y1,Y0} = 4'b1110;
+				2'b01: {Y3,Y2,Y1,Y0} = 4'b1101;
+				2'b10: {Y3,Y2,Y1,Y0} = 4'b1011;
+				2'b11: {Y3,Y2,Y1,Y0} = 4'b0111;
+				default: {Y3,Y2,Y1,Y0} = 4'bxxxx;
+			endcase
+		if (enable == 0)
+			{Y3,Y2,Y1,Y0} = 4'b1111;
+		end
+endmodule
+ 
+module decoder_3to8(Y7, Y6, Y5, Y4, Y3, Y2, Y1, Y0, C, D, E, enable);
+
+	output Y7, Y6, Y5, Y4, Y3, Y2, Y1, Y0;
+	input C, D, E;
+	input enable;
+	
+	always_comb
+		begin
+		if (enable == 1'b1)
+			case ( {C,D,E} )
+				4'b1000: {Y7,Y6,Y5,Y4,Y3,Y2,Y1,Y0} = 8'b11111110;
+				4'b1001: {Y7,Y6,Y5,Y4,Y3,Y2,Y1,Y0} = 8'b11111101;
+				4'b1010: {Y7,Y6,Y5,Y4,Y3,Y2,Y1,Y0} = 8'b11111011;
+				4'b1011: {Y7,Y6,Y5,Y4,Y3,Y2,Y1,Y0} = 8'b11110110;
+				4'b1100: {Y7,Y6,Y5,Y4,Y3,Y2,Y1,Y0} = 8'b11101110;
+				4'b1101: {Y7,Y6,Y5,Y4,Y3,Y2,Y1,Y0} = 8'b11011110;
+				4'b1110: {Y7,Y6,Y5,Y4,Y3,Y2,Y1,Y0} = 8'b10111110;
+				4'b1111: {Y7,Y6,Y5,Y4,Y3,Y2,Y1,Y0} = 8'b01111110;
+				default: {Y7,Y6,Y5,Y4,Y3,Y2,Y1,Y0} = 8'bxxxxxxxx;
+			endcase
+		if (enable == 0)
+			{Y7,Y6,Y5,Y4,Y3,Y2,Y1,Y0} = 8'b11111111;
+		end
+endmodule
+ 
