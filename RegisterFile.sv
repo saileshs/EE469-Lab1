@@ -1,5 +1,5 @@
 module RegisterFile (readReg1, readReg2, writeReg, writeData, regWrite, readData1, readData2);
-	input logic [5:0] readReg1, readReg2, writeReg;
+	input logic [4:0] readReg1, readReg2, writeReg;
 	input logic [63:0] writeData;
 	input logic regWrite;
 	output logic [63:0] readData1, readData2;
@@ -7,8 +7,14 @@ module RegisterFile (readReg1, readReg2, writeReg, writeData, regWrite, readData
 	logic reset, clk;
 	logic [31:0] enableRegister;
 	
-	Decoder decode (.in(writeReg), .enable(regWrite), .out(enableRegister));	
-	DFF64 registers[31:0] (.q(registerOutput), .d(writeData), .reset, .clk, .enable(0));	
+	decoder_5to32 decode (.out(enableRegister), .in(writeReg), .regWrite);
+
+	genvar i;
+	generate
+		for(i=0; i < 32; i++) begin : eachRegister
+			DFF64 register (.q(registerOutput), .d(writeData), .reset, .clk, .enable(enableRegister[i]));
+		end
+	endgenerate
 endmodule
 
 // D flip-flop w/synchronous reset
@@ -56,17 +62,101 @@ module DFF64(q, d, reset, clk, enable);
 	DFF16 dff4 (.q(q[63:48]), .d(d[63:48]), .reset, .clk, .enable);
 endmodule
 
+module decoder_2to4(out, in, enable);
+	output logic [3:0] out;
+	input logic [1:0] in;
+	input logic enable;
+	
+	logic in0_not, in1_not;
+	
+	not not1 (in0_not, in[0]);
+	not not2 (in1_not, in[1]);
+	
+	and and0 (out[0], in0_not, in1_not);
+	and and1 (out[1], in[0], in1_not);
+	and and2 (out[2], in[1], in0_not);
+	and and3 (out[3], in[0], in[1]);
+	
+endmodule
+ 
+module decoder_3to8(out, in, enable);
+	output logic [7:0] out;
+	input logic [2:0] in;
+	input logic enable;
+	
+	logic in0_not, in1_not, in2_not;
+	
+	not n0 (in0_not, in[0]);
+	not n1 (in1_not, in[1]);
+	not n2 (in2_not, in[2]);
+	
+	and and0 (out[0], in0_not, in1_not, in2_not);
+	and and1 (out[1], in[0], in1_not, in2_not);
+	and and2 (out[2], in0_not, in[1], in2_not);
+	and and3 (out[3], in[0], in[1], in2_not);
+	and and4 (out[4], in0_not, in1_not, in[2]);
+	and and5 (out[5], in[0], in1_not, in[2]);
+	and and6 (out[6], in0_not, in[1], in[2]);
+	and and7 (out[7], in[0], in[1], in[2]);
+	
+endmodule
 
-
-module Decoder(in, enable, out);
+module decoder_5to32(out, in, regWrite);
 	output logic [31:0] out;
 	input logic [4:0] in;
-	input logic enable;	
+	input logic regWrite;
+	logic [3:0] enable;
 	
-	always_comb 
-		begin
-			case(in)
-				0: out = ;
-			endcase
-		end
+	decoder_2to4 d0(.out(enable), .in(in[4:3]), .enable(regWrite));
+	decoder_3to8 d1(.out(out[31:24]), .in(in[2:0]), .enable(enable[0]));
+	decoder_3to8 d2(.out(out[23:16]), .in(in[2:0]), .enable(enable[1]));
+	decoder_3to8 d3(.out(out[15:8]), .in(in[2:0]), .enable(enable[2]));
+	decoder_3to8 d4(.out(out[7:0]), .in(in[2:0]), .enable(enable[3]));
 endmodule
+	
+
+	
+module mux_4to1(out, control, in);
+	output logic  out;
+	input logic [3:0] in;
+	input logic [1:0] control;
+	
+	logic con0_not, con1_not;
+	logic [3:0] temp;
+	
+	not n0 (con0_not, control[0]);
+	not n1 (con1_not, control[1]);
+	
+	and and0 (temp[0], in[0], con0_not, con1_not);
+	and and1 (temp[1], in[1], control[0], con1_not);
+	and and2 (temp[2], in[2], con0_not, control[1]);
+	and and3 (temp[3], in[3], control[0], control[1]);
+	
+	or or0 (out, temp[0], temp[1], temp[2], temp[3]);
+	
+endmodule
+
+module mux_16to1(out, control, in);
+	output logic out;
+	input logic [15:0] in;
+	input logic [3:0] control;
+	
+	logic [3:0] temp;
+	
+	mux_4to1 mux0 (.out(temp[0]), .control(control[3:2]), .in(in[15:12]));
+	mux_4to1 mux1 (.out(temp[1]), .control(control[3:2]), .in(in[11:8]));
+	mux_4to1 mux2 (.out(temp[2]), .control(control[3:2]), .in(in[7:4]));
+	mux_4to1 mux3 (.out(temp[3]), .control(control[3:2]), .in(in[3:0]));
+	
+	mux_4to1 mux4 (.out, .control(control[1:0]), .in(temp));
+	
+endmodule
+
+module mux_32to1(out, in, readReg);
+	output logic [63:0] out;
+	input logic [31:0][63:0] in;
+	input logic [4:0] readReg;
+	
+	
+			
+	

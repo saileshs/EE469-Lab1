@@ -1,5 +1,5 @@
 Flow report for DE1_SoC
-Mon Oct 10 18:09:19 2016
+Wed Oct 12 14:20:40 2016
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -41,7 +41,7 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Flow Summary                                                                 ;
 +---------------------------------+--------------------------------------------+
-; Flow Status                     ; Successful - Mon Oct 10 18:09:19 2016      ;
+; Flow Status                     ; Successful - Wed Oct 12 14:20:40 2016      ;
 ; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name                   ; DE1_SoC                                    ;
 ; Top-level Entity Name           ; RegisterFile                               ;
@@ -50,7 +50,7 @@ agreement for further details.
 ; Timing Models                   ; Final                                      ;
 ; Logic utilization (in ALMs)     ; N/A                                        ;
 ; Total registers                 ; 0                                          ;
-; Total pins                      ; 211                                        ;
+; Total pins                      ; 208                                        ;
 ; Total virtual pins              ; 0                                          ;
 ; Total block memory bits         ; 0                                          ;
 ; Total DSP Blocks                ; 0                                          ;
@@ -68,7 +68,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/10/2016 18:09:13 ;
+; Start date & time ; 10/12/2016 14:20:35 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DE1_SoC             ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ agreement for further details.
 +-------------------------------------+---------------------------------------+---------------+--------------+----------------+
 ; Assignment Name                     ; Value                                 ; Default Value ; Entity Name  ; Section Id     ;
 +-------------------------------------+---------------------------------------+---------------+--------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 17871151245906.147614815307540        ; --            ; --           ; --             ;
+; COMPILER_SIGNATURE_ID               ; 70835000761716.147630723500200        ; --            ; --           ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Systemverilog Hdl                     ; --            ; --           ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (SystemVerilog)       ; <None>        ; --           ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                    ; --            ; --           ; --             ;
@@ -100,8 +100,8 @@ agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:06     ; 1.0                     ; 633 MB              ; 00:00:05                           ;
-; Total                ; 00:00:06     ; --                      ; --                  ; 00:00:05                           ;
+; Analysis & Synthesis ; 00:00:05     ; 1.0                     ; 637 MB              ; 00:00:04                           ;
+; Total                ; 00:00:05     ; --                      ; --                  ; 00:00:04                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
