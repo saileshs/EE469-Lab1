@@ -1,23 +1,24 @@
 `timescale 1ns/10ps
-module RegisterFile (readData1, readData2, readReg1, readReg2, writeReg, writeData, regWrite, clk, reset);
-	output logic [63:0] readData1, readData2;
-	input logic [4:0] readReg1, readReg2, writeReg;
-	input logic [63:0] writeData;
-	input logic regWrite, reset, clk;
+module regfile (ReadData1, ReadData2, ReadRegister1, ReadRegister2, WriteRegister, WriteData, RegWrite, clk);
+	output logic [63:0] ReadData1, ReadData2;
+	input logic [4:0] ReadRegister1, ReadRegister2, WriteRegister;
+	input logic [63:0] WriteData;
+	input logic RegWrite, clk;
 	logic [63:0] registerOutput [31:0];
 	logic [31:0] enableRegister;
+	logic reset; // Do we need this??
 	
-	decoder_5to32 writeRegister (.out(enableRegister), .in(writeReg), .regWrite);
+	decoder_5to32 WriteRegisterister (.out(enableRegister), .in(WriteRegister), .RegWrite);
 	
 	genvar i;
 	generate
 		for(i=0; i < 32; i++) begin : eachRegister
-			DFF64 register (.q(registerOutput[i]), .d(writeData), .reset, .clk, .enable(enableRegister[i]));
+			DFF64 register (.q(registerOutput[i]), .d(WriteData), .reset, .clk, .enable(enableRegister[i]));
 		end
 	endgenerate
 	
-	mux_32to1 readRegister1 (.out(readData1), .readReg(readReg1), .in(registerOutput));
-	mux_32to1 readRegister2 (.out(readData2), .readReg(readReg2), .in(registerOutput));
+	mux_32to1 readRegister1 (.out(ReadData1), .readReg(ReadRegister1), .in(registerOutput));
+	mux_32to1 readRegister2 (.out(ReadData2), .readReg(ReadRegister2), .in(registerOutput));
 	
 endmodule
 
@@ -105,13 +106,13 @@ module decoder_3to8(out, in, enable);
 	
 endmodule
 
-module decoder_5to32(out, in, regWrite);
+module decoder_5to32(out, in, RegWrite);
 	output logic [31:0] out;
 	input logic [4:0] in;
-	input logic regWrite;
+	input logic RegWrite;
 	logic [3:0] enable;
 	
-	decoder_2to4 d0(.out(enable), .in(in[4:3]), .enable(regWrite));
+	decoder_2to4 d0(.out(enable), .in(in[4:3]), .enable(RegWrite));
 	decoder_3to8 d1(.out(out[31:24]), .in(in[2:0]), .enable(enable[0]));
 	decoder_3to8 d2(.out(out[23:16]), .in(in[2:0]), .enable(enable[1]));
 	decoder_3to8 d3(.out(out[15:8]), .in(in[2:0]), .enable(enable[2]));
@@ -184,4 +185,73 @@ module mux_32to1(out, readReg, in);
 	mux_4to1 mux2 (.out, .control({1'b0, readReg[0]}), .in(temp1));
 	
 
+endmodule
+
+module regstim(); 		
+
+	parameter ClockDelay = 5000;
+
+	logic	[4:0] 	ReadRegister1, ReadRegister2, WriteRegister;
+	logic [63:0]	WriteData;
+	logic 			RegWrite, clk;
+	logic [63:0]	ReadData1, ReadData2;
+
+	integer i;
+
+	// Your register file MUST be named "regfile".
+	// Also you must make sure that the port declarations
+	// match up with the module instance in this stimulus file.
+	regfile dut (.ReadData1, .ReadData2, .WriteData, 
+					 .ReadRegister1, .ReadRegister2, .WriteRegister,
+					 .RegWrite, .clk);
+
+	// Force %t's to print in a nice format.
+	initial $timeformat(-9, 2, " ns", 10);
+
+	initial begin // Set up the clock
+		clk <= 0;
+		forever #(ClockDelay/2) clk <= ~clk;
+	end
+
+	initial begin
+		// Try to write the value 0xA0 into register 31.
+		// Register 31 should always be at the value of 0.
+		RegWrite <= 5'd0;
+		ReadRegister1 <= 5'd0;
+		ReadRegister2 <= 5'd0;
+		WriteRegister <= 5'd31;
+		WriteData <= 64'h00000000000000A0;
+		@(posedge clk);
+		
+		$display("%t Attempting overwrite of register 31, which should always be 0", $time);
+		RegWrite <= 1;
+		@(posedge clk);
+
+		// Write a value into each  register.
+		$display("%t Writing pattern to all registers.", $time);
+		for (i=0; i<31; i=i+1) begin
+			RegWrite <= 0;
+			ReadRegister1 <= i-1;
+			ReadRegister2 <= i;
+			WriteRegister <= i;
+			WriteData <= i*64'h0000010204080001;
+			@(posedge clk);
+			
+			RegWrite <= 1;
+			@(posedge clk);
+		end
+
+		// Go back and verify that the registers
+		// retained the data.
+		$display("%t Checking pattern.", $time);
+		for (i=0; i<32; i=i+1) begin
+			RegWrite <= 0;
+			ReadRegister1 <= i-1;
+			ReadRegister2 <= i;
+			WriteRegister <= i;
+			WriteData <= i*64'h0000000000000100+i;
+			@(posedge clk);
+		end
+		$stop;
+	end
 endmodule
