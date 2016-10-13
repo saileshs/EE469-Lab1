@@ -1,3 +1,1 @@
 Warning (20028): Parallel compilation is not licensed and has been disabled
-Warning (10030): Net "reset" at RegisterFile.sv(7) has no driver or initial value, using a default initial value '0'
-Warning (10030): Net "clk" at RegisterFile.sv(7) has no driver or initial value, using a default initial value '0'

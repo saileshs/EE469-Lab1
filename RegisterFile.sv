@@ -1,23 +1,23 @@
-module RegisterFile (readReg1, readReg2, writeReg, writeData, regWrite, readData1, readData2);
+`timescale 1ns/10ps
+module RegisterFile (readData1, readData2, readReg1, readReg2, writeReg, writeData, regWrite, clk, reset);
+	output logic [63:0] readData1, readData2;
 	input logic [4:0] readReg1, readReg2, writeReg;
 	input logic [63:0] writeData;
-	input logic regWrite;
-	output logic [63:0] readData1, readData2;
-	logic [63:0] registerOutput;
-	logic reset, clk;
+	input logic regWrite, reset, clk;
+	logic [63:0] registerOutput [31:0];
 	logic [31:0] enableRegister;
-		
-	mux_32to1 readRegister1 (.out(readData1), .readReg(readReg1), .in());
-	mux_32to1 readRegister2 (.out(readData2), .readReg(readReg2), .in());
 	
 	decoder_5to32 writeRegister (.out(enableRegister), .in(writeReg), .regWrite);
 	
 	genvar i;
 	generate
 		for(i=0; i < 32; i++) begin : eachRegister
-			DFF64 register (.q(registerOutput), .d(writeData), .reset, .clk, .enable(enableRegister[i]));
+			DFF64 register (.q(registerOutput[i]), .d(writeData), .reset, .clk, .enable(enableRegister[i]));
 		end
 	endgenerate
+	
+	mux_32to1 readRegister1 (.out(readData1), .readReg(readReg1), .in(registerOutput));
+	mux_32to1 readRegister2 (.out(readData2), .readReg(readReg2), .in(registerOutput));
 	
 endmodule
 
