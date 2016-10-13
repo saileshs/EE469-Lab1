@@ -177,9 +177,9 @@ module mux_32to1(out, readReg, in);
 	
 	
 	logic [63:0] temp1 [3:0];
-	assign temp1[0] = temp[0];
-	assign temp1[1] = temp[1];
-	assign temp1[2] = 64'b0;
+	assign temp1[0] = temp[1];
+	assign temp1[1] = 64'b0;
+	assign temp1[2] = temp[0];
 	assign temp1[3] = 64'b0;
 	
 	

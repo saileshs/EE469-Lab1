@@ -6,8 +6,8 @@ add wave -noupdate -radix unsigned /regstim/dut/ReadRegister1
 add wave -noupdate -radix unsigned /regstim/dut/ReadRegister2
 add wave -noupdate -radix unsigned /regstim/dut/WriteData
 add wave -noupdate -radix unsigned /regstim/dut/RegWrite
-add wave -noupdate /regstim/ReadData1
-add wave -noupdate /regstim/ReadData2
+add wave -noupdate -radix unsigned /regstim/ReadData1
+add wave -noupdate -radix unsigned /regstim/ReadData2
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {473658801 ps} 0}
 quietly wave cursor active 1
@@ -25,4 +25,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {446370400 ps} {479138400 ps}
+WaveRestoreZoom {356859540 ps} {389627540 ps}
