@@ -6,16 +6,20 @@ module regfile (ReadData1, ReadData2, ReadRegister1, ReadRegister2, WriteRegiste
 	input logic RegWrite, clk;
 	logic [63:0] registerOutput [31:0];
 	logic [31:0] enableRegister;
-	logic reset; // Do we need this??
+	logic reset;
+	
+	assign reset = 1'b0;
 	
 	decoder_5to32 WriteRegisterister (.out(enableRegister), .in(WriteRegister), .RegWrite);
 	
 	genvar i;
 	generate
-		for(i=0; i < 32; i++) begin : eachRegister
+		for(i=0; i < 31; i++) begin : eachRegister
 			DFF64 register (.q(registerOutput[i]), .d(WriteData), .reset, .clk, .enable(enableRegister[i]));
 		end
 	endgenerate
+	
+	assign registerOutput[31] = 64'b0;
 	
 	mux_32to1 readRegister1 (.out(ReadData1), .readReg(ReadRegister1), .in(registerOutput));
 	mux_32to1 readRegister2 (.out(ReadData2), .readReg(ReadRegister2), .in(registerOutput));
@@ -77,10 +81,10 @@ module decoder_2to4(out, in, enable);
 	not #50 not1 (in0_not, in[0]);
 	not #50 not2 (in1_not, in[1]);
 	
-	and #50 and0 (out[0], in0_not, in1_not);
-	and #50 and1 (out[1], in[0], in1_not);
-	and #50 and2 (out[2], in[1], in0_not);
-	and #50 and3 (out[3], in[0], in[1]);
+	and #50 and0 (out[0], in0_not, in1_not, enable);
+	and #50 and1 (out[1], in[0], in1_not, enable);
+	and #50 and2 (out[2], in[1], in0_not, enable);
+	and #50 and3 (out[3], in[0], in[1], enable);
 	
 endmodule
  
@@ -95,14 +99,14 @@ module decoder_3to8(out, in, enable);
 	not #50 n1 (in1_not, in[1]);
 	not #50 n2 (in2_not, in[2]);
 	
-	and #50 and0 (out[0], in0_not, in1_not, in2_not);
-	and #50 and1 (out[1], in[0], in1_not, in2_not);
-	and #50 and2 (out[2], in0_not, in[1], in2_not);
-	and #50 and3 (out[3], in[0], in[1], in2_not);
-	and #50 and4 (out[4], in0_not, in1_not, in[2]);
-	and #50 and5 (out[5], in[0], in1_not, in[2]);
-	and #50 and6 (out[6], in0_not, in[1], in[2]);
-	and #50 and7 (out[7], in[0], in[1], in[2]);
+	and #50 and0 (out[0], in0_not, in1_not, in2_not, enable);
+	and #50 and1 (out[1], in[0], in1_not, in2_not, enable);
+	and #50 and2 (out[2], in0_not, in[1], in2_not, enable);
+	and #50 and3 (out[3], in[0], in[1], in2_not, enable);
+	and #50 and4 (out[4], in0_not, in1_not, in[2], enable);
+	and #50 and5 (out[5], in[0], in1_not, in[2], enable);
+	and #50 and6 (out[6], in0_not, in[1], in[2], enable);
+	and #50 and7 (out[7], in[0], in[1], in[2], enable);
 	
 endmodule
 
@@ -185,73 +189,4 @@ module mux_32to1(out, readReg, in);
 	mux_4to1 mux2 (.out, .control({1'b0, readReg[0]}), .in(temp1));
 	
 
-endmodule
-
-module regstim(); 		
-
-	parameter ClockDelay = 5000;
-
-	logic	[4:0] 	ReadRegister1, ReadRegister2, WriteRegister;
-	logic [63:0]	WriteData;
-	logic 			RegWrite, clk;
-	logic [63:0]	ReadData1, ReadData2;
-
-	integer i;
-
-	// Your register file MUST be named "regfile".
-	// Also you must make sure that the port declarations
-	// match up with the module instance in this stimulus file.
-	regfile dut (.ReadData1, .ReadData2, .WriteData, 
-					 .ReadRegister1, .ReadRegister2, .WriteRegister,
-					 .RegWrite, .clk);
-
-	// Force %t's to print in a nice format.
-	initial $timeformat(-9, 2, " ns", 10);
-
-	initial begin // Set up the clock
-		clk <= 0;
-		forever #(ClockDelay/2) clk <= ~clk;
-	end
-
-	initial begin
-		// Try to write the value 0xA0 into register 31.
-		// Register 31 should always be at the value of 0.
-		RegWrite <= 5'd0;
-		ReadRegister1 <= 5'd0;
-		ReadRegister2 <= 5'd0;
-		WriteRegister <= 5'd31;
-		WriteData <= 64'h00000000000000A0;
-		@(posedge clk);
-		
-		$display("%t Attempting overwrite of register 31, which should always be 0", $time);
-		RegWrite <= 1;
-		@(posedge clk);
-
-		// Write a value into each  register.
-		$display("%t Writing pattern to all registers.", $time);
-		for (i=0; i<31; i=i+1) begin
-			RegWrite <= 0;
-			ReadRegister1 <= i-1;
-			ReadRegister2 <= i;
-			WriteRegister <= i;
-			WriteData <= i*64'h0000010204080001;
-			@(posedge clk);
-			
-			RegWrite <= 1;
-			@(posedge clk);
-		end
-
-		// Go back and verify that the registers
-		// retained the data.
-		$display("%t Checking pattern.", $time);
-		for (i=0; i<32; i=i+1) begin
-			RegWrite <= 0;
-			ReadRegister1 <= i-1;
-			ReadRegister2 <= i;
-			WriteRegister <= i;
-			WriteData <= i*64'h0000000000000100+i;
-			@(posedge clk);
-		end
-		$stop;
-	end
 endmodule

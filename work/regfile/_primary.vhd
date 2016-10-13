@@ -9,7 +9,6 @@ entity regfile is
         WriteRegister   : in     vl_logic_vector(4 downto 0);
         WriteData       : in     vl_logic_vector(63 downto 0);
         RegWrite        : in     vl_logic;
-        clk             : in     vl_logic;
-        reset           : in     vl_logic
+        clk             : in     vl_logic
     );
 end regfile;
