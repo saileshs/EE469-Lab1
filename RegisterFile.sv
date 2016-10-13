@@ -6,6 +6,9 @@ module RegisterFile (readReg1, readReg2, writeReg, writeData, regWrite, readData
 	logic [63:0] registerOutput;
 	logic reset, clk;
 	logic [31:0] enableRegister;
+		
+	mux_32to1 readRegister1 (.out(readData1), .readReg(readReg1), .in());
+	mux_32to1 readRegister2 (.out(readData2), .readReg(readReg2), .in());
 	
 	decoder_5to32 writeRegister (.out(enableRegister), .in(writeReg), .regWrite);
 	
@@ -15,11 +18,6 @@ module RegisterFile (readReg1, readReg2, writeReg, writeData, regWrite, readData
 			DFF64 register (.q(registerOutput), .d(writeData), .reset, .clk, .enable(enableRegister[i]));
 		end
 	endgenerate
-	
-	mux_32to1 readRegister1 (.out(readData1), .readReg(readReg1), .in());
-	mux_32to1 readRegister2 (.out(readData2), .readReg(readReg2), .in());
-	
-	
 	
 endmodule
 
@@ -134,16 +132,19 @@ module mux_4to1(out, control, in);
 			not #50 n0 (con0_not, control[0]);
 			not #50 n1 (con1_not, control[1]);
 			
-			and #50 and0 (temp[0], in[0], con0_not, con1_not);
-			and #50 and1 (temp[1], in[1], control[0], con1_not);
-			and #50 and2 (temp[2], in[2], con0_not, control[1]);
-			and #50 and3 (temp[3], in[3], control[0], control[1]);
+			and #50 and0 (temp[0], in[0][i], con0_not, con1_not);
+			and #50 and1 (temp[1], in[1][i], control[0], con1_not);
+			and #50 and2 (temp[2], in[2][i], con0_not, control[1]);
+			and #50 and3 (temp[3], in[3][i], control[0], control[1]);
 			
-			or #50 or0 (out, temp[0], temp[1], temp[2], temp[3]);
+			or #50 or0 (out[i], temp[0], temp[1], temp[2], temp[3]);
 		end
 	endgenerate 
 	
+	
+	
 endmodule
+
 
 module mux_16to1(out, control, in);
 	output logic [63:0] out;
@@ -169,18 +170,18 @@ module mux_32to1(out, readReg, in);
 	logic [63:0] temp [1:0];
 	logic readRegNot;
 	
-	/*
+	
 	logic [63:0] temp1 [3:0];
 	assign temp1[0] = temp[0];
 	assign temp1[1] = temp[1];
 	assign temp1[2] = 64'b0;
 	assign temp1[3] = 64'b0;
-	*/
+	
 	
 	mux_16to1 mux0 (.out(temp[0]), .control(readReg[4:1]), .in(in[31:16]));
 	mux_16to1 mux1 (.out(temp[1]), .control(readReg[4:1]), .in(in[15:0]));
 	
+	mux_4to1 mux2 (.out, .control({1'b0, readReg[0]}), .in(temp1));
 	
-	//mux_4to1 mux2 (.out, .control({1'b0, readReg[0]}), .in(temp1));
-	
+
 endmodule
