@@ -9,8 +9,6 @@ module RegisterFile (readReg1, readReg2, writeReg, writeData, regWrite, readData
 	
 	decoder_5to32 writeRegister (.out(enableRegister), .in(writeReg), .regWrite);
 	
-// hello hello
-
 	genvar i;
 	generate
 		for(i=0; i < 32; i++) begin : eachRegister
@@ -171,18 +169,18 @@ module mux_32to1(out, readReg, in);
 	logic [63:0] temp [1:0];
 	logic readRegNot;
 	
+	/*
+	logic [63:0] temp1 [3:0];
+	assign temp1[0] = temp[0];
+	assign temp1[1] = temp[1];
+	assign temp1[2] = 64'b0;
+	assign temp1[3] = 64'b0;
+	*/
+	
 	mux_16to1 mux0 (.out(temp[0]), .control(readReg[4:1]), .in(in[31:16]));
 	mux_16to1 mux1 (.out(temp[1]), .control(readReg[4:1]), .in(in[15:0]));
 	
-	genvar i;
-	generate
-		for(i=0; i<64; i++) begin : each64bit2to1Mux
-		
-			not #50 n0 (readRegNot, readReg[0]);
-			
-			and #50 and0 (out, temp[0], readRegNot);
-			and #50 and1 (out, temp[1], readReg[0]);
-			
-		end
-	endgenerate
+	
+	//mux_4to1 mux2 (.out, .control({1'b0, readReg[0]}), .in(temp1));
+	
 endmodule
