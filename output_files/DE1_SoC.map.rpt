@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE1_SoC
-Thu Oct 13 18:29:12 2016
+Thu Oct 13 22:38:40 2016
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ agreement for further details.
 +--------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                             ;
 +-----------------------------+--------------------------------------------+
-; Analysis & Synthesis Status ; Failed - Thu Oct 13 18:29:12 2016          ;
+; Analysis & Synthesis Status ; Failed - Thu Oct 13 22:38:40 2016          ;
 ; Quartus II 64-Bit Version   ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name               ; DE1_SoC                                    ;
 ; Top-level Entity Name       ; regfile                                    ;
@@ -158,9 +158,9 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Thu Oct 13 18:29:11 2016
+    Info: Processing started: Thu Oct 13 22:38:38 2016
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC
-Info (12021): Found 13 design units, including 13 entities, in source file regfile.sv
+Info (12021): Found 14 design units, including 14 entities, in source file regfile.sv
     Info (12023): Found entity 1: regfile
     Info (12023): Found entity 2: DFF1
     Info (12023): Found entity 3: DFF4
@@ -174,6 +174,7 @@ Info (12021): Found 13 design units, including 13 entities, in source file regfi
     Info (12023): Found entity 11: mux_4to1
     Info (12023): Found entity 12: mux_16to1
     Info (12023): Found entity 13: mux_32to1
+    Info (12023): Found entity 14: sixtyFour32to1mux
 Info (12021): Found 1 design units, including 1 entities, in source file testbench.sv
     Info (12023): Found entity 1: regstim
 Info (12127): Elaborating entity "regfile" for the top level hierarchy
@@ -182,13 +183,13 @@ Info (12128): Elaborating entity "DFF64" for hierarchy "DFF64:eachRegister[0].re
 Info (12128): Elaborating entity "DFF16" for hierarchy "DFF64:eachRegister[0].register|DFF16:dff1"
 Info (12128): Elaborating entity "DFF4" for hierarchy "DFF64:eachRegister[0].register|DFF16:dff1|DFF4:dff1"
 Info (12128): Elaborating entity "DFF1" for hierarchy "DFF64:eachRegister[0].register|DFF16:dff1|DFF4:dff1|DFF1:dff1"
-Info (12128): Elaborating entity "mux_32to1" for hierarchy "mux_32to1:readRegister1"
-Error (10251): Verilog HDL error at regfile.sv(223): index 32 cannot fall outside the declared range [31:0] for dimension 0 of array "in" File: C:/Users/MandeepPlaha/Documents/EE469-Lab1/regfile.sv Line: 223
-Error (12152): Can't elaborate user hierarchy "mux_32to1:readRegister1" File: C:/Users/MandeepPlaha/Documents/EE469-Lab1/regfile.sv Line: 25
+Info (12128): Elaborating entity "sixtyFour32to1mux" for hierarchy "sixtyFour32to1mux:readRegister1"
+Error (10251): Verilog HDL error at regfile.sv(234): index 32 cannot fall outside the declared range [31:0] for dimension 0 of array "in" File: C:/Users/MandeepPlaha/Documents/EE469-Lab1/regfile.sv Line: 234
+Error (12152): Can't elaborate user hierarchy "sixtyFour32to1mux:readRegister1" File: C:/Users/MandeepPlaha/Documents/EE469-Lab1/regfile.sv Line: 25
 Info (144001): Generated suppressed messages file C:/Users/MandeepPlaha/Documents/EE469-Lab1/output_files/DE1_SoC.map.smsg
 Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 2 errors, 0 warnings
     Error: Peak virtual memory: 612 megabytes
-    Error: Processing ended: Thu Oct 13 18:29:13 2016
+    Error: Processing ended: Thu Oct 13 22:38:40 2016
     Error: Elapsed time: 00:00:02
     Error: Total CPU time (on all processors): 00:00:02
 

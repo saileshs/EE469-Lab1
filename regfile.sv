@@ -8,7 +8,7 @@ module regfile (ReadData1, ReadData2, ReadRegister1, ReadRegister2, WriteRegiste
 	logic 		 [31:0] 	enableRegister;
 	logic reset;
 	
-	//assign reset = 1'b0;
+	assign reset = 1'b0;
 	
 	decoder_5to32big pickWriteRegister (.out(enableRegister), .in(WriteRegister), .enable(RegWrite));
 	
@@ -22,8 +22,8 @@ module regfile (ReadData1, ReadData2, ReadRegister1, ReadRegister2, WriteRegiste
 	
 	assign registerOutput[31] = 64'b0;
 	
-	mux_32to1 readRegister1 (.out(ReadData1), .readReg(ReadRegister1), .in(registerOutput));
-	mux_32to1 readRegister2 (.out(ReadData2), .readReg(ReadRegister2), .in(registerOutput));
+	sixtyFour32to1mux readRegister1 (.out(ReadData1), .readReg(ReadRegister1), .in(registerOutput));
+	sixtyFour32to1mux readRegister2 (.out(ReadData2), .readReg(ReadRegister2), .in(registerOutput));
 	
 endmodule
 
@@ -210,7 +210,20 @@ module mux_16to1(out, control, in);
 	mux_4to1 mux4 (.out(out), .control(control[1:0]), .in({out_mux3, out_mux2, out_mux1, out_mux0}));
 endmodule
 
-module mux_32to1(out, readReg, in);
+module mux_32to1(out, control, in);
+	output logic out;
+	input logic [31:0] in;
+	input logic [4:0] control;
+
+	logic out_mux0, out_mux1;
+
+	mux_16to1 mux0 (.out(out_mux0), .control(control[4:1]), .in(in[15:0]));
+	mux_16to1 mux1 (.out(out_mux1), .control(control[4:1]), .in(in[31:16]));
+	mux_2to1 mux2 (.out(out), .control(control[0]), .in({out_mux1, out_mux0}));
+
+endmodule
+
+module sixtyFour32to1mux(out, readReg, in);
 	output logic [63:0] out;
 	input logic [63:0] in [31:0];
 	input logic [4:0] readReg;
@@ -218,13 +231,8 @@ module mux_32to1(out, readReg, in);
 	genvar i;
 	generate
 		for(i=0; i<64; i++) begin : sixtyfour32to1mux
-			logic out_mux0, out_mux1;
-
-			mux_16to1 mux0 (.out(out_mux0), .control(readReg[4:1]), .in(in[i][15:0]));
-			mux_16to1 mux1 (.out(out_mux1), .control(readReg[4:1]), .in(in[i][31:16]));
-			mux_2to1 mux2 (.out(out[i]), .control(readReg[0]), .in({out_mux1, out_mux0}));
+			mux_32to1 sixtyFourMuxes (.out(out), .control(readReg), .in(in));
 		end
 	endgenerate 
 endmodule
-
 
