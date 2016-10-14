@@ -1,16 +1,17 @@
 `timescale 1ns/10ps
 module regfile (ReadData1, ReadData2, ReadRegister1, ReadRegister2, WriteRegister, WriteData, RegWrite, clk);
-	output logic [63:0] ReadData1, ReadData2;
-	input logic [4:0] ReadRegister1, ReadRegister2, WriteRegister;
-	input logic [63:0] WriteData;
-	input logic RegWrite, clk;
-	logic [63:0] registerOutput [31:0];
-	logic [31:0] enableRegister;
+	output logic [63:0] 	ReadData1, ReadData2;
+	input logic  [4:0] 	ReadRegister1, ReadRegister2, WriteRegister;
+	input logic  [63:0] 	WriteData;
+	input logic 			RegWrite, clk;
+	logic			 [63:0] 	registerOutput [31:0];
+	logic 		 [31:0] 	enableRegister;
 	logic reset;
 	
-	assign reset = 1'b0;
+	//assign reset = 1'b0;
 	
-	decoder_5to32 WriteRegisterister (.out(enableRegister), .in(WriteRegister), .RegWrite);
+	decoder_5to32big pickWriteRegister (.out(enableRegister), .in(WriteRegister), .enable(RegWrite));
+	
 	
 	genvar i;
 	generate
@@ -26,10 +27,11 @@ module regfile (ReadData1, ReadData2, ReadRegister1, ReadRegister2, WriteRegiste
 	
 endmodule
 
-// D flip-flop w/synchronous reset
+// D flip-flop w/ synchronous reset
 module DFF1 (q, d, reset, clk, enable); 
-	output logic q;
+	output reg q;
 	input logic d, reset, clk, enable;
+	
 	always_ff @(posedge clk) // Hold val until clock edge
 		if (reset)
 			q <= 0; // On reset, set to 0
@@ -41,7 +43,7 @@ endmodule
 module DFF4(q, d, reset, clk, enable);
 	output logic [3:0] q;
 	input logic [3:0] d;
-	input logic clk, reset, enable;
+	input logic reset, clk, enable;
 	
 	DFF1 dff1 (.q(q[0]), .d(d[0]), .reset, .clk, .enable);
 	DFF1 dff2 (.q(q[1]), .d(d[1]), .reset, .clk, .enable);
@@ -78,16 +80,63 @@ module decoder_2to4(out, in, enable);
 	
 	logic in0_not, in1_not;
 	
-	not #50 not1 (in0_not, in[0]);
-	not #50 not2 (in1_not, in[1]);
+	not #50 not0 (in0_not, in[0]);
+	not #50 not1 (in1_not, in[1]);
 	
-	and #50 and0 (out[0], in0_not, in1_not, enable);
-	and #50 and1 (out[1], in[0], in1_not, enable);
+	and #50 and0 (out[0], in1_not, in0_not, enable);
+	and #50 and1 (out[1], in1_not, in[0], enable);
 	and #50 and2 (out[2], in[1], in0_not, enable);
-	and #50 and3 (out[3], in[0], in[1], enable);
+	and #50 and3 (out[3], in[1], in[0], enable);
 	
 endmodule
- 
+
+module decoder_5to32big(out, in, enable);
+	output logic [31:0] out;
+	input logic [4:0] in;
+	input logic enable;
+	
+	logic in0_not, in1_not, in2_not, in3_not, in4_not;
+	not #50 n0 (in0_not, in[0]);
+	not #50 n1 (in1_not, in[1]);
+	not #50 n2 (in2_not, in[2]);
+	not #50 n3 (in3_not, in[3]);
+	not #50 n4 (in4_not, in[4]);
+
+	and #50 and0 (out[0], in0_not, in1_not, in2_not, in3_not, in4_not, enable);
+	and #50 and1 (out[1], in[0], in1_not, in2_not, in3_not, in4_not, enable);
+	and #50 and2 (out[2], in0_not, in[1], in2_not, in3_not, in4_not, enable);
+	and #50 and3 (out[3], in[0], in[1], in2_not, in3_not, in4_not, enable);
+	and #50 and4 (out[4], in0_not, in1_not, in[2], in3_not, in4_not, enable);
+	and #50 and5 (out[5], in[0], in1_not, in[2], in3_not, in4_not, enable);
+	and #50 and6 (out[6], in0_not, in[1], in[2], in3_not, in4_not, enable);
+	and #50 and7 (out[7], in[0], in[1], in[2], in3_not, in4_not, enable);
+	and #50 and8 (out[8], in0_not, in1_not, in2_not, in[3], in4_not, enable);
+	and #50 and9 (out[9], in[0], in1_not, in2_not, in[3], in4_not, enable);
+	and #50 and10 (out[10], in0_not, in[1], in2_not, in[3], in4_not, enable);
+	and #50 and11 (out[11], in[0], in[1], in2_not, in[3], in4_not, enable);
+	and #50 and12 (out[12], in0_not, in1_not, in[2], in[3], in4_not, enable);
+	and #50 and13 (out[13], in[0], in1_not, in[2], in[3], in4_not, enable);
+	and #50 and14 (out[14], in0_not, in[1], in[2], in[3], in4_not, enable);
+	and #50 and15 (out[15], in[0], in[1], in[2], in[3], in4_not, enable);
+	and #50 and16 (out[16], in0_not, in1_not, in2_not, in3_not, in[4], enable);
+	and #50 and17 (out[17], in[0], in1_not, in2_not, in3_not, in[4], enable);
+	and #50 and18 (out[18], in0_not, in[1], in2_not, in3_not, in[4], enable);
+	and #50 and19 (out[19], in[0], in[1], in2_not, in3_not, in[4], enable);
+	and #50 and20 (out[20], in0_not, in1_not, in[2], in3_not, in[4], enable);
+	and #50 and21 (out[21], in[0], in1_not, in[2], in3_not, in[4], enable);
+	and #50 and22 (out[22], in0_not, in[1], in[2], in3_not, in[4], enable);
+	and #50 and23 (out[23], in[0], in[1], in[2], in3_not, in[4], enable);
+	and #50 and24 (out[24], in0_not, in1_not, in2_not, in[3], in[4], enable);
+	and #50 and25 (out[25], in[0], in1_not, in2_not, in[3], in[4], enable);
+	and #50 and26 (out[26], in0_not, in[1], in2_not, in[3], in[4], enable);
+	and #50 and27 (out[27], in[0], in[1], in2_not, in[3], in[4], enable);
+	and #50 and28 (out[28], in0_not, in1_not, in[2], in[3], in[4], enable);
+	and #50 and29 (out[29], in[0], in1_not, in[2], in[3], in[4], enable);
+	and #50 and30 (out[30], in0_not, in[1], in[2], in[3], in[4], enable);
+	and #50 and31 (out[31], in[0], in[1], in[2], in[3], in[4], enable);
+
+endmodule
+	
 module decoder_3to8(out, in, enable);
 	output logic [7:0] out;
 	input logic [2:0] in;
@@ -123,48 +172,42 @@ module decoder_5to32(out, in, RegWrite);
 	decoder_3to8 d4(.out(out[7:0]), .in(in[2:0]), .enable(enable[3]));
 endmodule
 	
-module mux_4to1(out, control, in);
-	output logic [63:0] out;
-	input logic [63:0] in [3:0];
-	input logic [1:0] control;
+module mux_2to1(out, control, in);
+	output logic out;
+	input logic [1:0] in;
+	input logic control;
 	
-	genvar i;
-	generate
-		for(i=0; i<64; i++) begin : each64bit4to1Mux
-			logic con0_not, con1_not;
-			logic [3:0] temp;
-			
-			not #50 n0 (con0_not, control[0]);
-			not #50 n1 (con1_not, control[1]);
-			
-			and #50 and0 (temp[0], in[0][i], con0_not, con1_not);
-			and #50 and1 (temp[1], in[1][i], control[0], con1_not);
-			and #50 and2 (temp[2], in[2][i], con0_not, control[1]);
-			and #50 and3 (temp[3], in[3][i], control[0], control[1]);
-			
-			or #50 or0 (out[i], temp[0], temp[1], temp[2], temp[3]);
-		end
-	endgenerate 
+	logic con_not;
 	
-	
-	
+	not #50 not0 (con_not, control);
+	and #50 and0 (out, in[0], con_not);
+	and #50 and1 (out, in[1], control);
 endmodule
 
+module mux_4to1(out, control, in);
+	output logic out;
+	input logic [3:0] in;
+	input logic [1:0] control;
+	
+	logic out_mux0, out_mux1;
+	
+	mux_2to1 mux0 (.out(out_mux0), .control(control[1]), .in(in[1:0]));
+	mux_2to1 mux1 (.out(out_mux1), .control(control[1]), .in(in[3:2]));
+	mux_2to1 mux2 (.out(out), .control(control[0]), .in({out_mux1, out_mux0}));
+endmodule
 
 module mux_16to1(out, control, in);
-	output logic [63:0] out;
-	input logic [63:0] in [15:0];
+	output logic out;
+	input logic [15:0] in;
 	input logic [3:0] control;
 	
-	logic [63:0] temp [3:0];
+	logic out_mux0, out_mux1, out_mux2, out_mux3;
 	
-	mux_4to1 mux0 (.out(temp[0]), .control(control[3:2]), .in(in[15:12]));
-	mux_4to1 mux1 (.out(temp[1]), .control(control[3:2]), .in(in[11:8]));
-	mux_4to1 mux2 (.out(temp[2]), .control(control[3:2]), .in(in[7:4]));
-	mux_4to1 mux3 (.out(temp[3]), .control(control[3:2]), .in(in[3:0]));
-	
-	mux_4to1 mux4 (.out, .control(control[1:0]), .in(temp));
-	
+	mux_4to1 mux0 (.out(out_mux0), .control(control[3:2]), .in(in[3:0]));
+	mux_4to1 mux1 (.out(out_mux1), .control(control[3:2]), .in(in[7:4]));
+	mux_4to1 mux2 (.out(out_mux2), .control(control[3:2]), .in(in[11:8]));
+	mux_4to1 mux3 (.out(out_mux3), .control(control[3:2]), .in(in[15:12]));
+	mux_4to1 mux4 (.out(out), .control(control[1:0]), .in({out_mux3, out_mux2, out_mux1, out_mux0}));
 endmodule
 
 module mux_32to1(out, readReg, in);
@@ -172,21 +215,16 @@ module mux_32to1(out, readReg, in);
 	input logic [63:0] in [31:0];
 	input logic [4:0] readReg;
 	
-	logic [63:0] temp [1:0];
-	logic readRegNot;
-	
-	
-	logic [63:0] temp1 [3:0];
-	assign temp1[0] = temp[1];
-	assign temp1[1] = 64'b0;
-	assign temp1[2] = temp[0];
-	assign temp1[3] = 64'b0;
-	
-	
-	mux_16to1 mux0 (.out(temp[0]), .control(readReg[4:1]), .in(in[31:16]));
-	mux_16to1 mux1 (.out(temp[1]), .control(readReg[4:1]), .in(in[15:0]));
-	
-	mux_4to1 mux2 (.out, .control({1'b0, readReg[0]}), .in(temp1));
-	
+	genvar i;
+	generate
+		for(i=0; i<64; i++) begin : sixtyfour32to1mux
+			logic out_mux0, out_mux1;
 
+			mux_16to1 mux0 (.out(out_mux0), .control(readReg[4:1]), .in(in[i][15:0]));
+			mux_16to1 mux1 (.out(out_mux1), .control(readReg[4:1]), .in(in[i][31:16]));
+			mux_2to1 mux2 (.out(out[i]), .control(readReg[0]), .in({out_mux1, out_mux0}));
+		end
+	endgenerate 
 endmodule
+
+

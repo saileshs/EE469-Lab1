@@ -9,6 +9,7 @@ do runlab.do
 # -- Compiling module DFF16
 # -- Compiling module DFF64
 # -- Compiling module decoder_2to4
+# -- Compiling module decoder_5to32big
 # -- Compiling module decoder_3to8
 # -- Compiling module decoder_5to32
 # -- Compiling module mux_4to1
@@ -17,6 +18,7 @@ do runlab.do
 # 
 # Top level modules:
 # 	regfile
+# 	decoder_5to32
 # Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
 # -- Compiling module regfile
 # -- Compiling module DFF1
@@ -24,6 +26,7 @@ do runlab.do
 # -- Compiling module DFF16
 # -- Compiling module DFF64
 # -- Compiling module decoder_2to4
+# -- Compiling module decoder_5to32big
 # -- Compiling module decoder_3to8
 # -- Compiling module decoder_5to32
 # -- Compiling module mux_4to1
@@ -32,305 +35,12 @@ do runlab.do
 # 
 # Top level modules:
 # 	regfile
+# 	decoder_5to32
 # vsim -lib work -voptargs=\"+acc\" -t 1ps regstim 
 # Loading sv_std.std
 # Loading work.regstim
 # Loading work.regfile
-# Loading work.decoder_5to32
-# Loading work.decoder_2to4
-# Loading work.decoder_3to8
-# Loading work.mux_32to1
-# Loading work.mux_16to1
-# Loading work.mux_4to1
-# Loading work.DFF64
-# Loading work.DFF16
-# Loading work.DFF4
-# Loading work.DFF1
-# .main_pane.wave.interior.cs.body.pw.wf
-# .main_pane.structure.interior.cs.body.struct
-# .main_pane.objects.interior.cs.body.tree
-# 2500.00 ns Attempting overwrite of register 31, which should always be 0
-# 7500.00 ns Writing pattern to all registers.
-# 317500.00 ns Checking pattern.
-# Break in Module regstim at ./regfile.sv line 255
-# Simulation Breakpoint: Break in Module regstim at ./regfile.sv line 255
-# MACRO ./runlab.do PAUSED at line 26
-add wave -position end  sim:/regstim/dut/ReadRegister1
-add wave -position end  sim:/regstim/dut/ReadRegister2
-add wave -position end  sim:/regstim/dut/WriteData
-add wave -position end  sim:/regstim/dut/RegWrite
-add wave -position 0  sim:/regstim/dut/clk
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf {D:/EE 469/Lab 1/regfile_wave.do}
-do runlab.do
-# ** Warning: (vlib-34) Library already exists at "work".
-# 
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# -- Compiling module DFF1
-# -- Compiling module DFF4
-# -- Compiling module DFF16
-# -- Compiling module DFF64
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_5to32
-# -- Compiling module mux_4to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# 
-# Top level modules:
-# 	regfile
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# -- Compiling module DFF1
-# -- Compiling module DFF4
-# -- Compiling module DFF16
-# -- Compiling module DFF64
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_5to32
-# -- Compiling module mux_4to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# 
-# Top level modules:
-# 	regfile
-# vsim -lib work -voptargs=\"+acc\" -t 1ps regstim 
-# Loading sv_std.std
-# Loading work.regstim
-# Loading work.regfile
-# Loading work.decoder_5to32
-# Loading work.decoder_2to4
-# Loading work.decoder_3to8
-# Loading work.mux_32to1
-# Loading work.mux_16to1
-# Loading work.mux_4to1
-# Loading work.DFF64
-# Loading work.DFF16
-# Loading work.DFF4
-# Loading work.DFF1
-# .main_pane.wave.interior.cs.body.pw.wf
-# .main_pane.structure.interior.cs.body.struct
-# .main_pane.objects.interior.cs.body.tree
-# 2500.00 ns Attempting overwrite of register 31, which should always be 0
-# 7500.00 ns Writing pattern to all registers.
-# 317500.00 ns Checking pattern.
-# Break in Module regstim at ./regfile.sv line 255
-# Simulation Breakpoint: Break in Module regstim at ./regfile.sv line 255
-# MACRO ./runlab.do PAUSED at line 26
-do runlab.do
-# ** Warning: (vlib-34) Library already exists at "work".
-# 
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# -- Compiling module DFF1
-# -- Compiling module DFF4
-# -- Compiling module DFF16
-# -- Compiling module DFF64
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_5to32
-# -- Compiling module mux_4to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# 
-# Top level modules:
-# 	regfile
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# -- Compiling module DFF1
-# -- Compiling module DFF4
-# -- Compiling module DFF16
-# -- Compiling module DFF64
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_5to32
-# -- Compiling module mux_4to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# 
-# Top level modules:
-# 	regfile
-# vsim -lib work -voptargs=\"+acc\" -t 1ps regstim 
-# Loading sv_std.std
-# Loading work.regstim
-# Loading work.regfile
-# Loading work.decoder_5to32
-# Loading work.decoder_2to4
-# Loading work.decoder_3to8
-# Loading work.mux_32to1
-# Loading work.mux_16to1
-# Loading work.mux_4to1
-# Loading work.DFF64
-# Loading work.DFF16
-# Loading work.DFF4
-# Loading work.DFF1
-# .main_pane.wave.interior.cs.body.pw.wf
-# .main_pane.structure.interior.cs.body.struct
-# .main_pane.objects.interior.cs.body.tree
-# 2500.00 ns Attempting overwrite of register 31, which should always be 0
-# 7500.00 ns Writing pattern to all registers.
-# 317500.00 ns Checking pattern.
-# Break in Module regstim at ./regfile.sv line 255
-# Simulation Breakpoint: Break in Module regstim at ./regfile.sv line 255
-# MACRO ./runlab.do PAUSED at line 26
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf {D:/EE 469/Lab 1/regfile_wave.do}
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf {D:/EE 469/Lab 1/regfile_wave.do}
-add wave -position end  sim:/regstim/ReadData1
-add wave -position end  sim:/regstim/ReadData2
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf {D:/EE 469/Lab 1/regfile_wave.do}
-do runlab.do
-# ** Warning: (vlib-34) Library already exists at "work".
-# 
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# -- Compiling module DFF1
-# -- Compiling module DFF4
-# -- Compiling module DFF16
-# -- Compiling module DFF64
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_5to32
-# -- Compiling module mux_4to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# 
-# Top level modules:
-# 	regfile
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# -- Compiling module DFF1
-# -- Compiling module DFF4
-# -- Compiling module DFF16
-# -- Compiling module DFF64
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_5to32
-# -- Compiling module mux_4to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# 
-# Top level modules:
-# 	regfile
-# vsim -lib work -voptargs=\"+acc\" -t 1ps regstim 
-# Loading sv_std.std
-# Loading work.regstim
-# Loading work.regfile
-# Loading work.decoder_5to32
-# Loading work.decoder_2to4
-# Loading work.decoder_3to8
-# Loading work.mux_32to1
-# Loading work.mux_16to1
-# Loading work.mux_4to1
-# Loading work.DFF64
-# Loading work.DFF16
-# Loading work.DFF4
-# Loading work.DFF1
-# .main_pane.wave.interior.cs.body.pw.wf
-# .main_pane.structure.interior.cs.body.struct
-# .main_pane.objects.interior.cs.body.tree
-# 2500.00 ns Attempting overwrite of register 31, which should always be 0
-# 7500.00 ns Writing pattern to all registers.
-# 317500.00 ns Checking pattern.
-# Break in Module regstim at ./regfile.sv line 255
-# Simulation Breakpoint: Break in Module regstim at ./regfile.sv line 255
-# MACRO ./runlab.do PAUSED at line 26
-do runlab.do
-# ** Warning: (vlib-34) Library already exists at "work".
-# 
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# -- Compiling module DFF1
-# -- Compiling module DFF4
-# -- Compiling module DFF16
-# -- Compiling module DFF64
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_5to32
-# -- Compiling module mux_4to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# 
-# Top level modules:
-# 	regfile
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# -- Compiling module DFF1
-# -- Compiling module DFF4
-# -- Compiling module DFF16
-# -- Compiling module DFF64
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_5to32
-# -- Compiling module mux_4to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# 
-# Top level modules:
-# 	regfile
-# vsim -lib work -voptargs=\"+acc\" -t 1ps regstim 
-# Loading sv_std.std
-# Loading work.regstim
-# Loading work.regfile
-# Loading work.decoder_5to32
-# Loading work.decoder_2to4
-# Loading work.decoder_3to8
-# Loading work.mux_32to1
-# Loading work.mux_16to1
-# Loading work.mux_4to1
-# Loading work.DFF64
-# Loading work.DFF16
-# Loading work.DFF4
-# Loading work.DFF1
-# .main_pane.wave.interior.cs.body.pw.wf
-# .main_pane.structure.interior.cs.body.struct
-# .main_pane.objects.interior.cs.body.tree
-# 2500.00 ns Attempting overwrite of register 31, which should always be 0
-# 7500.00 ns Writing pattern to all registers.
-# 317500.00 ns Checking pattern.
-# Break in Module regstim at ./regfile.sv line 255
-# Simulation Breakpoint: Break in Module regstim at ./regfile.sv line 255
-# MACRO ./runlab.do PAUSED at line 26
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf {D:/EE 469/Lab 1/regfile_wave.do}
-do runlab.do
-# ** Warning: (vlib-34) Library already exists at "work".
-# 
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# -- Compiling module DFF1
-# -- Compiling module DFF4
-# -- Compiling module DFF16
-# -- Compiling module DFF64
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_5to32
-# -- Compiling module mux_4to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# 
-# Top level modules:
-# 	regfile
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# -- Compiling module DFF1
-# -- Compiling module DFF4
-# -- Compiling module DFF16
-# -- Compiling module DFF64
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_5to32
-# -- Compiling module mux_4to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# 
-# Top level modules:
-# 	regfile
-# vsim -lib work -voptargs=\"+acc\" -t 1ps regstim 
-# Loading sv_std.std
-# Loading work.regstim
-# Loading work.regfile
-# Loading work.decoder_5to32
-# Loading work.decoder_2to4
-# Loading work.decoder_3to8
+# Loading work.decoder_5to32big
 # Loading work.mux_32to1
 # Loading work.mux_16to1
 # Loading work.mux_4to1
