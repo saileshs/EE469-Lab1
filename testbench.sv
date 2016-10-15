@@ -1,3 +1,4 @@
+`timescale 1ns/10ps
 module regstim(); 		
 
 	parameter ClockDelay = 5000;
@@ -45,7 +46,7 @@ module regstim();
 			ReadRegister1 <= i-1;
 			ReadRegister2 <= i;
 			WriteRegister <= i;
-			WriteData <= i*64'h0000000000000100+i;;
+			WriteData <= 64'h0 + i;
 			@(posedge clk);
 			
 			RegWrite <= 1;
@@ -60,7 +61,7 @@ module regstim();
 			ReadRegister1 <= i-1;
 			ReadRegister2 <= i;
 			WriteRegister <= i;
-			WriteData <= i*64'h0000000000000100+i;
+			WriteData <= 64'h0+i;
 			@(posedge clk);
 		end
 		$stop;

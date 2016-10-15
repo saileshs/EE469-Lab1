@@ -5,7 +5,9 @@ vlib work
 #     All Verilog files that are part of this design should have
 #     their own "vlog" line below.
 vlog "./regfile.sv"
-vlog "regfile.sv"
+vlog "./testbench.sv"
+vlog "./decoder.sv"
+vlog "./muxes.sv"
 
 # Call vsim to invoke simulator
 #     Make sure the last item on the line is the name of the
