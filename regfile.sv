@@ -28,15 +28,28 @@ module regfile (ReadData1, ReadData2, ReadRegister1, ReadRegister2, WriteRegiste
 endmodule
 
 // D flip-flop w/ synchronous reset
-module DFF1 (q, d, reset, clk, enable); 
+module D_FF (q, d, reset, clk);
 	output reg q;
-	input logic d, reset, clk, enable;
+	input d, reset, clk;
 	
-	always_ff @(posedge clk) // Hold val until clock edge
+	always_ff @(posedge clk)
 		if (reset)
 			q <= 0; // On reset, set to 0
-		else if (enable)
+		else
 			q <= d; // Otherwise out = d
+endmodule
+
+module DFF1_enable (q, d, reset, clk, enable);
+	output logic q;
+	input logic d, reset, clk, enable;
+	logic mux_out, en_not, and0_out, and1_out;
+
+	not #50 not0 (en_not, enable);
+	and #50 and0 (and0_out, q, en_not);
+	and #50 and1 (and1_out, d, enable);
+	or #50 or0 (mux_out, and0_out, and1_out);
+	
+	D_FF dff0 (.q, .d(mux_out), .reset, .clk);
 endmodule
 	
 
@@ -45,10 +58,10 @@ module DFF4(q, d, reset, clk, enable);
 	input logic [3:0] d;
 	input logic reset, clk, enable;
 	
-	DFF1 dff1 (.q(q[0]), .d(d[0]), .reset, .clk, .enable);
-	DFF1 dff2 (.q(q[1]), .d(d[1]), .reset, .clk, .enable);
-	DFF1 dff3 (.q(q[2]), .d(d[2]), .reset, .clk, .enable);
-	DFF1 dff4 (.q(q[3]), .d(d[3]), .reset, .clk, .enable);
+	DFF1_enable dff1 (.q(q[0]), .d(d[0]), .reset, .clk, .enable);
+	DFF1_enable dff2 (.q(q[1]), .d(d[1]), .reset, .clk, .enable);
+	DFF1_enable dff3 (.q(q[2]), .d(d[2]), .reset, .clk, .enable);
+	DFF1_enable dff4 (.q(q[3]), .d(d[3]), .reset, .clk, .enable);
 endmodule
 
 module DFF16(q, d, reset, clk, enable);
