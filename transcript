@@ -1,299 +1,428 @@
 # Reading C:/altera/14.0/modelsim_ase/tcl/vsim/pref.tcl 
-do runlab.do
+do runadder.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # 
 # Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# -- Compiling module DFF1
-# -- Compiling module DFF1_enable
-# -- Compiling module DFF4
-# -- Compiling module DFF16
-# -- Compiling module DFF64
+# -- Compiling module adder64
+# -- Compiling module adder
+# -- Compiling module adder_testbench
 # 
 # Top level modules:
-# 	regfile
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regstim
-# 
-# Top level modules:
-# 	regstim
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_5to32
-# -- Compiling module decoder_testbench
-# 
-# Top level modules:
-# 	decoder_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module mux_2to1
-# -- Compiling module mux_4to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# -- Compiling module mux_testbench
-# 
-# Top level modules:
-# 	mux_testbench
-# vsim -lib work -voptargs=\"+acc\" -t 1ps regstim 
+# 	adder_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps adder_testbench 
 # Loading sv_std.std
-# Loading work.regstim
-# Loading work.regfile
-# Loading work.decoder_5to32
-# Loading work.decoder_2to4
-# Loading work.decoder_3to8
-# Loading work.mux_32to1
-# Loading work.mux_16to1
-# Loading work.mux_4to1
-# Loading work.mux_2to1
-# Loading work.DFF64
-# Loading work.DFF16
-# Loading work.DFF4
-# Loading work.DFF1_enable
-# Loading work.DFF1
-# .main_pane.wave.interior.cs.body.pw.wf
-# .main_pane.structure.interior.cs.body.struct
-# .main_pane.objects.interior.cs.body.tree
-# 2500.00 ns Attempting overwrite of register 31, which should always be 0
-# 7500.00 ns Writing pattern to all registers.
-# 317500.00 ns Checking pattern.
-# Break in Module regstim at ./testbench.sv line 67
-# Simulation Breakpoint: Break in Module regstim at ./testbench.sv line 67
-# MACRO ./runlab.do PAUSED at line 28
-do runlab.do
+# Loading work.adder_testbench
+# Loading work.adder64
+# Loading work.adder
+# ** Error: Cannot open macro file: adder_wave.do
+# Error in macro ./runadder.do line 17
+# Cannot open macro file: adder_wave.do
+#     while executing
+# "do adder_wave.do"
+add wave -position end  sim:/adder_testbench/a
+add wave -position end  sim:/adder_testbench/b
+add wave -position end  sim:/adder_testbench/sum
+add wave -position end  sim:/adder_testbench/cO
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf {D:/EE 469/Processor Lab/adder_wave.do}
+do runadder.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # 
 # Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# -- Compiling module D_FF
-# -- Compiling module DFF1_enable
-# -- Compiling module DFF4
-# -- Compiling module DFF16
-# -- Compiling module DFF64
+# -- Compiling module adder64
+# -- Compiling module adder
+# -- Compiling module adder_testbench
 # 
 # Top level modules:
-# 	regfile
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regstim
-# 
-# Top level modules:
-# 	regstim
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_5to32
-# -- Compiling module decoder_testbench
-# 
-# Top level modules:
-# 	decoder_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module mux_2to1
-# -- Compiling module mux_4to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# -- Compiling module mux_testbench
-# 
-# Top level modules:
-# 	mux_testbench
-# vsim -lib work -voptargs=\"+acc\" -t 1ps regstim 
+# 	adder_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps adder_testbench 
 # Loading sv_std.std
-# Loading work.regstim
-# Loading work.regfile
-# Loading work.decoder_5to32
-# Loading work.decoder_2to4
-# Loading work.decoder_3to8
-# Loading work.mux_32to1
-# Loading work.mux_16to1
-# Loading work.mux_4to1
-# Loading work.mux_2to1
-# Loading work.DFF64
-# Loading work.DFF16
-# Loading work.DFF4
-# Loading work.DFF1_enable
-# Loading work.D_FF
+# Loading work.adder_testbench
+# Loading work.adder64
+# Loading work.adder
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
 # .main_pane.objects.interior.cs.body.tree
-# 2500.00 ns Attempting overwrite of register 31, which should always be 0
-# 7500.00 ns Writing pattern to all registers.
-# 317500.00 ns Checking pattern.
-# Break in Module regstim at ./testbench.sv line 67
-# Simulation Breakpoint: Break in Module regstim at ./testbench.sv line 67
-# MACRO ./runlab.do PAUSED at line 28
-do runlab.do
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf {D:/EE 469/Processor Lab/adder_wave.do}
+do runadder.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # 
 # Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# -- Compiling module D_FF
-# -- Compiling module DFF1_enable
-# -- Compiling module DFF4
-# -- Compiling module DFF16
-# -- Compiling module DFF64
+# -- Compiling module adder64
+# -- Compiling module adder
+# -- Compiling module adder_testbench
 # 
 # Top level modules:
-# 	regfile
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regstim
-# 
-# Top level modules:
-# 	regstim
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_5to32
-# -- Compiling module decoder_testbench
-# 
-# Top level modules:
-# 	decoder_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module mux_2to1
-# -- Compiling module mux_4to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# -- Compiling module mux_testbench
-# 
-# Top level modules:
-# 	mux_testbench
-# vsim -lib work -voptargs=\"+acc\" -t 1ps regstim 
+# 	adder_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps adder_testbench 
 # Loading sv_std.std
-# Loading work.regstim
-# Loading work.regfile
-# Loading work.decoder_5to32
-# Loading work.decoder_2to4
-# Loading work.decoder_3to8
-# Loading work.mux_32to1
-# Loading work.mux_16to1
-# Loading work.mux_4to1
-# Loading work.mux_2to1
-# Loading work.DFF64
-# Loading work.DFF16
-# Loading work.DFF4
-# Loading work.DFF1_enable
-# Loading work.D_FF
-# .main_pane.wave.interior.cs.body.pw.wf
-# .main_pane.structure.interior.cs.body.struct
-# .main_pane.objects.interior.cs.body.tree
-# 2500.00 ns Attempting overwrite of register 31, which should always be 0
-# 7500.00 ns Writing pattern to all registers.
-# 317500.00 ns Checking pattern.
-# Break in Module regstim at ./testbench.sv line 67
-# Simulation Breakpoint: Break in Module regstim at ./testbench.sv line 67
-# MACRO ./runlab.do PAUSED at line 28
-do runlab.do
+# Loading work.adder_testbench
+# Loading work.adder64
+# Loading work.adder
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[1]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[2]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[3]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[4]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[5]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[6]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[7]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[8]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[9]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[10]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[11]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[12]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[13]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[14]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[15]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[16]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[17]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[18]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[19]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[20]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[21]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[22]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[23]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[24]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[25]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[26]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[27]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[28]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[29]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[30]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[31]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[32]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[33]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[34]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[35]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[36]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[37]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[38]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[39]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[40]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[41]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[42]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[43]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[44]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[45]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[46]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[47]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[48]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[49]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[50]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[51]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[52]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[53]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[54]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[55]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[56]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[57]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[58]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[59]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[60]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[61]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[62]/add
+# ** Error: (vsim-3839) ./adder.sv(13): Variable '/adder_testbench/dut/tempCarryOut', driven via a port connection, is multiply driven. See ./adder.sv(13).
+# 
+#         Region: /adder_testbench/dut/eachAdder[63]/add
+# Error loading design
+# Error: Error loading design 
+#        Pausing macro execution 
+# MACRO ./runadder.do PAUSED at line 12
+do runadder.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # 
 # Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# -- Compiling module D_FF
-# -- Compiling module DFF4
-# -- Compiling module DFF16
-# -- Compiling module DFF64
+# -- Compiling module adder64
+# -- Compiling module adder
+# -- Compiling module adder_testbench
 # 
 # Top level modules:
-# 	regfile
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regstim
-# 
-# Top level modules:
-# 	regstim
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_5to32
-# -- Compiling module decoder_testbench
-# 
-# Top level modules:
-# 	decoder_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module mux_2to1
-# -- Compiling module mux_4to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# -- Compiling module mux_testbench
-# 
-# Top level modules:
-# 	mux_testbench
-# vsim -lib work -voptargs=\"+acc\" -t 1ps regstim 
+# 	adder_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps adder_testbench 
 # Loading sv_std.std
-# Loading work.regstim
-# Loading work.regfile
-# Loading work.decoder_5to32
-# Loading work.decoder_2to4
-# Loading work.decoder_3to8
-# Loading work.mux_32to1
-# Loading work.mux_16to1
-# Loading work.mux_4to1
-# Loading work.mux_2to1
-# Loading work.DFF64
-# Loading work.DFF16
-# Loading work.DFF4
-# Loading work.D_FF
+# Loading work.adder_testbench
+# Loading work.adder64
+# Loading work.adder
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
 # .main_pane.objects.interior.cs.body.tree
-# 2500.00 ns Attempting overwrite of register 31, which should always be 0
-# 7500.00 ns Writing pattern to all registers.
-# 317500.00 ns Checking pattern.
-# Break in Module regstim at ./testbench.sv line 67
-# Simulation Breakpoint: Break in Module regstim at ./testbench.sv line 67
-# MACRO ./runlab.do PAUSED at line 28
-do runlab.do
+do runadder.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # 
 # Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# -- Compiling module D_FF
-# -- Compiling module DFF1_enable
-# -- Compiling module DFF4
-# -- Compiling module DFF16
-# -- Compiling module DFF64
+# -- Compiling module adder64
+# -- Compiling module adder
+# -- Compiling module adder_testbench
 # 
 # Top level modules:
-# 	regfile
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regstim
-# 
-# Top level modules:
-# 	regstim
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_5to32
-# -- Compiling module decoder_testbench
-# 
-# Top level modules:
-# 	decoder_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module mux_2to1
-# -- Compiling module mux_4to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# -- Compiling module mux_testbench
-# 
-# Top level modules:
-# 	mux_testbench
-# vsim -lib work -voptargs=\"+acc\" -t 1ps regstim 
+# 	adder64
+# 	adder_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps adder_testbench 
 # Loading sv_std.std
-# Loading work.regstim
-# Loading work.regfile
-# Loading work.decoder_5to32
-# Loading work.decoder_2to4
-# Loading work.decoder_3to8
-# Loading work.mux_32to1
-# Loading work.mux_16to1
-# Loading work.mux_4to1
-# Loading work.mux_2to1
-# Loading work.DFF64
-# Loading work.DFF16
-# Loading work.DFF4
-# Loading work.DFF1_enable
-# Loading work.D_FF
+# Loading work.adder_testbench
+# Loading work.adder
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
 # .main_pane.objects.interior.cs.body.tree
-# 2500.00 ns Attempting overwrite of register 31, which should always be 0
-# 7500.00 ns Writing pattern to all registers.
-# 317500.00 ns Checking pattern.
-# Break in Module regstim at ./testbench.sv line 67
-# Simulation Breakpoint: Break in Module regstim at ./testbench.sv line 67
-# MACRO ./runlab.do PAUSED at line 28
+do runadder.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module adder64
+# -- Compiling module adder
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder64
+# 	adder_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps adder_testbench 
+# Loading sv_std.std
+# Loading work.adder_testbench
+# Loading work.adder
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+do runadder.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module adder64
+# -- Compiling module adder
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder64
+# 	adder_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps adder_testbench 
+# Loading sv_std.std
+# Loading work.adder_testbench
+# Loading work.adder
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+do runadder.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module adder64
+# -- Compiling module adder
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps adder_testbench 
+# Loading sv_std.std
+# Loading work.adder_testbench
+# Loading work.adder64
+# Loading work.adder
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+do runadder.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module adder64
+# -- Compiling module adder
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps adder_testbench 
+# Loading sv_std.std
+# Loading work.adder_testbench
+# Loading work.adder64
+# Loading work.adder
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+do runadder.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module adder64
+# -- Compiling module adder
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps adder_testbench 
+# Loading sv_std.std
+# Loading work.adder_testbench
+# Loading work.adder64
+# Loading work.adder
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+do runadder.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module adder64
+# -- Compiling module adder
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps adder_testbench 
+# Loading sv_std.std
+# Loading work.adder_testbench
+# Loading work.adder64
+# Loading work.adder
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+do runadder.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module adder64
+# ** Error: ./adder.sv(14): near "#": syntax error, unexpected '#', expecting ')'
+# -- Compiling module adder
+# -- Compiling module adder_testbench
+# ** Error: C:/altera/14.0/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./runadder.do line 7
+# C:/altera/14.0/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog "./adder.sv""
+do runadder.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module adder64
+# -- Compiling module adder
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps adder_testbench 
+# Loading sv_std.std
+# Loading work.adder_testbench
+# Loading work.adder64
+# Loading work.adder
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
