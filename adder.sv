@@ -1,23 +1,46 @@
-module adder64 (carryOut, sum, a, b, carryIn);
+module adder64 (carryOut, sum, a, b);
+	output logic [63:0] sum;
+	output logic carryOut;
+	input logic [63:0] a, b;
+	
+	addSub64 add (.carryOut, .sum, .a, .b, .carryIn(1'b0));
+	
+endmodule
+
+module subtractor64 (carryOut, sum, a, b);
+	output logic [63:0] sum;
+	output logic carryOut;
+	input logic [63:0] a, b;
+	
+	logic [63:0] notB;
+	
+	not64	 invert (.out(notB), .in(b));
+	
+	addSub64 subtract (.carryOut, .sum, .a, .b(notB), .carryIn(1'b1));
+	
+endmodule
+
+module addSub64 (carryOut, sum, a, b, carryIn);
 	output logic [63:0] sum;
 	output logic carryOut;
 	input logic [63:0] a, b;
 	input logic carryIn;
 	
-	wire tempCarryOut;
+	wire [63:0] tempCarryOut;
 
-	adder add0 (.carryOut(tempCarryOut), .sum(sum[0]), .a(a[0]), .b(b[0]), .carryIn);
+	addSub add0 (.carryOut(tempCarryOut[0]), .sum(sum[0]), .a(a[0]), .b(b[0]), .carryIn);
 	
 	genvar i;
 	generate
 		for(i = 1; i < 64; i++) begin : eachAdder
-			adder add1 (.carryOut(tempCarryOut), .sum(sum[i]), .a(a[i]), .b(b[i]), .carryIn(tempCarryOut));
+			adder addSub (.carryOut(tempCarryOut[i]), .sum(sum[i]), .a(a[i]), .b(b[i]), .carryIn(tempCarryOut[i - 1]));
 		end
 	endgenerate
-	assign carryOut = tempCarryOut;
-	//adder add2 (.carryOut, .sum(sum[63]), .a(a[63]), .b(b[63]), .carryIn(tempCarryOut));
+	assign carryOut = tempCarryOut[63];
+
 endmodule
-module adder (carryOut, sum, a, b, carryIn);
+
+module addSub (carryOut, sum, a, b, carryIn);
 	output logic carryOut, sum;
 	input logic a, b, carryIn;
 	
@@ -46,16 +69,17 @@ module adder (carryOut, sum, a, b, carryIn);
 endmodule
 
 module adder_testbench();
-	logic [63:0] a, b, sum;
-	logic cO;
+	logic [63:0] a, b, sum, difference;
+	logic cO, cO2;
 	
-	adder64 dut (cO, sum, a, b, 1'b0);
+	adder64 dut (cO, sum, a, b);
+	subtractor64 dut2 (cO2, difference, a, b);
 	
 	integer i;
 	initial begin
 		#800;
-		for (i = 0; i < 31; i++) begin
-			a = i; b = i; #800;
+		for (i = 0; i < 32; i++) begin
+			a = i+i; b = i; #800; 
 		end
 	end
 endmodule
