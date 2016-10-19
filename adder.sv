@@ -7,8 +7,8 @@ module adder64 (carryOut, sum, a, b);
 	
 endmodule
 
-module subtractor64 (carryOut, sum, a, b);
-	output logic [63:0] sum;
+module subtractor64 (carryOut, diff, a, b);
+	output logic [63:0] diff;
 	output logic carryOut;
 	input logic [63:0] a, b;
 	
@@ -16,7 +16,7 @@ module subtractor64 (carryOut, sum, a, b);
 	
 	not64	 invert (.out(notB), .in(b));
 	
-	addSub64 subtract (.carryOut, .sum, .a, .b(notB), .carryIn(1'b1));
+	addSub64 subtract (.carryOut, .sum(diff), .a, .b(notB), .carryIn(1'b1));
 	
 endmodule
 

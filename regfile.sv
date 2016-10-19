@@ -42,13 +42,9 @@ endmodule
 module DFF1_enable (q, d, reset, clk, enable);
 	output logic q;
 	input logic d, reset, clk, enable;
-	logic mux_out, en_not, and0_out, and1_out;
-
-	not #50 not0 (en_not, enable);
-	and #50 and0 (and0_out, q, en_not);
-	and #50 and1 (and1_out, d, enable);
-	or #50 or0 (mux_out, and0_out, and1_out);
+	logic mux_out;
 	
+	mux_2to1_1bit m (.out(mux_out), .control(enable), .in({d, q}));
 	D_FF dff0 (.q, .d(mux_out), .reset, .clk);
 endmodule
 	

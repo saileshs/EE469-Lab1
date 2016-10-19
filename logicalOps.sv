@@ -36,3 +36,15 @@ module not64 (out, in);
 	endgenerate
 	
 endmodule
+
+module nor64 (out, a, b);
+	output logic [63:0] out;
+	input logic [63:0] a, b;
+	
+	logic not_a, not_b;
+	
+	not64 n0 (.out(not_a), .in(a));
+	not64 n1 (.out(not_b), .in(b));
+	
+	and64 an (.out, .a(not_a), .b(not_b));
+endmodule
