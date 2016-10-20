@@ -1,4 +1,4 @@
-`timescale 1ns/10ps
+//`timescale 1ns/10ps
 module mux_2to1_1bit(out, control, in);
 	input logic control;
 	input logic [1:0] in;

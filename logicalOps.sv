@@ -1,3 +1,4 @@
+//`timescale 1ns/10ps
 module and64 (out, a, b);
 	output logic [63:0] out;
 	input logic [63:0] a, b;
@@ -37,14 +38,49 @@ module not64 (out, in);
 	
 endmodule
 
-module nor64 (out, a, b);
-	output logic [63:0] out;
-	input logic [63:0] a, b;
+module nor64 (out, in);
+	output logic out;
+	input logic [63:0] in;
 	
-	logic not_a, not_b;
+	logic [15:0] or_out16;
+	logic [3:0] or_out4;
 	
-	not64 n0 (.out(not_a), .in(a));
-	not64 n1 (.out(not_b), .in(b));
+	logic or_out;
 	
-	and64 an (.out, .a(not_a), .b(not_b));
+	or_multi #(.WIDTH(64)) or0 (.out(or_out16), .in);
+	or_multi #(.WIDTH(16)) or1 (.out(or_out4), .in(or_out16));
+	or_multi #(.WIDTH(4)) or2 (.out(or_out), .in(or_out4));
+	
+	not #50 invert (out, or_out);
+
 endmodule
+
+module or_multi #(parameter WIDTH=64)(out, in);
+	output logic [(WIDTH / 4) - 1: 0] out;
+	input logic [WIDTH - 1: 0] in;
+	
+	genvar i;
+	generate
+		for (i = 0; i < WIDTH; i += 4) begin: eachOr
+			or #50 or0 (out[i / 4], in[i], in[i + 1], in[i + 2], in[i + 3]);
+		end
+	endgenerate
+endmodule
+
+module nor_testbench();
+	logic [63:0] in;
+	logic out;
+	
+	nor64 no (.out, .in);
+	
+	integer i;
+	initial begin
+		#800;
+		in = 64'b0; #800;
+		in = 64'b1; #800;
+		in = 64'h5; #800;
+		in = 64'b0; #800;
+	end
+	
+endmodule
+		

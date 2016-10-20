@@ -1,25 +1,4 @@
-//module adder64 (carryOut, sum, a, b);
-//	output logic [63:0] sum;
-//	output logic carryOut;
-//	input logic [63:0] a, b;
-//	
-//	addSub64 add (.carryOut, .sum, .a, .b, .carryIn(1'b0));
-//	
-//endmodule
-//
-//module subtractor64 (carryOut, diff, a, b);
-//	output logic [63:0] diff;
-//	output logic carryOut;
-//	input logic [63:0] a, b;
-//	
-//	logic [63:0] notB;
-//	
-//	not64	 invert (.out(notB), .in(b));
-//	
-//	addSub64 subtract (.carryOut, .sum(diff), .a, .b(notB), .carryIn(1'b1));
-//	
-//endmodule
-
+//`timescale 1ns/10ps
 module addSub64 (carryOut, result, overflow, a, b, carryIn);
 	output logic [63:0] result;
 	output logic carryOut, overflow;
@@ -31,11 +10,14 @@ module addSub64 (carryOut, result, overflow, a, b, carryIn);
 	logic [63:0] secondOp;
 	logic [63:0] notB;
 	
+	logic [63:0] bandNotB [1:0];
+	assign bandNotB[0] = b;
+	assign bandNotB[1] = notB;
+	
 	not64	 invert (.out(notB), .in(b));
-	mux_2to1 m0 (.out(secondOp), .control(carryIn), .in({notB, b}));
+	mux_2to1 m0 (.out(secondOp), .control(carryIn), .in(bandNotB));
 
 	addSub add0 (.carryOut(tempCarryOut[0]), .sum(result[0]), .a(a[0]), .b(secondOp[0]), .carryIn);
-
 		
 	genvar i;
 	generate
@@ -44,6 +26,7 @@ module addSub64 (carryOut, result, overflow, a, b, carryIn);
 		end
 	endgenerate
 	assign carryOut = tempCarryOut[63];
+	xor #50 overflowDetector (overflow, tempCarryOut[63], tempCarryOut[62]);
 
 endmodule
 
@@ -76,17 +59,20 @@ module addSub (carryOut, sum, a, b, carryIn);
 endmodule
 
 module adder_testbench();
-	logic [63:0] a, b, sum, difference;
-	logic cO, cO2;
+	logic [63:0] result, a, b;
+	logic carryOut, overflow;
 	
-	adder64 dut (cO, sum, a, b);
-	subtractor64 dut2 (cO2, difference, a, b);
+	addSub64 add(carryOut, result, overflow, a, b, 1'b0);
+	//addSub64 sub(carryOut, result, overflow, a, b, 1'b1);
 	
 	integer i;
 	initial begin
 		#800;
-		for (i = 0; i < 32; i++) begin
-			a = i+i; b = i; #800; 
-		end
+		a = 64'b0111111111111111111111111111111111111111111111111111111111111111;
+		b = a;
+		#800;
+		b = 64'b1000000000000000000000000000000000000000000000000000000000000000;
+		#8000;
+		
 	end
 endmodule

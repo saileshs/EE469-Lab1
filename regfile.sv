@@ -1,4 +1,4 @@
-`timescale 1ns/10ps
+//`timescale 1ns/10ps
 module regfile (ReadData1, ReadData2, ReadRegister1, ReadRegister2, WriteRegister, WriteData, RegWrite, clk);
 	output logic [63:0] 	ReadData1, ReadData2;
 	input logic  [4:0] 	ReadRegister1, ReadRegister2, WriteRegister;

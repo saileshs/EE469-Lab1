@@ -1,13 +1,12 @@
 onerror {resume}
 quietly WaveActivateNextPane {} 0
-add wave -noupdate -radix unsigned /adder_testbench/a
-add wave -noupdate -radix unsigned /adder_testbench/b
-add wave -noupdate -radix unsigned /adder_testbench/sum
-add wave -noupdate /adder_testbench/cO
-add wave -noupdate -radix decimal /adder_testbench/difference
-add wave -noupdate /adder_testbench/cO2
+add wave -noupdate -radix binary /adder_testbench/a
+add wave -noupdate -radix binary /adder_testbench/b
+add wave -noupdate /adder_testbench/carryOut
+add wave -noupdate /adder_testbench/overflow
+add wave -noupdate /adder_testbench/result
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {18065 ps} 0}
+WaveRestoreCursors {{Cursor 1} {8050 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 100
@@ -23,4 +22,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {16065 ps} {23679 ps}
+WaveRestoreZoom {867 ps} {8481 ps}
