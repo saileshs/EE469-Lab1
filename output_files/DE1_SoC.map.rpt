@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE1_SoC
-Tue Oct 18 22:53:56 2016
+Wed Oct 19 17:08:38 2016
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ agreement for further details.
 +--------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                             ;
 +-----------------------------+--------------------------------------------+
-; Analysis & Synthesis Status ; Failed - Tue Oct 18 22:53:56 2016          ;
+; Analysis & Synthesis Status ; Failed - Wed Oct 19 17:08:38 2016          ;
 ; Quartus II 64-Bit Version   ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name               ; DE1_SoC                                    ;
 ; Top-level Entity Name       ; regfile                                    ;
@@ -158,7 +158,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Tue Oct 18 22:53:55 2016
+    Info: Processing started: Wed Oct 19 17:08:37 2016
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC
 Info (12021): Found 6 design units, including 6 entities, in source file regfile.sv
     Info (12023): Found entity 1: regfile
@@ -182,25 +182,23 @@ Info (12021): Found 7 design units, including 7 entities, in source file muxes.s
     Info (12023): Found entity 5: mux_16to1
     Info (12023): Found entity 6: mux_32to1
     Info (12023): Found entity 7: mux_testbench
-Info (12021): Found 5 design units, including 5 entities, in source file adder.sv
-    Info (12023): Found entity 1: adder64
-    Info (12023): Found entity 2: subtractor64
-    Info (12023): Found entity 3: addSub64
-    Info (12023): Found entity 4: addSub
-    Info (12023): Found entity 5: adder_testbench
+Info (12021): Found 3 design units, including 3 entities, in source file adder.sv
+    Info (12023): Found entity 1: addSub64
+    Info (12023): Found entity 2: addSub
+    Info (12023): Found entity 3: adder_testbench
 Info (12021): Found 4 design units, including 4 entities, in source file logicalops.sv
     Info (12023): Found entity 1: and64
     Info (12023): Found entity 2: or64
     Info (12023): Found entity 3: not64
     Info (12023): Found entity 4: nor64
-Error (10170): Verilog HDL syntax error at alu.sv(15) near text "{";  expecting ")" File: D:/EE 469/Processor Lab/alu.sv Line: 15
-Error (10170): Verilog HDL syntax error at alu.sv(15) near text "}";  expecting ")" File: D:/EE 469/Processor Lab/alu.sv Line: 15
-Error (10112): Ignored design unit "alu" at alu.sv(1) due to previous errors File: D:/EE 469/Processor Lab/alu.sv Line: 1
-Info (12021): Found 0 design units, including 0 entities, in source file alu.sv
+Info (12021): Found 1 design units, including 1 entities, in source file alu.sv
+    Info (12023): Found entity 1: alu
+Error (10161): Verilog HDL error at adder.sv(37): object "sum" is not declared File: D:/EE 469/Processor Lab/adder.sv Line: 37
+Error (10161): Verilog HDL error at adder.sv(43): object "sum" is not declared File: D:/EE 469/Processor Lab/adder.sv Line: 43
 Info (144001): Generated suppressed messages file D:/EE 469/Processor Lab/output_files/DE1_SoC.map.smsg
-Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 3 errors, 0 warnings
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 2 errors, 0 warnings
     Error: Peak virtual memory: 595 megabytes
-    Error: Processing ended: Tue Oct 18 22:53:56 2016
+    Error: Processing ended: Wed Oct 19 17:08:38 2016
     Error: Elapsed time: 00:00:01
     Error: Total CPU time (on all processors): 00:00:01
 
