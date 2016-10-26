@@ -62,16 +62,16 @@ module adder_testbench();
 	logic [63:0] result, a, b;
 	logic carryOut, overflow;
 	
-	addSub64 add(carryOut, result, overflow, a, b, 1'b0);
-	//addSub64 sub(carryOut, result, overflow, a, b, 1'b1);
+	//addSub64 add(carryOut, result, overflow, a, b, 1'b0);
+	addSub64 sub(carryOut, result, overflow, a, b, 1'b1);
 	
 	integer i;
 	initial begin
 		#800;
-		a = 64'b0111111111111111111111111111111111111111111111111111111111111111;
+		a = 64'd30;
 		b = a;
 		#800;
-		b = 64'b1000000000000000000000000000000000000000000000000000000000000000;
+		b = 64'd30;
 		#8000;
 		
 	end
