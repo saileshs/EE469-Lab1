@@ -1,4 +1,5 @@
-//`timescale 1ns/10ps
+`timescale 1ns/10ps
+
 module addSub64 (carryOut, result, overflow, a, b, carryIn);
 	output logic [63:0] result;
 	output logic carryOut, overflow;
@@ -22,7 +23,7 @@ module addSub64 (carryOut, result, overflow, a, b, carryIn);
 	genvar i;
 	generate
 		for(i = 1; i < 64; i++) begin : eachAdder
-			adder addSub (.carryOut(tempCarryOut[i]), .sum(result[i]), .a(a[i]), .b(secondOp[i]), .carryIn(tempCarryOut[i - 1]));
+			addSub add1 (.carryOut(tempCarryOut[i]), .sum(result[i]), .a(a[i]), .b(secondOp[i]), .carryIn(tempCarryOut[i - 1]));
 		end
 	endgenerate
 	assign carryOut = tempCarryOut[63];
@@ -68,10 +69,10 @@ module adder_testbench();
 	integer i;
 	initial begin
 		#800;
-		a = 64'd30;
+		a = 64'd500;
 		b = a;
 		#800;
-		b = 64'd30;
+		b = 64'd150;
 		#8000;
 		
 	end

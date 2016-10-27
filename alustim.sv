@@ -1,4 +1,4 @@
-//`timescale 1ns/10ps
+`timescale 1ns/10ps
 
 // Meaning of signals in and out of the ALU:
 
@@ -39,7 +39,7 @@ module alustim();
 	
 		$display("%t testing PASS_A operations", $time);
 		cntrl = ALU_PASS_B;
-		for (i=0; i<100; i++) begin
+		for (i=0; i<10; i++) begin
 			A = $random(); B = $random();
 			#(delay);
 			assert(result == B && negative == B[63] && zero == (B == '0));
@@ -47,9 +47,58 @@ module alustim();
 		
 		$display("%t testing addition", $time);
 		cntrl = ALU_ADD;
-		A = 64'h0000000000000001; B = 64'h0000000000000001;
+		A = 64'h00000DEF; B = 64'h00000ABC;
 		#(delay);
-		assert(result == 64'h0000000000000002 && carry_out == 0 && overflow == 0 && negative == 0 && zero == 0);
+		assert(result == 64'h000018AB && carry_out == 0 && overflow == 0 && negative == 0 && zero == 0);
+		A = 64'h00001234; B=64'h00000105;
+		#(delay);
+		assert(result == 64'h00001339 && carry_out == 0 && overflow == 0 && negative == 0 && zero == 0);
+		A = 64'h7FFFFFFF; B = 64'h00000001;
+		#(delay);
+		assert(result == 64'h80000000 && carry_out == 0 && overflow == 0 && negative == 0 && zero == 0);
 		
+		$display("%t testing subtraction", $time);
+		cntrl = ALU_SUBTRACT;
+		
+		A = 64'd150; B = 64'd160;
+		#(delay);
+
+		A = 64'd500; B = 64'd500;
+		#(delay);
+		A = 64'd130; B = 64'd30;
+		#(delay);
+		
+		$display("%t testing anding", $time);
+		cntrl = ALU_AND;
+		A = 64'b0; B = 64'b0;
+		#(delay);
+		A = 64'b1111111111111111111111111111111111111111111111111111111111111111; B = A;
+		#(delay);
+		A = 64'b1010101010101010101010101010101010101010101010101010101010101010; 
+		B = 64'b0101010101010101010101010101010101010101010101010101010101010101;
+		#(delay);
+		
+		$display("%t testing oring", $time);
+		cntrl = ALU_OR;
+		A = 64'b0; B = 64'b0;
+		#(delay);
+		A = 64'b1111111111111111111111111111111111111111111111111111111111111111; B = A;
+		#(delay);
+		A = 64'b1010101010101010101010101010101010101010101010101010101010101010; 
+		B = 64'b0101010101010101010101010101010101010101010101010101010101010101;
+		#(delay);
+		
+		$display("%t testing xoring", $time);
+		cntrl = ALU_XOR;
+		A = 64'b0; B = 64'b0;
+		#(delay);
+		A = 64'b1111111111111111111111111111111111111111111111111111111111111111; B = A;
+		#(delay);
+		A = 64'b1010101010101010101010101010101010101010101010101010101010101010; 
+		B = 64'b0101010101010101010101010101010101010101010101010101010101010101;
+		#(delay);
+		A = 64'b1111111111111111111111111111111010101010101010101010101010101010;
+		B = 64'b0101010101010101010101010101010101010101010101010101010101010101;
+		#(delay);
 	end
 endmodule

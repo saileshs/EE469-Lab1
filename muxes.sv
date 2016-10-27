@@ -1,4 +1,4 @@
-//`timescale 1ns/10ps
+`timescale 1ns/10ps
 module mux_2to1_1bit(out, control, in);
 	input logic control;
 	input logic [1:0] in;
@@ -115,18 +115,18 @@ endmodule
 
 module mux_testbench();
 	logic [63:0] out;
-	logic [63:0] in [31:0];
-	logic [4:0] control;
+	logic [63:0] in [7:0];
+	logic [2:0] control;
 	
-	mux_32to1 dut (.out, .control, .in);
+	mux_8to1 dut (.out, .control, .in);
 	integer i, j;
 	initial begin
 		#1000;
-		for (j = 0; j < 32; j++) begin
+		for (j = 0; j < 8; j++) begin
 			in[j] = j;
 		end
 		#1000;
-		for (i = 0; i < 32; i++) begin
+		for (i = 0; i < 8; i++) begin
 			control = i; #1000;
 		end
 	end
