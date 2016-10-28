@@ -14,12 +14,13 @@ module addSub64 (carryOut, result, overflow, a, b, carryIn);
 	logic [63:0] bandNotB [1:0];
 	assign bandNotB[0] = b;
 	assign bandNotB[1] = notB;
+
 	
 	not64	 invert (.out(notB), .in(b));
 	mux_2to1 m0 (.out(secondOp), .control(carryIn), .in(bandNotB));
-
+	
 	addSub add0 (.carryOut(tempCarryOut[0]), .sum(result[0]), .a(a[0]), .b(secondOp[0]), .carryIn);
-		
+	
 	genvar i;
 	generate
 		for(i = 1; i < 64; i++) begin : eachAdder

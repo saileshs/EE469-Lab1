@@ -47,25 +47,46 @@ module alustim();
 		
 		$display("%t testing addition", $time);
 		cntrl = ALU_ADD;
-		A = 64'h00000DEF; B = 64'h00000ABC;
+		
+		// Carryout, No Overflow
+		A = 64'b1101100100000000000000000000000000000000000000000000000000000000; 
+		B = 64'b0101110000000000000000000000000000000000000000000000000000000000;
 		#(delay);
-		assert(result == 64'h000018AB && carry_out == 0 && overflow == 0 && negative == 0 && zero == 0);
-		A = 64'h00001234; B=64'h00000105;
+		//assert(result == 64'h000018AB && carry_out == 0 && overflow == 0 && negative == 0 && zero == 0);
+		
+		// Overflow and Carryout
+		A = 64'b1001100100000000000000000000000000000000000000000000000000000000; 
+		B = 64'b1011101100000000000000000000000000000000000000000000000000000000;
 		#(delay);
-		assert(result == 64'h00001339 && carry_out == 0 && overflow == 0 && negative == 0 && zero == 0);
-		A = 64'h7FFFFFFF; B = 64'h00000001;
+		//assert(result == 64'h00001339 && carry_out == 0 && overflow == 0 && negative == 0 && zero == 0);
+		
+		// Overflow, no carryout, negative
+		A = 64'b0111111111111111111111111111111111111111111111111111111111111111; 
+		B = 64'd1;
 		#(delay);
-		assert(result == 64'h80000000 && carry_out == 0 && overflow == 0 && negative == 0 && zero == 0);
+		//assert(result == 64'h80000000 && carry_out == 0 && overflow == 0 && negative == 0 && zero == 0);
+		
+		// Zero flag
+		A = 64'b0;
+		B = 64'b0;
+		#(delay);
 		
 		$display("%t testing subtraction", $time);
 		cntrl = ALU_SUBTRACT;
 		
-		A = 64'd150; B = 64'd160;
+		// Output 0x0000033300000000
+		A = 64'h00000DEF00000000; B = 64'h00000ABC00000000;
 		#(delay);
-
-		A = 64'd500; B = 64'd500;
+		
+		// Output 0x7FFFFFFF0000000 with overflow on
+		A = 64'h8000000000000000; B = 64'h0000000100000000;
 		#(delay);
+		
 		A = 64'd130; B = 64'd30;
+		#(delay);
+		
+		// Zero flag
+		A = 64'h110; B = A;
 		#(delay);
 		
 		$display("%t testing anding", $time);
