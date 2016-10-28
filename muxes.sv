@@ -1,4 +1,8 @@
 `timescale 1ns/10ps
+
+// Several different muxes
+
+// Mux 2 to 1, 1 bit input.
 module mux_2to1_1bit(out, control, in);
 	input logic control;
 	input logic [1:0] in;
@@ -13,6 +17,7 @@ module mux_2to1_1bit(out, control, in);
 
 endmodule
 
+// Mux 2 to 1, 64-bit input
 module mux_2to1(out, control, in);
 	output logic [63:0] out;
 	input logic [63:0] in [1:0];
@@ -33,6 +38,7 @@ module mux_2to1(out, control, in);
 	
 endmodule
 
+// Mux 4 to 1, 64-bit input
 module mux_4to1(out, control, in);
 	output logic [63:0] out;
 	input logic [63:0] in [3:0];
@@ -45,6 +51,7 @@ module mux_4to1(out, control, in);
 	mux_2to1 mux2 (.out, .control(control[1]), .in(out_mux));
 endmodule
 
+// Mux 8 to 1, 64-bit input
 module mux_8to1(out, control, in);
 	output logic [63:0] out;
 	input logic [63:0] in [7:0];
@@ -57,6 +64,8 @@ module mux_8to1(out, control, in);
 	mux_2to1 m2 (.out, .control(control[2]), .in(mux_out));
 endmodule
 
+
+// Mux 16 to 1, 64-bit input
 module mux_16to1(out, control, in);
 	output logic [63:0] out;
 	input logic [63:0] in [15:0];
@@ -71,6 +80,7 @@ module mux_16to1(out, control, in);
 	mux_4to1 mux4 (.out, .control(control[3:2]), .in(out_mux));
 endmodule
 
+// Mux 32 to 1, 64-bit input
 module mux_32to1(out, control, in);
 	output logic [63:0] out;
 	input logic [63:0] in [31:0];

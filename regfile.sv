@@ -1,4 +1,7 @@
 `timescale 1ns/10ps
+
+//32x64-bit Regfile: Takes in one register to write to and two registers to read from. Register 31 is reserved
+// as 64'b0 and cannot be written to.
 module regfile (ReadData1, ReadData2, ReadRegister1, ReadRegister2, WriteRegister, WriteData, RegWrite, clk);
 	output logic [63:0] 	ReadData1, ReadData2;
 	input logic  [4:0] 	ReadRegister1, ReadRegister2, WriteRegister;
@@ -39,6 +42,7 @@ module D_FF (q, d, reset, clk);
 			q <= d; // Otherwise out = d
 endmodule
 
+// DFF with enable signal
 module DFF1_enable (q, d, reset, clk, enable);
 	output logic q;
 	input logic d, reset, clk, enable;
@@ -48,7 +52,7 @@ module DFF1_enable (q, d, reset, clk, enable);
 	D_FF dff0 (.q, .d(mux_out), .reset, .clk);
 endmodule
 	
-
+// 4 bit DFF helper
 module DFF4(q, d, reset, clk, enable);
 	output logic [3:0] q;
 	input logic [3:0] d;
@@ -60,6 +64,7 @@ module DFF4(q, d, reset, clk, enable);
 	DFF1_enable dff4 (.q(q[3]), .d(d[3]), .reset, .clk, .enable);
 endmodule
 
+// 16 bit DFF helper
 module DFF16(q, d, reset, clk, enable);
 	output logic [15:0] q;
 	input logic [15:0] d;
@@ -71,6 +76,7 @@ module DFF16(q, d, reset, clk, enable);
 	DFF4 dff4 (.q(q[15:12]), .d(d[15:12]), .reset, .clk, .enable);
 endmodule
 
+// 64 bit DFF
 module DFF64(q, d, reset, clk, enable);
 	output logic [63:0] q;
 	input logic [63:0] d;

@@ -1,5 +1,7 @@
 `timescale 1ns/10ps
 
+// Performs addition and subtraction of two 64-bit inputs. If carryIn is 0, addition will be performed.
+// If carryIn is 1, subtraction will be performed.
 module addSub64 (carryOut, result, overflow, a, b, carryIn);
 	output logic [63:0] result;
 	output logic carryOut, overflow;

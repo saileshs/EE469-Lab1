@@ -71,6 +71,10 @@ module alustim();
 		B = 64'b0;
 		#(delay);
 		
+		A = 64'b1111111111111111111111111111111111111111111111111111111111111111; 
+		B = 64'h1;
+		#(delay);
+		
 		$display("%t testing subtraction", $time);
 		cntrl = ALU_SUBTRACT;
 		

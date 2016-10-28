@@ -1,4 +1,20 @@
 `timescale 1ns/10ps
+
+// A 5 to 32 decoder built with several smaller decoders, 
+// including a 2 to 4 decorder and 3 to 8 decorders.
+module decoder_5to32(out, in, RegWrite);
+	output logic [31:0] out;
+	input logic [4:0] in;
+	input logic RegWrite;
+	logic [3:0] enable;
+	
+	decoder_2to4 d0(.out(enable), .in(in[4:3]), .enable(RegWrite));
+	decoder_3to8 d1(.out(out[31:24]), .in(in[2:0]), .enable(enable[3]));
+	decoder_3to8 d2(.out(out[23:16]), .in(in[2:0]), .enable(enable[2]));
+	decoder_3to8 d3(.out(out[15:8]), .in(in[2:0]), .enable(enable[1]));
+	decoder_3to8 d4(.out(out[7:0]), .in(in[2:0]), .enable(enable[0]));
+endmodule
+
 module decoder_2to4(out, in, enable);
 	output logic [3:0] out;
 	input logic [1:0] in;
@@ -36,19 +52,6 @@ module decoder_3to8(out, in, enable);
 	and #50 and6 (out[6], in0_not, in[1], in[2], enable);
 	and #50 and7 (out[7], in[0], in[1], in[2], enable);
 	
-endmodule
-
-module decoder_5to32(out, in, RegWrite);
-	output logic [31:0] out;
-	input logic [4:0] in;
-	input logic RegWrite;
-	logic [3:0] enable;
-	
-	decoder_2to4 d0(.out(enable), .in(in[4:3]), .enable(RegWrite));
-	decoder_3to8 d1(.out(out[31:24]), .in(in[2:0]), .enable(enable[3]));
-	decoder_3to8 d2(.out(out[23:16]), .in(in[2:0]), .enable(enable[2]));
-	decoder_3to8 d3(.out(out[15:8]), .in(in[2:0]), .enable(enable[1]));
-	decoder_3to8 d4(.out(out[7:0]), .in(in[2:0]), .enable(enable[0]));
 endmodule
 
 module decoder_testbench();

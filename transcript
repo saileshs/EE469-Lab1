@@ -90,7 +90,8 @@ do runlab2.do
 # .main_pane.objects.interior.cs.body.tree
 #    0.00 ns testing PASS_A operations
 # 1000000.00 ns testing addition
-# 1400000.00 ns testing subtraction
-# 1800000.00 ns testing anding
-# 2100000.00 ns testing oring
-# 2400000.00 ns testing xoring
+# 1500000.00 ns testing subtraction
+# 1900000.00 ns testing anding
+# 2200000.00 ns testing oring
+# 2500000.00 ns testing xoring
+# WARNING: No extended dataflow license exists

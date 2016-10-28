@@ -1,4 +1,6 @@
 `timescale 1ns/10ps
+
+// 64-bit bitwise AND
 module and64 (out, a, b);
 	output logic [63:0] out;
 	input logic [63:0] a, b;
@@ -12,6 +14,7 @@ module and64 (out, a, b);
 
 endmodule	
 
+// 64-bit bitwise OR
 module or64 (out, a, b);
 	output logic [63:0] out;
 	input logic [63:0] a, b;
@@ -25,6 +28,7 @@ module or64 (out, a, b);
 	
 endmodule
 
+// 64-bit bitwise XOR
 module xor64 (out, a, b);
 	output logic [63:0] out;
 	input logic [63:0] a, b;
@@ -37,6 +41,7 @@ module xor64 (out, a, b);
 	endgenerate
 endmodule
 
+// 64-bit bitwise inverter
 module not64 (out, in);
 	output logic [63:0] out;
 	input logic [63:0] in;
@@ -50,6 +55,7 @@ module not64 (out, in);
 	
 endmodule
 
+// 64-bit bitwise NOR
 module nor64 (out, in);
 	output logic out;
 	input logic [63:0] in;
@@ -67,6 +73,7 @@ module nor64 (out, in);
 
 endmodule
 
+// custom width bitwise OR
 module or_multi #(parameter WIDTH=64)(out, in);
 	output logic [(WIDTH / 4) - 1: 0] out;
 	input logic [WIDTH - 1: 0] in;
