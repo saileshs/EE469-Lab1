@@ -1,6 +1,7 @@
 module cpu (Rd, Rm, Rn, RegWrite, Reg2Loc, ALUSrc, ALUOp, MemWrite, MemToReg, BrTaken);
-	input logic Reg2Loc, RegWrite, ALUSrc, ALUOp, MemWrite, MemToReg, BrTaken;
+	input logic Reg2Loc, RegWrite, ALUSrc, MemWrite, MemToReg, BrTaken;
 	input logic [63:0] Rd, Rm, Rn;
+	input logic [2:0] ALUOp;
 	
 	logic clk, reset, negativeFlag, zeroFlag, overflowFlag, carryOutFlag;
 	logic overflow1, overflow2, carryout1, carryout2; // Output flags from adders
@@ -38,7 +39,7 @@ module cpu (Rd, Rm, Rn, RegWrite, Reg2Loc, ALUSrc, ALUOp, MemWrite, MemToReg, Br
 	
 	instructmem instruction_memory (.address, .instruction, .clk);
 	
-	addSub64 adder (.carryOut(carryout1), .result(WhichBranch[0]), .overflow(overflow1), .a(address), .b(64'd4), .carryIn(1'b0))
+	addSub64 adder (.carryOut(carryout1), .result(WhichBranch[0]), .overflow(overflow1), .a(address), .b(64'd4), .carryIn(1'b0));
 	
 	mux_2to1 brtaken_mux (.out(PCInput), .control(BrTaken), .in(WhichBranch));
 	
