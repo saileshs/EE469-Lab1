@@ -33,30 +33,26 @@ module controlUnit(reg2loc, aluSrc, memToReg, regWrite,
 	always_comb begin
 		case (opCode)
 				
-				ADD : controlSignals = 14'b1010x000000010;
-				
-				SUB : controlSignals = 14'b1010x000000011;
-				
 				LDUR : controlSignals = 14'bx110x000100010;
 				
 				STUR : controlSignals = 14'b0x01x000100010;
 				
-				B : controlSignals = 14'bxx0010?xx01xxx;
+				B : controlSignals = 14'bxx001xxxx01xxx;
 				
-				CBZ : controlSignals = 14'b0x0000000??000;
+				CBZ : controlSignals = 14'b0x0000000xx000;
 				
 				ADDI : controlSignals = 14'bx010x001000010;
 				
 				ADDS : controlSignals = 14'b1010x000000010;
 				
 				// X30write = 1
-				BL : controlSignals = 14'b;
+				BL : controlSignals = 14'bxx10111xx01xxx;
 				
 				BR : controlSignals = 14'b0x00x00xx10xxx;
 				
 				SUBS : controlSignals = 14'b1010x000000011;
 				
-				default : controlSignals = 14'bxxxxxxxxxx;
+				default : controlSignals = 14'bxxxxxxxxxxxxxx;
 				
 		endcase
 	end
