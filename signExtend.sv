@@ -1,25 +1,24 @@
 `timescale 1ns/10ps
-module branchSE (out, in);
+module SE (out, in);
 	output logic [63:0] out;
 	input logic [31:0] in;
 	
 	logic [63:0] whichInstr [1:0];
-	
 
-	assign whichInstr[1] = {{45{in[23]}}, in[23:5]};	// B.Cond (Imm19)
+	parameter CBZ = 11'b10110100xxx, B = 11'b000101xxxxx, BL = 11'b100101xxxxx, BLT = 11'b01010100xxx, LDUR = 11'b11111000010, STUR = 11'b11111000000;
 	
-	assign whichInstr[2] = 
-	
-	mux_2to1 mux0 (.out, .control(in[26]), .in(whichInstr[1:0]));
-	
+	always_comb begin
+		case (in[31:21])
+			CBZ: 	out = {{45{in[23]}}, in[23:5]};
+			BLT:	out = {{45{in[23]}}, in[23:5]};
+			B: 	out = {{38{in[25]}}, in[25:0]};
+			BL: 	out = {{38{in[25]}}, in[25:0]};
+			LDUR: out = {{55{in[20]}}, in[20:12]};
+			STUR: out = {{55{in[20]}}, in[20:12]};
+			default : out = 64'bx;
+		endcase
+	end	
 endmodule
-
-module dataSE (out, in);
-
-	assign whichInstr[0] = {{55{in[20]}}, in[20:12]}; 	// LDUR/STUR (Imm9)
-	
-endmodule
-
 
 module SE_testbench();
 	logic [63:0] out;
