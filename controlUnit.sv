@@ -2,10 +2,13 @@
 
 module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite, 
 						 MemWrite, BrTaken, UncondBr, ALUOp, 
-						 X30Write, BLCtrl, opCode);
+						 X30Write, BLCtrl, opCode, negativeFlag, zeroFlag, overflowFlag);
 
 	// To Store the 11-bit opCode 
 	input[31:21] opCode;
+
+	// ALU Flags
+	input negativeFlag, zeroFlag, overflowFlag;
 
 	// Control Signals for the datapath
 	output logic Reg2Loc, MemToReg, RegWrite, MemWrite, 
@@ -22,6 +25,9 @@ module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite,
 							
 	
 	logic [13:0] controlSignals;
+
+	logic BLTLogic;
+	assign BLTLogic = negativeFlag ^ overflowFlag;
 	
 	// controlSignals contains the following signals:
 	// (13)Reg2Loc, (12)MemToReg, (11)RegWrite, (10)MemWrite, 
@@ -38,7 +44,10 @@ module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite,
 				
 				B : controlSignals = 14'bxx001xxxx01xxx;
 				
-				CBZ : controlSignals = 14'b0x0000000xx000;
+				CBZ : begin 
+						controlSignals = 14'b0x00000000x000;
+						controlSignals[3] = zeroFlag;
+					end
 				
 				ADDI : controlSignals = 14'bx010x001000010;
 				
@@ -50,7 +59,10 @@ module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite,
 				
 				SUBS : controlSignals = 14'b1010x000000011;
 
-				BCOND : controlSignals = 14'b0x0000x00xxxxx;
+				BCOND : begin 
+							controlSignals = 14'b0x0000x000xxxx;
+							controlSignals[3] = BLTLogic;
+						end
 				
 				default : controlSignals = 14'bxxxxxxxxxxxxxx;
 				

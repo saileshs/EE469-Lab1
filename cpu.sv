@@ -66,7 +66,7 @@ module cpu ();
 	
 	instructmem instruction_memory (.address, .instruction, .clk);
 
-	controlUnit control (.Reg2Loc, .ALUSrc, .MemToReg, .RegWrite, .MemWrite, .BrTaken, .UncondBr, .ALUOp, .X30Write, .BLCtrl, .opCode);
+	controlUnit control (.Reg2Loc, .ALUSrc, .MemToReg, .RegWrite, .MemWrite, .BrTaken, .UncondBr, .ALUOp, .X30Write, .BLCtrl, .opCode, .negativeFlag, .zeroFlag, .overflowFlag);
 	
 	// Compute BrTaken mux input 0
 	addSub64 pcPlus4 (.carryOut(carryout1), .result(WhichBranch[0]), .overflow(overflow1), .a(address), .b(64'd4), .carryIn(1'b0));
@@ -82,6 +82,5 @@ module cpu ();
 	assign WhichBranch[3] = 64'bx;
 
 	mux_4to1 brtaken_mux (.out(PCInput), .control(BrTaken), .in(WhichBranch));
-
 
 endmodule
