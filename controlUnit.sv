@@ -1,21 +1,20 @@
 `timescale 1ns/10ps
 
-module controlUnit(reg2loc, aluSrc, memToReg, regWrite, 
-						 memWrite, brTaken, uncondBr, aluOp, 
-						 xThirtyWrite, brCtrl, opCode);
+module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite, 
+						 MemWrite, BrTaken, UncondBr, ALUOp, 
+						 xThirtyWrite, BrCtrl, OpCode);
 
 	// To Store the 11-bit OpCode 
-	input[31:21] opCode;
+	input[31:21] OpCode;
 
 	// Control Signals for the datapath
-	output logic reg2loc, memToReg, regWrite, memWrite, 
-					 uncondBr, xThirtyWrite, brCtrl;
-	output logic [1:0] aluSrc;
-	output logic [1:0] brTaken;
-	output logic [2:0] aluOp;
+	output logic Reg2Loc, MemToReg, RegWrite, MemWrite, 
+					 UncondBr, xThirtyWrite, BrCtrl;
+	output logic [1:0] ALUSrc;
+	output logic [1:0] BrTaken;
+	output logic [2:0] ALUOp;
 	
-	parameter [31:21] ADD = 11'b10001011000, SUB = 11'b11001011000,
-							LDUR = 11'b11111000010, STUR = 11'b11111000000,
+	parameter [31:21] LDUR = 11'b11111000010, STUR = 11'b11111000000,
 							B = 11'b000101xxxxx, CBZ = 11'b10110100xxx,
 							ADDI = 11'b1001000100x, ADDS = 11'b10101011000,
 							BL = 11'b100101xxxxx, BR = 11'b11010110000,
@@ -25,13 +24,13 @@ module controlUnit(reg2loc, aluSrc, memToReg, regWrite,
 	logic [13:0] controlSignals;
 	
 	// controlSignals contains the following signals:
-	// (13)reg2loc, (12)memToReg, (11)RegWrite, (10)memWrite, 
-	// (9)unCondBr, (8)xThirtyWrite, (7)brCtrl, (6)aluSrc[1], 
-	// (5)aluSrc[0], (4)brTaken[1], (3)brTaken[0], (2)aluOp[2], 
-	// (1)aluOp[1], (0)aluOp[0]
+	// (13)Reg2Loc, (12)MemToReg, (11)RegWrite, (10)MemWrite, 
+	// (9)UncondBr, (8)xThirtyWrite, (7)BrCtrl, (6)ALUSrc[1], 
+	// (5)ALUSrc[0], (4)BrTaken[1], (3)BrTaken[0], (2)ALUOp[2], 
+	// (1)ALUOp[1], (0)ALUOp[0]
 	
 	always_comb begin
-		case (opCode)
+		case (OpCode)
 				
 				LDUR : controlSignals = 14'bx110x000100010;
 				
@@ -57,15 +56,15 @@ module controlUnit(reg2loc, aluSrc, memToReg, regWrite,
 		endcase
 	end
 	
-	assign reg2loc = controlSignals[13];
-	assign memToReg = controlSignals[12];
-	assign regWrite = controlSignals[11];
-	assign memWrite = controlSignals[10];
-	assign unCondBr = controlSignals[9];
-	assign xThirtyWrite = controlSignal[8];
-	assign brCtrl = controlSignal[7];
-	assign aluSrc = controlSignals[6:5];
-	assign brTaken = controlSignals[4:3];
-	assign aluOp = controlSignals[2:0];
+	assign Reg2Loc = controlSignals[13];
+	assign MemToReg = controlSignals[12];
+	assign RegWrite = controlSignals[11];
+	assign MemWrite = controlSignals[10];
+	assign UncondBr = controlSignals[9];
+	assign xThirtyWrite = controlSignals[8];
+	assign BrCtrl = controlSignals[7];
+	assign ALUSrc = controlSignals[6:5];
+	assign BrTaken = controlSignals[4:3];
+	assign ALUOp = controlSignals[2:0];
 	
 endmodule
