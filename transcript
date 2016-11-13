@@ -1,80 +1,100 @@
 # Reading C:/altera/14.0/modelsim_ase/tcl/vsim/pref.tcl 
-do runshift.do
+do runse.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # 
 # Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module shifter
-# -- Compiling module shift_testbench
+# -- Compiling module SE
+# -- Compiling module SE_testbench
 # 
 # Top level modules:
-# 	shift_testbench
-# vsim -lib work -voptargs=\"+acc\" -t 1ps shift_testbench 
+# 	SE_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps SE_testbench 
 # Loading sv_std.std
-# Loading work.shift_testbench
-# Loading work.shifter
-# ** Error: Cannot open macro file: shift_wave.do
-# Error in macro ./runshift.do line 17
-# Cannot open macro file: shift_wave.do
-#     while executing
-# "do shift_wave.do"
-add wave -position end  sim:/shift_testbench/out
-add wave -position end  sim:/shift_testbench/in
+# Loading work.SE_testbench
+# Loading work.SE
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 # 
 #           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
 # 
-#           Attempting to use alternate WLF file "./wlftjazeer".
+#           Attempting to use alternate WLF file "./wlft85tjsv".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
 # 
-#           Using alternate file: ./wlftjazeer
-# 
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf {D:/EE 469/Processor Lab/shift_wave.do}
-do runshift.do
-# ** Warning: (vlib-34) Library already exists at "work".
-# 
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module shifter
-# -- Compiling module shift_testbench
-# 
-# Top level modules:
-# 	shift_testbench
-# vsim -lib work -voptargs=\"+acc\" -t 1ps shift_testbench 
-# Loading sv_std.std
-# Loading work.shift_testbench
-# Loading work.shifter
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-# 
-#           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
-# 
-#           Attempting to use alternate WLF file "./wlftqdvjf0".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-# 
-#           Using alternate file: ./wlftqdvjf0
+#           Using alternate file: ./wlft85tjsv
 # 
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
 # .main_pane.objects.interior.cs.body.tree
-do runshift.do
+do runse.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # 
 # Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module shifter
-# -- Compiling module shift_testbench
+# -- Compiling module SE
+# -- Compiling module SE_testbench
 # 
 # Top level modules:
-# 	shift_testbench
-# vsim -lib work -voptargs=\"+acc\" -t 1ps shift_testbench 
+# 	SE_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps SE_testbench 
 # Loading sv_std.std
-# Loading work.shift_testbench
-# Loading work.shifter
+# Loading work.SE_testbench
+# Loading work.SE
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 # 
 #           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
 # 
-#           Attempting to use alternate WLF file "./wlftgy7s3c".
+#           Attempting to use alternate WLF file "./wlftcae7bb".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
 # 
-#           Using alternate file: ./wlftgy7s3c
+#           Using alternate file: ./wlftcae7bb
+# 
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+do runse.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module SE
+# -- Compiling module SE_testbench
+# 
+# Top level modules:
+# 	SE_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps SE_testbench 
+# Loading sv_std.std
+# Loading work.SE_testbench
+# Loading work.SE
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+# 
+#           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
+# 
+#           Attempting to use alternate WLF file "./wlft3gxs30".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+# 
+#           Using alternate file: ./wlft3gxs30
+# 
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+do runse.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module SE
+# -- Compiling module SE_testbench
+# 
+# Top level modules:
+# 	SE_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps SE_testbench 
+# Loading sv_std.std
+# Loading work.SE_testbench
+# Loading work.SE
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+# 
+#           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
+# 
+#           Attempting to use alternate WLF file "./wlft9ifx1g".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+# 
+#           Using alternate file: ./wlft9ifx1g
 # 
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct

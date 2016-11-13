@@ -1,4 +1,4 @@
-`timescale 1ns/10ps
+//`timescale 1ns/10ps
 module SE (out, in);
 	output logic [63:0] out;
 	input logic [31:0] in;
@@ -8,7 +8,7 @@ module SE (out, in);
 	parameter CBZ = 11'b10110100xxx, B = 11'b000101xxxxx, BL = 11'b100101xxxxx, BLT = 11'b01010100xxx, LDUR = 11'b11111000010, STUR = 11'b11111000000;
 	
 	always_comb begin
-		case (in[31:21])
+		casex (in[31:21])
 			CBZ: 	out = {{45{in[23]}}, in[23:5]};
 			BLT:	out = {{45{in[23]}}, in[23:5]};
 			B: 	out = {{38{in[25]}}, in[25:0]};
@@ -26,8 +26,30 @@ module SE_testbench();
 	SE dut (out, in);
 	
 	initial begin
-		in = 32'b11111001111101111111000000000000;
+		// Test CBZ. Output should be sign extended 1111111111001111001
+		in = 32'b10110100111111111100111100111111;
 		#200;
+	
+		// Test B. Output should be all 0s
+		in = 32'b00010100000000000000000000000000;
+		#200;
+		
+		// Test BL. Output should be sign extended 1s
+		in = 32'b10010111111111111111111111111111;
+		#200;
+		
+		// Test B.LT. Output should be sign extended 1111111111001111001
+		in = 32'b10110100111111111100111100111111;
+		#200;
+		
+		// Test LDUR. Output should be sign extended 10101010101
+		in = 32'b11111000010101010101001000011100;
+		#200;
+		
+		// Test STUR. Output should be sign extended 10101010101
+		in = 32'b11111000000101010101001000011100;
+		#200;
+		
 	end
 	
 endmodule

@@ -1,7 +1,6 @@
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Warning (10273): Verilog HDL warning at cpu.sv(60): extended using "x" or "z"
 Warning (10273): Verilog HDL warning at cpu.sv(82): extended using "x" or "z"
-Warning (10273): Verilog HDL warning at controlUnit.sv(59): extended using "x" or "z"
 Info (10281): Verilog HDL Declaration information at regfile.sv(7): object "ReadRegister1" differs only in case from object "readRegister1" in the same scope
 Info (10281): Verilog HDL Declaration information at regfile.sv(7): object "ReadRegister2" differs only in case from object "readRegister2" in the same scope
 Warning (10273): Verilog HDL warning at alu.sv(36): extended using "x" or "z"

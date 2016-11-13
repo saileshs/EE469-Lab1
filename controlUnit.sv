@@ -36,7 +36,7 @@ module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite,
 	// (1)ALUOp[1], (0)ALUOp[0]
 	
 	always_comb begin
-		case (opCode)
+		casex (opCode)
 				
 				LDUR : controlSignals = 14'bx110x000100010;
 				
