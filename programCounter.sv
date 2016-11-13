@@ -1,3 +1,4 @@
+`timescale 1ns/10ps
 module PC (out, in, reset, clk);
 	output logic [63:0] out;
 	input logic [63:0] in;

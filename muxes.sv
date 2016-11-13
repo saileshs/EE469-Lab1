@@ -38,6 +38,27 @@ module mux_2to1(out, control, in);
 	
 endmodule
 
+// Mux 2 to 1 5-bits
+module mux_2to1_5bit(out, control, in);
+	output logic [4:0] out;
+	input logic [4:0] in [1:0];
+	input logic control;
+	
+	genvar i;
+	generate
+		for(i=0; i < 5; i++) begin: mux2to1_64bit
+			logic con_not;
+			logic [4:0] and0_out, and1_out;
+		
+			not #50 not0 (con_not, control);
+			and #50 and0 (and0_out[i], in[0][i], con_not);
+			and #50 and1 (and1_out[i], in[1][i], control);
+			or #50 or0 (out[i], and0_out[i], and1_out[i]);
+		end
+	endgenerate
+	
+endmodule
+
 // Mux 4 to 1, 64-bit input
 module mux_4to1(out, control, in);
 	output logic [63:0] out;

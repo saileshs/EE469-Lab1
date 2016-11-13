@@ -1,4 +1,4 @@
-//`timescale 1ns/10ps
+`timescale 1ns/10ps
 module SE (out, in);
 	output logic [63:0] out;
 	input logic [31:0] in;
