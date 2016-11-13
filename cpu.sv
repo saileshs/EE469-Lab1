@@ -1,5 +1,6 @@
 `timescale 1ns/10ps
-module cpu ();
+module cpu (clk);
+	input logic clk;
 	logic [4:0] chooseWriteReg [1:0]; // for X30Write mux (for BR instruction)
 	logic [4:0] ReadRegister, X30MuxOut;
 
@@ -8,7 +9,7 @@ module cpu ();
 	logic [1:0] ALUSrc, BrTaken;
 	logic [2:0] ALUOp;
 	
-	logic clk, reset, negativeFlag, zeroFlag, overflowFlag, carryOutFlag;
+	logic reset, negativeFlag, zeroFlag, overflowFlag, carryOutFlag;
 	logic overflow1, overflow2, carryout1, carryout2; // Output flags from adders
 	logic [63:0] ReadData1, ReadData2, WriteData, ALUOut, DataMemOut, PCInput, uncondBrOut, brShifterOut, memToRegOut, ALUMuxOut;
 	logic [63:0] address;
@@ -86,6 +87,15 @@ module cpu ();
 endmodule
 
 module cpu_testbench();
- cpu dut();
+	logic clk;
+	
+	parameter ClockDelay = 5000;
+	
+	cpu dut(clk);
+ 
+	initial begin // Set up the clock
+		clk <= 0;
+		forever #(ClockDelay/2) clk <= ~clk;
+	end
 
 endmodule
