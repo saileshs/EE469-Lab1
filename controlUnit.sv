@@ -45,7 +45,11 @@ module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite,
 				ADDS : controlSignals = 14'b1010x000000010;
 				
 				// X30write = 1
+<<<<<<< HEAD
 				BL : controlSignals = 14'bxx10111xx01xxx;
+=======
+				BL : controlSignals = 14'b0;
+>>>>>>> ffd08bbad6987cfba91f327b7d80cdf1133f7a93
 				
 				BR : controlSignals = 14'b0x00x00xx10xxx;
 				
@@ -56,6 +60,7 @@ module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite,
 		endcase
 	end
 	
+<<<<<<< HEAD
 	assign Reg2Loc = controlSignals[13];
 	assign MemToReg = controlSignals[12];
 	assign RegWrite = controlSignals[11];
@@ -66,5 +71,17 @@ module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite,
 	assign ALUSrc = controlSignals[6:5];
 	assign BrTaken = controlSignals[4:3];
 	assign ALUOp = controlSignals[2:0];
+=======
+	assign reg2loc = controlSignals[13];
+	assign memToReg = controlSignals[12];
+	assign regWrite = controlSignals[11];
+	assign memWrite = controlSignals[10];
+	assign uncondBr = controlSignals[9];
+	assign xThirtyWrite = controlSignals[8];
+	assign brCtrl = controlSignals[7];
+	assign aluSrc = controlSignals[6:5];
+	assign brTaken = controlSignals[4:3];
+	assign aluOp = controlSignals[2:0];
+>>>>>>> ffd08bbad6987cfba91f327b7d80cdf1133f7a93
 	
 endmodule
