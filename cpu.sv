@@ -66,7 +66,7 @@ module cpu ();
 	
 	instructmem instruction_memory (.address, .instruction, .clk);
 
-	controlUnit control (.reg2loc(Reg2Loc), .aluSrc(ALUSrc), .memToReg(MemToReg), .regWrite(RegWrite), .memWrite(MemWrite), .brTaken(BrTaken), .uncondBr(UncondBr), .aluOp(ALUOp), .xThirtyWrite(X30Write), .brCtrl(BLCtrl), .opCode);
+	controlUnit control (.Reg2Loc, .ALUSrc, .MemToReg, .RegWrite, .MemWrite, .BrTaken, .UncondBr, .ALUOp, .X30Write, .BLCtrl, .opCode);
 	
 	// Compute BrTaken mux input 0
 	addSub64 pcPlus4 (.carryOut(carryout1), .result(WhichBranch[0]), .overflow(overflow1), .a(address), .b(64'd4), .carryIn(1'b0));
