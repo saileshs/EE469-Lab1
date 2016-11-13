@@ -5,10 +5,10 @@ module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite,
 						 X30Write, BLCtrl, opCode, negativeFlag, zeroFlag, overflowFlag);
 
 	// To Store the 11-bit opCode 
-	input[31:21] opCode;
+	input logic [31:21] opCode;
 
 	// ALU Flags
-	input negativeFlag, zeroFlag, overflowFlag;
+	input logic negativeFlag, zeroFlag, overflowFlag;
 
 	// Control Signals for the datapath
 	output logic Reg2Loc, MemToReg, RegWrite, MemWrite, 
@@ -80,4 +80,52 @@ module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite,
 	assign BrTaken = controlSignals[4:3];
 	assign ALUOp = controlSignals[2:0];
 
+endmodule
+
+module controlUnit_testbench();
+	logic [31:21] opCode;
+	logic negativeFlag, zeroFlag, overflowFlag;
+	logic Reg2Loc, MemToReg, RegWrite, MemWrite, UncondBr, X30Write, BLCtrl;
+	logic [1:0] ALUSrc;
+	logic [1:0] BrTaken;
+	logic [2:0] ALUOp;
+	
+	controlUnit dut (Reg2Loc, ALUSrc, MemToReg, RegWrite, MemWrite, BrTaken, UncondBr, ALUOp, X30Write, BLCtrl, opCode, negativeFlag, zeroFlag, overflowFlag);
+	
+	initial begin
+		negativeFlag = 0; zeroFlag = 0; overflowFlag = 0;
+		
+		// Test LDUR
+		opCode = 11'b11111000010;
+		#200;
+		//assert(Reg2Loc == 1'bx && X30Write == 1'b0 && RegWrite == 1'b1 && ALUSrc == 2'b01 && ALUOp == 3'b010 && 
+			//	MemWrite == 1'b0 && MemToReg == 1'b1 && BLCtrl == 1'b0 && BrTaken == 2'b00 && UncondBr == 1'bx);
+			
+		// Test STUR
+		opCode = 11'b11111000000;
+		#200;
+		
+		// Test BL
+		opCode = 11'b100101xxxxx;
+		#200;
+		
+		// Test CBZ with zeroFlag = 0
+		opCode = 11'b10110100xxx;
+		#200;
+		
+		// Test CBZ with zeroFlag = 1
+		zeroFlag = 1'b1;
+		#200;
+		zeroFlag = 1'b0;
+		
+		// Test B.LT when overflowFlag == negativeFLag
+		opCode = 11'b01010100xxx;
+		#200;
+		
+		// Test B.LT when overflowFlag != negativeFLag
+		overflowFlag = 1'b1;
+		#200;
+		
+
+	end
 endmodule

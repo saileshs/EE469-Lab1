@@ -1,100 +1,112 @@
 # Reading C:/altera/14.0/modelsim_ase/tcl/vsim/pref.tcl 
-do runse.do
+do runcontrollogic.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # 
 # Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module SE
-# -- Compiling module SE_testbench
+# -- Compiling module controlUnit
+# -- Compiling module controlUnit_testbench
+# ** Error: ./controlUnit.sv(114): near "#": syntax error, unexpected '#', expecting ';'
+# ** Error: C:/altera/14.0/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./runcontrollogic.do line 7
+# C:/altera/14.0/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog "./controlUnit.sv""
+do runcontrollogic.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module controlUnit
+# -- Compiling module controlUnit_testbench
 # 
 # Top level modules:
-# 	SE_testbench
-# vsim -lib work -voptargs=\"+acc\" -t 1ps SE_testbench 
+# 	controlUnit_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps controlUnit_testbench 
 # Loading sv_std.std
-# Loading work.SE_testbench
-# Loading work.SE
+# Loading work.controlUnit_testbench
+# Loading work.controlUnit
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 # 
 #           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
 # 
-#           Attempting to use alternate WLF file "./wlft85tjsv".
+#           Attempting to use alternate WLF file "./wlfte9mgix".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
 # 
-#           Using alternate file: ./wlft85tjsv
+#           Using alternate file: ./wlfte9mgix
 # 
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
 # .main_pane.objects.interior.cs.body.tree
-do runse.do
+do runcontrollogic.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # 
 # Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module SE
-# -- Compiling module SE_testbench
+# -- Compiling module controlUnit
+# -- Compiling module controlUnit_testbench
 # 
 # Top level modules:
-# 	SE_testbench
-# vsim -lib work -voptargs=\"+acc\" -t 1ps SE_testbench 
+# 	controlUnit_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps controlUnit_testbench 
 # Loading sv_std.std
-# Loading work.SE_testbench
-# Loading work.SE
+# Loading work.controlUnit_testbench
+# Loading work.controlUnit
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 # 
 #           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
 # 
-#           Attempting to use alternate WLF file "./wlftcae7bb".
+#           Attempting to use alternate WLF file "./wlftxfw2gt".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
 # 
-#           Using alternate file: ./wlftcae7bb
+#           Using alternate file: ./wlftxfw2gt
 # 
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
 # .main_pane.objects.interior.cs.body.tree
-do runse.do
+do runcontrollogic.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # 
 # Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module SE
-# -- Compiling module SE_testbench
+# -- Compiling module controlUnit
+# -- Compiling module controlUnit_testbench
 # 
 # Top level modules:
-# 	SE_testbench
-# vsim -lib work -voptargs=\"+acc\" -t 1ps SE_testbench 
+# 	controlUnit_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps controlUnit_testbench 
 # Loading sv_std.std
-# Loading work.SE_testbench
-# Loading work.SE
+# Loading work.controlUnit_testbench
+# Loading work.controlUnit
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 # 
 #           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
 # 
-#           Attempting to use alternate WLF file "./wlft3gxs30".
+#           Attempting to use alternate WLF file "./wlft5x7n28".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
 # 
-#           Using alternate file: ./wlft3gxs30
+#           Using alternate file: ./wlft5x7n28
 # 
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
 # .main_pane.objects.interior.cs.body.tree
-do runse.do
+do runcontrollogic.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # 
 # Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module SE
-# -- Compiling module SE_testbench
+# -- Compiling module controlUnit
+# -- Compiling module controlUnit_testbench
 # 
 # Top level modules:
-# 	SE_testbench
-# vsim -lib work -voptargs=\"+acc\" -t 1ps SE_testbench 
+# 	controlUnit_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps controlUnit_testbench 
 # Loading sv_std.std
-# Loading work.SE_testbench
-# Loading work.SE
+# Loading work.controlUnit_testbench
+# Loading work.controlUnit
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 # 
 #           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
 # 
-#           Attempting to use alternate WLF file "./wlft9ifx1g".
+#           Attempting to use alternate WLF file "./wlft01t78j".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
 # 
-#           Using alternate file: ./wlft9ifx1g
+#           Using alternate file: ./wlft01t78j
 # 
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
