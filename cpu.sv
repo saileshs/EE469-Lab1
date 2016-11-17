@@ -46,10 +46,11 @@ module cpu (clk, reset);
 	alu a (.A(ReadData1), .B(ALUMuxOut), .cntrl(ALUOp), .result(ALUOut), .negative(negativeFlagTemp), .zero(zeroFlagTemp), .overflow(overflowFlagTemp), .carry_out(carryOutFlagTemp));
 	
 	// Setting ALU flags if necessary
-	mux_2to1_1bit neg_flag_mux (.out(negativeFlag), .control(SetFlag), .in({negativeFlagTemp, negativeFlag}));
-	mux_2to1_1bit zero_flag_mux (.out(zeroFlag), .control(SetFlag), .in({zeroFlagTemp, zeroFlag}));
-	mux_2to1_1bit overflow_flag_mux (.out(overflowFlag), .control(SetFlag), .in({overflowFlagTemp, overflowFlag}));
-	mux_2to1_1bit carry_flag_mux (.out(carryOutFlag), .control(SetFlag), .in({carryOutFlagTemp, carryOutFlag}));
+	
+	DFF1_enable neg_flag_dff (.q(negativeFlag), .d(negativeFlagTemp), .reset, .clk, .enable(SetFlag));
+	DFF1_enable zero_flag_dff (.q(zeroFlag), .d(zeroFlagTemp), .reset, .clk, .enable(SetFlag));
+	DFF1_enable overflow_flag_dff (.q(overflowFlag), .d(overflowFlagTemp), .reset, .clk, .enable(SetFlag));
+	DFF1_enable carryOut_flag_dff (.q(carryOutFlag), .d(carryOutFlagTemp), .reset, .clk, .enable(SetFlag));
 	
 	// Calling Data Memory unit to store to and read from memory.
 	datamem memory (.address(ALUOut), .write_enable(MemWrite), .read_enable(MemToReg), .write_data(ReadData2), .clk, .xfer_size(`XFER_SIZE), .read_data(DataMemOut));
@@ -78,7 +79,7 @@ module cpu (clk, reset);
 	assign Rn = instruction[9:5];
 	assign imm12 = instruction[21: 10]; // For ADDI
 	
-	controlUnit control (.Reg2Loc, .ALUSrc, .MemToReg, .RegWrite, .MemWrite, .BrTaken, .UncondBr, .ALUOp, .X30Write, .BLCtrl, .SetFlag, .opCode, .negativeFlag, .zeroFlag, .overflowFlag);
+	controlUnit control (.Reg2Loc, .ALUSrc, .MemToReg, .RegWrite, .MemWrite, .BrTaken, .UncondBr, .ALUOp, .X30Write, .BLCtrl, .SetFlag, .opCode, .negativeFlag, .zeroFlag(zeroFlagTemp), .overflowFlag);
 	
 	// Compute BrTaken mux input 0
 	addSub64 pcPlus4 (.carryOut(carryout1), .result(WhichBranch[0]), .overflow(overflow1), .a(address), .b(64'd4), .carryIn(1'b0));
