@@ -2,7 +2,7 @@
 
 module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite, 
 						 MemWrite, BrTaken, UncondBr, ALUOp, 
-						 X30Write, BLCtrl, opCode, negativeFlag, zeroFlag, overflowFlag);
+						 X30Write, BLCtrl, SetFlag, opCode, negativeFlag, zeroFlag, overflowFlag);
 
 	// To Store the 11-bit opCode 
 	input logic [31:21] opCode;
@@ -12,7 +12,7 @@ module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite,
 
 	// Control Signals for the datapath
 	output logic Reg2Loc, MemToReg, RegWrite, MemWrite, 
-					 UncondBr, X30Write, BLCtrl;
+					 UncondBr, X30Write, BLCtrl, SetFlag;
 	output logic [1:0] ALUSrc;
 	output logic [1:0] BrTaken;
 	output logic [2:0] ALUOp;
@@ -24,7 +24,7 @@ module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite,
 							SUBS = 11'b11101011000, BCOND = 11'b01010100xxx;
 							
 	
-	logic [13:0] controlSignals;
+	logic [14:0] controlSignals;
 
 	logic BLTLogic;
 	assign BLTLogic = negativeFlag ^ overflowFlag;
@@ -38,37 +38,38 @@ module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite,
 	always_comb begin
 		casex (opCode)
 				
-				LDUR : controlSignals = 14'bx110x000100010;
+				LDUR : controlSignals = 15'b0x110x000100010;
 				
-				STUR : controlSignals = 14'b0x01x000100010;
+				STUR : controlSignals = 15'b00x01x000100010;
 				
-				B : controlSignals = 14'bxx001xxxx01xxx;
+				B : controlSignals = 15'b0xx001xxxx01xxx;
 				
 				CBZ : begin 
-						controlSignals = 14'b0x00000000x000;
+						controlSignals = 15'b00x00000000x000;
 						controlSignals[3] = zeroFlag;
 					end
 				
-				ADDI : controlSignals = 14'bx010x001000010;
+				ADDI : controlSignals = 15'b0x010x001000010;
 				
-				ADDS : controlSignals = 14'b1010x000000010;
+				ADDS : controlSignals = 15'b11010x000000010;
 
-				BL : controlSignals = 14'bxx10111xx01xxx;
+				BL : controlSignals = 15'b0xx10111xx01xxx;
 				
-				BR : controlSignals = 14'b0x00x00xx10xxx;
+				BR : controlSignals = 15'b00x00x00xx10xxx;
 				
-				SUBS : controlSignals = 14'b1010x000000011;
+				SUBS : controlSignals = 15'b11010x000000011;
 
 				BCOND : begin 
-							controlSignals = 14'b0x0000x000xxxx;
+							controlSignals = 15'b00x0000x000xxxx;
 							controlSignals[3] = BLTLogic;
 						end
 				
-				default : controlSignals = 14'bxxxxxxxxxxxxxx;
+				default : controlSignals = 15'b0xxxxxxxxxxxxxx;
 				
 		endcase
 	end
 	
+	assign SetFlag = controlSignals[14];
 	assign Reg2Loc = controlSignals[13];
 	assign MemToReg = controlSignals[12];
 	assign RegWrite = controlSignals[11];

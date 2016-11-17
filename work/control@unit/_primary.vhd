@@ -24,6 +24,7 @@ entity controlUnit is
         ALUOp           : out    vl_logic_vector(2 downto 0);
         X30Write        : out    vl_logic;
         BLCtrl          : out    vl_logic;
+        SetFlag         : out    vl_logic;
         opCode          : in     vl_logic_vector(31 downto 21);
         negativeFlag    : in     vl_logic;
         zeroFlag        : in     vl_logic;

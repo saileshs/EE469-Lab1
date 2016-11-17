@@ -1,15 +1,17 @@
+`define XFER_SIZE 4'd8 // Set data memory transfer size to 8 bytes.
+
 `timescale 1ns/10ps
-module cpu (clk);
-	input logic clk;
+module cpu (clk, reset);
+	input logic clk, reset;
 	logic [4:0] chooseWriteReg [1:0]; // for X30Write mux (for BR instruction)
 	logic [4:0] ReadRegister, X30MuxOut;
 
 	// Control Logic
-	logic Reg2Loc, RegWrite, MemWrite, MemToReg, UncondBr, X30Write, BLCtrl;
+	logic Reg2Loc, RegWrite, MemWrite, MemToReg, UncondBr, X30Write, BLCtrl, SetFlag;
 	logic [1:0] ALUSrc, BrTaken;
 	logic [2:0] ALUOp;
 	
-	logic reset, negativeFlag, zeroFlag, overflowFlag, carryOutFlag;
+	logic negativeFlag, zeroFlag, overflowFlag, carryOutFlag, negativeFlagTemp, zeroFlagTemp, overflowFlagTemp, carryOutFlagTemp;
 	logic overflow1, overflow2, carryout1, carryout2; // Output flags from adders
 	logic [63:0] ReadData1, ReadData2, WriteData, ALUOut, DataMemOut, PCInput, uncondBrOut, brShifterOut, memToRegOut, ALUMuxOut;
 	logic [63:0] address;
@@ -18,11 +20,9 @@ module cpu (clk);
 	logic [63:0] WhichBranch [3:0]; // For BrTaken mux
 	logic [63:0] ALUMuxIn [3:0]; // For ALUSrc mux
 	logic [31:0] instruction; // 32-bit instruction coming out of Instruction Memory
-	logic [10:0] opCode = instruction[31:21];
-	logic [4:0] Rd = instruction[4:0];
-	logic [4:0] Rm = instruction[20:16];
-	logic [4:0] Rn = instruction[9:5];
-	logic [11:0] imm12 = instruction[21: 10]; // For ADDI
+	wire [10:0] opCode;
+	wire [4:0] Rd, Rm, Rn;
+	wire [11:0] imm12; // For ADDI
 	logic [63:0] branchImmediates [1:0]; // For UncondBr branch
 	logic [63:0] WhichWriteData [1:0]; // For BL instruction. BLCtrl mux.
 	
@@ -42,11 +42,17 @@ module cpu (clk);
 	// Calling the RegFile to access data and write data to registers.
 	regfile rf (.ReadData1, .ReadData2, .ReadRegister1(Rn), .ReadRegister2(ReadRegister), .WriteRegister(X30MuxOut), .WriteData, .RegWrite, .clk);
 	
-	// Calling ALU unit for arithmetic operations and setting flags.
-	alu a (.A(ReadData1), .B(ALUMuxOut), .cntrl(ALUOp), .result(ALUOut), .negative(negativeFlag), .zero(zeroFlag), .overflow(overflowFlag), .carry_out(carryOutFlag));
+	// Calling ALU unit for arithmetic operations
+	alu a (.A(ReadData1), .B(ALUMuxOut), .cntrl(ALUOp), .result(ALUOut), .negative(negativeFlagTemp), .zero(zeroFlagTemp), .overflow(overflowFlagTemp), .carry_out(carryOutFlagTemp));
+	
+	// Setting ALU flags if necessary
+	mux_2to1_1bit neg_flag_mux (.out(negativeFlag), .control(SetFlag), .in({negativeFlagTemp, negativeFlag}));
+	mux_2to1_1bit zero_flag_mux (.out(zeroFlag), .control(SetFlag), .in({zeroFlagTemp, zeroFlag}));
+	mux_2to1_1bit overflow_flag_mux (.out(overflowFlag), .control(SetFlag), .in({overflowFlagTemp, overflowFlag}));
+	mux_2to1_1bit carry_flag_mux (.out(carryOutFlag), .control(SetFlag), .in({carryOutFlagTemp, carryOutFlag}));
 	
 	// Calling Data Memory unit to store to and read from memory.
-	datamem memory (.address(ALUOut), .write_enable(MemWrite), .read_enable(MemToReg), .write_data(ReadData2), .clk, .xfer_size(4'd8), .read_data(DataMemOut));
+	datamem memory (.address(ALUOut), .write_enable(MemWrite), .read_enable(MemToReg), .write_data(ReadData2), .clk, .xfer_size(`XFER_SIZE), .read_data(DataMemOut));
 	
 	// Logic selecting whether to read data from ALUOut or DataMemOut
 	assign ALUOrMemOut[0] = ALUOut;
@@ -66,8 +72,13 @@ module cpu (clk);
 	PC program_counter (.out(address), .in(PCInput), .reset, .clk);
 	
 	instructmem instruction_memory (.address, .instruction, .clk);
-
-	controlUnit control (.Reg2Loc, .ALUSrc, .MemToReg, .RegWrite, .MemWrite, .BrTaken, .UncondBr, .ALUOp, .X30Write, .BLCtrl, .opCode, .negativeFlag, .zeroFlag, .overflowFlag);
+	assign opCode = instruction[31:21];
+	assign Rd = instruction[4:0];
+	assign Rm = instruction[20:16];
+	assign Rn = instruction[9:5];
+	assign imm12 = instruction[21: 10]; // For ADDI
+	
+	controlUnit control (.Reg2Loc, .ALUSrc, .MemToReg, .RegWrite, .MemWrite, .BrTaken, .UncondBr, .ALUOp, .X30Write, .BLCtrl, .SetFlag, .opCode, .negativeFlag, .zeroFlag, .overflowFlag);
 	
 	// Compute BrTaken mux input 0
 	addSub64 pcPlus4 (.carryOut(carryout1), .result(WhichBranch[0]), .overflow(overflow1), .a(address), .b(64'd4), .carryIn(1'b0));
@@ -87,15 +98,26 @@ module cpu (clk);
 endmodule
 
 module cpu_testbench();
-	logic clk;
+	logic clk, reset;
 	
-	parameter ClockDelay = 5000;
+	parameter ClockDelay = 100000;
 	
-	cpu dut(clk);
+	cpu dut(clk, reset);
  
 	initial begin // Set up the clock
 		clk <= 0;
 		forever #(ClockDelay/2) clk <= ~clk;
+	end
+	
+	integer i;
+	
+	initial // Set up the reset signal
+		begin
+			reset<=1;	@(posedge clk);
+			reset<=0;	@(posedge clk);
+			for (i = 0; i <100; i++)
+				@(posedge clk);
+		$stop(); // end the simulation
 	end
 
 endmodule
