@@ -1,3 +1,4 @@
+// Program Counter for CPU. Keeps track of current instruction address.
 `timescale 1ns/10ps
 module PC (out, in, reset, clk);
 	output logic [63:0] out;

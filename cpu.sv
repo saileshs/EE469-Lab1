@@ -116,7 +116,7 @@ module cpu_testbench();
 		begin
 			reset<=1;	@(posedge clk);
 			reset<=0;	@(posedge clk);
-			for (i = 0; i <100; i++)
+			for (i = 0; i < 100; i++)
 				@(posedge clk);
 		$stop(); // end the simulation
 	end

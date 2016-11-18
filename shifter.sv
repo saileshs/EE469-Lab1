@@ -1,3 +1,4 @@
+// Shifts input to the left by 2 bits
 `timescale 1ns/10ps
 module shifter (out, in);
 	output logic [63:0] out;

@@ -5,6 +5,7 @@ module and64 (out, a, b);
 	output logic [63:0] out;
 	input logic [63:0] a, b;
 	
+	// AND each of the 64 bits of each input together to output a 64 bit result.
 	genvar i;
 	generate
 		for (i = 0; i < 64; i++) begin: eachAnd
@@ -19,6 +20,7 @@ module or64 (out, a, b);
 	output logic [63:0] out;
 	input logic [63:0] a, b;
 	
+	// OR each of the 64 bits of each input together to output a 64 bit result.
 	genvar i;
 	generate
 		for (i = 0; i < 64; i++) begin: eachOr
@@ -33,6 +35,7 @@ module xor64 (out, a, b);
 	output logic [63:0] out;
 	input logic [63:0] a, b;
 	
+	// XOR each of the 64 bits of each input together to output a 64 bit result.
 	genvar i;
 	generate 
 		for (i = 0; i < 64; i++) begin: eachXOR
@@ -46,6 +49,7 @@ module not64 (out, in);
 	output logic [63:0] out;
 	input logic [63:0] in;
 	
+	// Negate each of the 64 bits of each input together to output a 64 bit result.
 	genvar i;
 	generate
 		for (i = 0; i < 64; i++) begin: eachNot
@@ -64,7 +68,7 @@ module nor64 (out, in);
 	logic [3:0] or_out4;
 	
 	logic or_out;
-	
+	// Use our custom NOR module to NOR each of the 64 bits and produce a single bit output.
 	or_multi #(.WIDTH(64)) or0 (.out(or_out16), .in);
 	or_multi #(.WIDTH(16)) or1 (.out(or_out4), .in(or_out16));
 	or_multi #(.WIDTH(4)) or2 (.out(or_out), .in(or_out4));

@@ -1,3 +1,7 @@
+// Sign Extend Module. 
+// Depending on which instruction is given, sign extends the immediate values 
+// so that they are 64 bits wide.
+
 `timescale 1ns/10ps
 module SE (out, in);
 	output logic [63:0] out;
@@ -7,6 +11,8 @@ module SE (out, in);
 
 	parameter CBZ = 11'b10110100xxx, B = 11'b000101xxxxx, BL = 11'b100101xxxxx, BLT = 11'b01010100xxx, LDUR = 11'b11111000010, STUR = 11'b11111000000;
 	
+	// Takes varying width immediate value and adds however many 
+	// sign bits are necessary to make it 64 bits wide.
 	always_comb begin
 		casex (in[31:21])
 			CBZ: 	out = {{45{in[23]}}, in[23:5]};
