@@ -1,14 +1,9 @@
 # Reading C:/altera/14.0/modelsim_ase/tcl/vsim/pref.tcl 
-do runlab3.do
+do runlab4.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # 
 # Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
 # -- Compiling module regfile
-# -- Compiling module D_FF
-# -- Compiling module DFF1_enable
-# -- Compiling module DFF4
-# -- Compiling module DFF16
-# -- Compiling module DFF64
 # 
 # Top level modules:
 # 	regfile
@@ -118,10 +113,165 @@ do runlab3.do
 # 
 # Top level modules:
 # 	controlUnit_testbench
-# vsim -lib work -voptargs=\"+acc\" -t 1ps cpu_testbench 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# ** Error: (vlog-7) Failed to open design unit file "./piplineReg.sv" in read mode.
+# 
+# No such file or directory. (errno = ENOENT)
+# ** Error: C:/altera/14.0/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./runlab4.do line 23
+# C:/altera/14.0/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog "./piplineReg.sv""
+do runlab4.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module regfile
+# 
+# Top level modules:
+# 	regfile
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module regstim
+# 
+# Top level modules:
+# 	regstim
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module decoder_5to32
+# -- Compiling module decoder_2to4
+# -- Compiling module decoder_3to8
+# -- Compiling module decoder_testbench
+# 
+# Top level modules:
+# 	decoder_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux_2to1_1bit
+# -- Compiling module mux_2to1
+# -- Compiling module mux_2to1_5bit
+# -- Compiling module mux_4to1
+# -- Compiling module mux_8to1
+# -- Compiling module mux_16to1
+# -- Compiling module mux_32to1
+# -- Compiling module mux_testbench
+# 
+# Top level modules:
+# 	mux_2to1_1bit
+# 	mux_2to1_5bit
+# 	mux_32to1
+# 	mux_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module alustim
+# 
+# Top level modules:
+# 	alustim
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module addSub64
+# -- Compiling module addSub
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module and64
+# -- Compiling module or64
+# -- Compiling module xor64
+# -- Compiling module not64
+# -- Compiling module nor64
+# -- Compiling module or_multi
+# -- Compiling module nor_testbench
+# 
+# Top level modules:
+# 	and64
+# 	or64
+# 	xor64
+# 	not64
+# 	nor_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	alu
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module ZE
+# 
+# Top level modules:
+# 	ZE
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module SE
+# -- Compiling module SE_testbench
+# 
+# Top level modules:
+# 	SE_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module shifter
+# -- Compiling module shift_testbench
+# 
+# Top level modules:
+# 	shift_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PC
+# 
+# Top level modules:
+# 	PC
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module instructmem
+# -- Compiling module instructmem_testbench
+# 
+# Top level modules:
+# 	instructmem_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module datamem
+# -- Compiling module datamem_testbench
+# 
+# Top level modules:
+# 	datamem_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module cpu
+# -- Compiling module cpu_testbench
+# 
+# Top level modules:
+# 	cpu_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module controlUnit
+# -- Compiling module controlUnit_testbench
+# 
+# Top level modules:
+# 	controlUnit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module IF_ID_reg
+# -- Compiling module ID_EX_reg
+# -- Compiling module EX_MEM_reg
+# -- Compiling module MEM_WR_reg
+# 
+# Top level modules:
+# 	IF_ID_reg
+# 	ID_EX_reg
+# 	EX_MEM_reg
+# 	MEM_WR_reg
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module D_FF
+# -- Compiling module DFF1_enable
+# -- Compiling module DFF2
+# -- Compiling module DFF3
+# -- Compiling module DFF4
+# -- Compiling module DFF5
+# -- Compiling module DFF16
+# -- Compiling module DFF32
+# -- Compiling module DFF64
+# 
+# Top level modules:
+# 	DFF3
+# 	DFF5
+# 	DFF64
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module cpu_pipelined
+# -- Compiling module cpu_pipelined_testbench
+# 
+# Top level modules:
+# 	cpu_pipelined_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps cpu_pipelined_testbench 
 # Loading sv_std.std
-# Loading work.cpu_testbench
-# Loading work.cpu
+# Loading work.cpu_pipelined_testbench
+# Loading work.cpu_pipelined
 # Loading work.mux_2to1_5bit
 # Loading work.mux_2to1
 # Loading work.regfile
@@ -149,24 +299,564 @@ do runlab3.do
 # Loading work.ZE
 # Loading work.PC
 # Loading work.DFF64
+# Loading work.DFF32
 # Loading work.DFF16
 # Loading work.DFF4
+# Loading work.DFF2
 # Loading work.instructmem
 # Loading work.controlUnit
 # Loading work.shifter
+# Loading work.IF_ID_reg
+# Loading work.ID_EX_reg
+# Loading work.DFF5
+# Loading work.DFF3
+# Loading work.EX_MEM_reg
+# Loading work.MEM_WR_reg
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 # 
 #           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
 # 
-#           Attempting to use alternate WLF file "./wlftmtcen8".
+#           Attempting to use alternate WLF file "./wlfthx235m".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
 # 
-#           Using alternate file: ./wlftmtcen8
+#           Using alternate file: ./wlfthx235m
 # 
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/opCode'.
+# Executing ONERROR command at macro ./cpu_wave.do line 3
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/instruction_memory/address'.
+# Executing ONERROR command at macro ./cpu_wave.do line 4
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/instruction_memory/instruction'.
+# Executing ONERROR command at macro ./cpu_wave.do line 5
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/Rd'.
+# Executing ONERROR command at macro ./cpu_wave.do line 6
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/Rm'.
+# Executing ONERROR command at macro ./cpu_wave.do line 7
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/Rn'.
+# Executing ONERROR command at macro ./cpu_wave.do line 8
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/ReadRegister'.
+# Executing ONERROR command at macro ./cpu_wave.do line 9
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/ReadData1'.
+# Executing ONERROR command at macro ./cpu_wave.do line 10
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/ReadData2'.
+# Executing ONERROR command at macro ./cpu_wave.do line 11
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/rf/WriteRegister'.
+# Executing ONERROR command at macro ./cpu_wave.do line 12
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/rf/WriteData'.
+# Executing ONERROR command at macro ./cpu_wave.do line 13
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/a/result'.
+# Executing ONERROR command at macro ./cpu_wave.do line 14
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/a/A'.
+# Executing ONERROR command at macro ./cpu_wave.do line 15
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/a/B'.
+# Executing ONERROR command at macro ./cpu_wave.do line 16
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/rf/registerOutput'.
+# Executing ONERROR command at macro ./cpu_wave.do line 17
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/memory/mem'.
+# Executing ONERROR command at macro ./cpu_wave.do line 18
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/negativeFlag'.
+# Executing ONERROR command at macro ./cpu_wave.do line 19
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/zeroFlag'.
+# Executing ONERROR command at macro ./cpu_wave.do line 20
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/overflowFlag'.
+# Executing ONERROR command at macro ./cpu_wave.do line 21
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/carryOutFlag'.
+# Executing ONERROR command at macro ./cpu_wave.do line 22
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/SetFlag'.
+# Executing ONERROR command at macro ./cpu_wave.do line 23
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/Reg2Loc'.
+# Executing ONERROR command at macro ./cpu_wave.do line 24
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/MemToReg'.
+# Executing ONERROR command at macro ./cpu_wave.do line 25
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/RegWrite'.
+# Executing ONERROR command at macro ./cpu_wave.do line 26
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/MemWrite'.
+# Executing ONERROR command at macro ./cpu_wave.do line 27
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/UncondBr'.
+# Executing ONERROR command at macro ./cpu_wave.do line 28
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/X30Write'.
+# Executing ONERROR command at macro ./cpu_wave.do line 29
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/BLCtrl'.
+# Executing ONERROR command at macro ./cpu_wave.do line 30
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/ALUSrc'.
+# Executing ONERROR command at macro ./cpu_wave.do line 31
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/BrTaken'.
+# Executing ONERROR command at macro ./cpu_wave.do line 32
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/ALUOp'.
+# Executing ONERROR command at macro ./cpu_wave.do line 33
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/BLTLogic'.
+# Executing ONERROR command at macro ./cpu_wave.do line 34
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
 # .main_pane.objects.interior.cs.body.tree
 # Running benchmark: ./benchmarks/test01_AddiB.arm
-# Break in Module cpu_testbench at ./cpu.sv line 121
-# Simulation Breakpoint: Break in Module cpu_testbench at ./cpu.sv line 121
-# MACRO ./runlab3.do PAUSED at line 40
+# Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 146
+# Simulation Breakpoint: Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 146
+# MACRO ./runlab4.do PAUSED at line 43
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf {D:/EE 469/Processor Lab/cpu_pipeline_wave.do}
+do runlab4.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module regfile
+# 
+# Top level modules:
+# 	regfile
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module regstim
+# 
+# Top level modules:
+# 	regstim
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module decoder_5to32
+# -- Compiling module decoder_2to4
+# -- Compiling module decoder_3to8
+# -- Compiling module decoder_testbench
+# 
+# Top level modules:
+# 	decoder_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux_2to1_1bit
+# -- Compiling module mux_2to1
+# -- Compiling module mux_2to1_5bit
+# -- Compiling module mux_4to1
+# -- Compiling module mux_8to1
+# -- Compiling module mux_16to1
+# -- Compiling module mux_32to1
+# -- Compiling module mux_testbench
+# 
+# Top level modules:
+# 	mux_2to1_1bit
+# 	mux_2to1_5bit
+# 	mux_32to1
+# 	mux_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module alustim
+# 
+# Top level modules:
+# 	alustim
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module addSub64
+# -- Compiling module addSub
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module and64
+# -- Compiling module or64
+# -- Compiling module xor64
+# -- Compiling module not64
+# -- Compiling module nor64
+# -- Compiling module or_multi
+# -- Compiling module nor_testbench
+# 
+# Top level modules:
+# 	and64
+# 	or64
+# 	xor64
+# 	not64
+# 	nor_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	alu
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module ZE
+# 
+# Top level modules:
+# 	ZE
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module SE
+# -- Compiling module SE_testbench
+# 
+# Top level modules:
+# 	SE_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module shifter
+# -- Compiling module shift_testbench
+# 
+# Top level modules:
+# 	shift_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PC
+# 
+# Top level modules:
+# 	PC
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module instructmem
+# -- Compiling module instructmem_testbench
+# 
+# Top level modules:
+# 	instructmem_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module datamem
+# -- Compiling module datamem_testbench
+# 
+# Top level modules:
+# 	datamem_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module cpu
+# -- Compiling module cpu_testbench
+# 
+# Top level modules:
+# 	cpu_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module controlUnit
+# -- Compiling module controlUnit_testbench
+# 
+# Top level modules:
+# 	controlUnit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module IF_ID_reg
+# -- Compiling module ID_EX_reg
+# -- Compiling module EX_MEM_reg
+# -- Compiling module MEM_WR_reg
+# 
+# Top level modules:
+# 	IF_ID_reg
+# 	ID_EX_reg
+# 	EX_MEM_reg
+# 	MEM_WR_reg
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module D_FF
+# -- Compiling module DFF1_enable
+# -- Compiling module DFF2
+# -- Compiling module DFF3
+# -- Compiling module DFF4
+# -- Compiling module DFF5
+# -- Compiling module DFF16
+# -- Compiling module DFF32
+# -- Compiling module DFF64
+# 
+# Top level modules:
+# 	DFF3
+# 	DFF5
+# 	DFF64
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module cpu_pipelined
+# -- Compiling module cpu_pipelined_testbench
+# 
+# Top level modules:
+# 	cpu_pipelined_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps cpu_pipelined_testbench 
+# Loading sv_std.std
+# Loading work.cpu_pipelined_testbench
+# Loading work.cpu_pipelined
+# Loading work.mux_2to1_5bit
+# Loading work.mux_2to1
+# Loading work.regfile
+# Loading work.decoder_5to32
+# Loading work.decoder_2to4
+# Loading work.decoder_3to8
+# Loading work.mux_32to1
+# Loading work.mux_16to1
+# Loading work.mux_4to1
+# Loading work.alu
+# Loading work.addSub64
+# Loading work.not64
+# Loading work.addSub
+# Loading work.and64
+# Loading work.or64
+# Loading work.xor64
+# Loading work.mux_8to1
+# Loading work.nor64
+# Loading work.or_multi
+# Loading work.DFF1_enable
+# Loading work.mux_2to1_1bit
+# Loading work.D_FF
+# Loading work.datamem
+# Loading work.SE
+# Loading work.ZE
+# Loading work.PC
+# Loading work.DFF64
+# Loading work.DFF32
+# Loading work.DFF16
+# Loading work.DFF4
+# Loading work.DFF2
+# Loading work.instructmem
+# Loading work.controlUnit
+# Loading work.shifter
+# Loading work.IF_ID_reg
+# Loading work.ID_EX_reg
+# Loading work.DFF5
+# Loading work.DFF3
+# Loading work.EX_MEM_reg
+# Loading work.MEM_WR_reg
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+# 
+#           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
+# 
+#           Attempting to use alternate WLF file "./wlftehhyhv".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+# 
+#           Using alternate file: ./wlftehhyhv
+# 
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/opCode'.
+# Executing ONERROR command at macro ./cpu_wave.do line 3
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/instruction_memory/address'.
+# Executing ONERROR command at macro ./cpu_wave.do line 4
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/instruction_memory/instruction'.
+# Executing ONERROR command at macro ./cpu_wave.do line 5
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/Rd'.
+# Executing ONERROR command at macro ./cpu_wave.do line 6
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/Rm'.
+# Executing ONERROR command at macro ./cpu_wave.do line 7
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/Rn'.
+# Executing ONERROR command at macro ./cpu_wave.do line 8
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/ReadRegister'.
+# Executing ONERROR command at macro ./cpu_wave.do line 9
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/ReadData1'.
+# Executing ONERROR command at macro ./cpu_wave.do line 10
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/ReadData2'.
+# Executing ONERROR command at macro ./cpu_wave.do line 11
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/rf/WriteRegister'.
+# Executing ONERROR command at macro ./cpu_wave.do line 12
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/rf/WriteData'.
+# Executing ONERROR command at macro ./cpu_wave.do line 13
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/a/result'.
+# Executing ONERROR command at macro ./cpu_wave.do line 14
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/a/A'.
+# Executing ONERROR command at macro ./cpu_wave.do line 15
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/a/B'.
+# Executing ONERROR command at macro ./cpu_wave.do line 16
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/rf/registerOutput'.
+# Executing ONERROR command at macro ./cpu_wave.do line 17
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/memory/mem'.
+# Executing ONERROR command at macro ./cpu_wave.do line 18
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/negativeFlag'.
+# Executing ONERROR command at macro ./cpu_wave.do line 19
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/zeroFlag'.
+# Executing ONERROR command at macro ./cpu_wave.do line 20
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/overflowFlag'.
+# Executing ONERROR command at macro ./cpu_wave.do line 21
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/carryOutFlag'.
+# Executing ONERROR command at macro ./cpu_wave.do line 22
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/SetFlag'.
+# Executing ONERROR command at macro ./cpu_wave.do line 23
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/Reg2Loc'.
+# Executing ONERROR command at macro ./cpu_wave.do line 24
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/MemToReg'.
+# Executing ONERROR command at macro ./cpu_wave.do line 25
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/RegWrite'.
+# Executing ONERROR command at macro ./cpu_wave.do line 26
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/MemWrite'.
+# Executing ONERROR command at macro ./cpu_wave.do line 27
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/UncondBr'.
+# Executing ONERROR command at macro ./cpu_wave.do line 28
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/X30Write'.
+# Executing ONERROR command at macro ./cpu_wave.do line 29
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/BLCtrl'.
+# Executing ONERROR command at macro ./cpu_wave.do line 30
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/ALUSrc'.
+# Executing ONERROR command at macro ./cpu_wave.do line 31
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/BrTaken'.
+# Executing ONERROR command at macro ./cpu_wave.do line 32
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/ALUOp'.
+# Executing ONERROR command at macro ./cpu_wave.do line 33
+# ** Error: (vish-4014) No objects found matching '/cpu_testbench/dut/control/BLTLogic'.
+# Executing ONERROR command at macro ./cpu_wave.do line 34
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# Running benchmark: ./benchmarks/test01_AddiB.arm
+# Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 146
+# Simulation Breakpoint: Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 146
+# MACRO ./runlab4.do PAUSED at line 43
+do runlab4.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module regfile
+# 
+# Top level modules:
+# 	regfile
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module regstim
+# 
+# Top level modules:
+# 	regstim
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module decoder_5to32
+# -- Compiling module decoder_2to4
+# -- Compiling module decoder_3to8
+# -- Compiling module decoder_testbench
+# 
+# Top level modules:
+# 	decoder_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux_2to1_1bit
+# -- Compiling module mux_2to1
+# -- Compiling module mux_2to1_5bit
+# -- Compiling module mux_4to1
+# -- Compiling module mux_8to1
+# -- Compiling module mux_16to1
+# -- Compiling module mux_32to1
+# -- Compiling module mux_testbench
+# 
+# Top level modules:
+# 	mux_2to1_1bit
+# 	mux_2to1_5bit
+# 	mux_32to1
+# 	mux_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module alustim
+# 
+# Top level modules:
+# 	alustim
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module addSub64
+# -- Compiling module addSub
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module and64
+# -- Compiling module or64
+# -- Compiling module xor64
+# -- Compiling module not64
+# -- Compiling module nor64
+# -- Compiling module or_multi
+# -- Compiling module nor_testbench
+# 
+# Top level modules:
+# 	and64
+# 	or64
+# 	xor64
+# 	not64
+# 	nor_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	alu
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module ZE
+# 
+# Top level modules:
+# 	ZE
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module SE
+# -- Compiling module SE_testbench
+# 
+# Top level modules:
+# 	SE_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module shifter
+# -- Compiling module shift_testbench
+# 
+# Top level modules:
+# 	shift_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PC
+# 
+# Top level modules:
+# 	PC
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module instructmem
+# -- Compiling module instructmem_testbench
+# 
+# Top level modules:
+# 	instructmem_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module datamem
+# -- Compiling module datamem_testbench
+# 
+# Top level modules:
+# 	datamem_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module cpu
+# -- Compiling module cpu_testbench
+# 
+# Top level modules:
+# 	cpu_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module controlUnit
+# -- Compiling module controlUnit_testbench
+# 
+# Top level modules:
+# 	controlUnit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module IF_ID_reg
+# -- Compiling module ID_EX_reg
+# -- Compiling module EX_MEM_reg
+# -- Compiling module MEM_WR_reg
+# 
+# Top level modules:
+# 	IF_ID_reg
+# 	ID_EX_reg
+# 	EX_MEM_reg
+# 	MEM_WR_reg
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module D_FF
+# -- Compiling module DFF1_enable
+# -- Compiling module DFF2
+# -- Compiling module DFF3
+# -- Compiling module DFF4
+# -- Compiling module DFF5
+# -- Compiling module DFF16
+# -- Compiling module DFF32
+# -- Compiling module DFF64
+# 
+# Top level modules:
+# 	DFF3
+# 	DFF5
+# 	DFF64
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module cpu_pipelined
+# -- Compiling module cpu_pipelined_testbench
+# 
+# Top level modules:
+# 	cpu_pipelined_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps cpu_pipelined_testbench 
+# Loading sv_std.std
+# Loading work.cpu_pipelined_testbench
+# Loading work.cpu_pipelined
+# Loading work.mux_2to1_5bit
+# Loading work.mux_2to1
+# Loading work.regfile
+# Loading work.decoder_5to32
+# Loading work.decoder_2to4
+# Loading work.decoder_3to8
+# Loading work.mux_32to1
+# Loading work.mux_16to1
+# Loading work.mux_4to1
+# Loading work.alu
+# Loading work.addSub64
+# Loading work.not64
+# Loading work.addSub
+# Loading work.and64
+# Loading work.or64
+# Loading work.xor64
+# Loading work.mux_8to1
+# Loading work.nor64
+# Loading work.or_multi
+# Loading work.DFF1_enable
+# Loading work.mux_2to1_1bit
+# Loading work.D_FF
+# Loading work.datamem
+# Loading work.SE
+# Loading work.ZE
+# Loading work.PC
+# Loading work.DFF64
+# Loading work.DFF32
+# Loading work.DFF16
+# Loading work.DFF4
+# Loading work.DFF2
+# Loading work.instructmem
+# Loading work.controlUnit
+# Loading work.shifter
+# Loading work.IF_ID_reg
+# Loading work.ID_EX_reg
+# Loading work.DFF5
+# Loading work.DFF3
+# Loading work.EX_MEM_reg
+# Loading work.MEM_WR_reg
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# Running benchmark: ./benchmarks/test01_AddiB.arm
+# Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 146
+# Simulation Breakpoint: Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 146
+# MACRO ./runlab4.do PAUSED at line 43

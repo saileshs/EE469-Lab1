@@ -128,7 +128,7 @@ module cpu_pipelined_testbench();
 	
 	parameter ClockDelay = 100000;
 	
-	cpu dut(clk, reset);
+	cpu_pipelined dut(clk, reset);
  
 	initial begin // Set up the clock
 		clk <= 0;
