@@ -40,7 +40,8 @@ module cpu (clk, reset);
 	mux_2to1 BL_mux (.out(WriteData), .control(BLCtrl), .in(WhichWriteData)); // Choosing which data to write to register
 	
 	// Calling the RegFile to access data and write data to registers.
-	regfile rf (.ReadData1, .ReadData2, .ReadRegister1(Rn), .ReadRegister2(ReadRegister), .WriteRegister(X30MuxOut), .WriteData, .RegWrite, .clk);
+	// Given negation of clk in order to avoid reading old values in register.
+	regfile rf (.ReadData1, .ReadData2, .ReadRegister1(Rn), .ReadRegister2(ReadRegister), .WriteRegister(X30MuxOut), .WriteData, .RegWrite, .clk(~clk));
 	
 	// Calling ALU unit for arithmetic operations
 	alu a (.A(ReadData1), .B(ALUMuxOut), .cntrl(ALUOp), .result(ALUOut), .negative(negativeFlagTemp), .zero(zeroFlagTemp), .overflow(overflowFlagTemp), .carry_out(carryOutFlagTemp));

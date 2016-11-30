@@ -5,7 +5,7 @@
 
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSEMA5F31C6
-set_global_assignment -name TOP_LEVEL_ENTITY alu
+set_global_assignment -name TOP_LEVEL_ENTITY cpu_pipelined
 set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
 
 
@@ -964,8 +964,10 @@ set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_WE_N
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_RESET_N
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_CK_P
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_CK_N
+set_global_assignment -name SYSTEMVERILOG_FILE cpu_pipelined.sv
+set_global_assignment -name SYSTEMVERILOG_FILE pipelineReg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE dff.sv
 set_global_assignment -name SYSTEMVERILOG_FILE zeroExtend.sv
-set_global_assignment -name SYSTEMVERILOG_FILE cpu.sv
 set_global_assignment -name SYSTEMVERILOG_FILE controlUnit.sv
 set_global_assignment -name SYSTEMVERILOG_FILE instructmem.sv
 set_global_assignment -name SYSTEMVERILOG_FILE datamem.sv
