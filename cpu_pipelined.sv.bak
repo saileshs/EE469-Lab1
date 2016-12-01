@@ -11,7 +11,7 @@ module cpu_pipelined (clk, reset);
 	logic [1:0] ALUSrc, BrTaken;
 	logic [2:0] ALUOp;
 	
-	logic negativeFlag, zeroFlag, overflowFlag, carryOutFlag, negativeFlagTemp, zeroFlagTemp, CBZZeroFlag, overflowFlagTemp, carryOutFlagTemp;
+	logic negativeFlag, zeroFlag, overflowFlag, carryOutFlag, negativeFlagTemp, zeroFlagTemp, overflowFlagTemp, carryOutFlagTemp;
 	logic overflow1, overflow2, carryout1, carryout2; // Output flags from adders
 	logic [63:0] ReadData1, ReadData2, WriteData, ALUOut, DataMemOut, PCInput, uncondBrOut, brShifterOut, memToRegOut, ALUMuxOut;
 	logic [63:0] address;
@@ -30,20 +30,15 @@ module cpu_pipelined (clk, reset);
 	// Datapath Wires coming out of the pipeline registers
 	logic [63:0]	IFID_pc_out, IFID_pc_plus4_out, IDEX_pc_out, IDEX_se_imm12_out, IDEX_se_imm9_out, 
 					IDEX_se_branch_out, IDEX_read_data1_out, IDEX_read_data2_out, EXMEM_branch_out, 
-					EXMEM_data2_out, EXMEM_alu_out, MEMWR_alu_out, MEMWR_data_mem_out; 
+					EXMEM_data2_out, EXMEM_alu_out, MEMWR_alu_out, MEMWR_data_mem_out, MEMWR_rd_out; 
 	logic [31:0] IFID_instr_out;
-	logic [4:0] IDEX_rn_out, IDEX_rm_out, IDEX_rd_out, MEMWR_rd_out;
+	logic [4:0] IDEX_rn_out, IDEX_rm_out, IDEX_rd_out;
 
 	// Control wires coming out of the pipeline registers
 	logic [1:0] IDEX_ALUSrc;
 	logic [2:0] IDEX_ALUOp;
 	logic 	IDEX_MemWrite, IDEX_MemToReg, IDEX_RegWrite, IDEX_SetFlags, EXMEM_MemWrite, EXMEM_MemToReg, EXMEM_RegWrite,
 			MEMWR_MemToReg, MEMWR_RegWrite;
-
-	// Forwarding Logic
-	logic [63:0] ForwardingMux1 [3:0];
-	logic [63:0] ForwardingMux2 [3:0];
-	logic [63:0] ALU_input_a;
 
 	
 	// Logic selecting whether to read data from Rd or Rm 
@@ -63,21 +58,8 @@ module cpu_pipelined (clk, reset);
 	// Given negation of clk in order to avoid reading old values in register.
 	regfile rf (.ReadData1, .ReadData2, .ReadRegister1(Rn), .ReadRegister2(ReadRegister), .WriteRegister(X30MuxOut), .WriteData, .RegWrite(MEMWR_RegWrite), .clk(~clk));
 	
-	// Forwarding Data Path
-	assign ForwardingMux1[0] = IDEX_read_data1_out;
-	assign ForwardingMux1[1] = memToRegOut;
-	assign ForwardingMux1[2] = EXMEM_alu_out;
-	assign ForwardingMux1[3] = 64'bX;
-	mux_4to1 forwarding_mux1 (.out(ALU_input_a), .control(/*Forwarding Control*/), .in(ForwardingMux1));
-
-	assign ForwardingMux2[0] = IDEX_read_data2_out;
-	assign ForwardingMux2[1] = memToRegOut;
-	assign ForwardingMux2[2] = EXMEM_alu_out;
-	assign ForwardingMux2[3] = 64'bX;
-	mux_4to1 forwarding_mux2 (.out(ALUMuxIn[0]), .control(/*Forwarding Control*/), .in(ForwardingMux2));
-
 	// Calling ALU unit for arithmetic operations
-	alu a (.A(ALU_input_a), .B(ALUMuxOut), .cntrl(IDEX_ALUOp), .result(ALUOut), .negative(negativeFlagTemp), .zero(zeroFlagTemp), .overflow(overflowFlagTemp), .carry_out(carryOutFlagTemp));
+	alu a (.A(ReadData1), .B(ALUMuxOut), .cntrl(IDEX_ALUOp), .result(ALUOut), .negative(negativeFlagTemp), .zero(zeroFlagTemp), .overflow(overflowFlagTemp), .carry_out(carryOutFlagTemp));
 	
 	// Setting ALU flags if necessary
 	
@@ -98,10 +80,10 @@ module cpu_pipelined (clk, reset);
 	// ALUSrc Datapath
 	SE extend_imm9 (.out(SEImm9), .in(IFID_instr_out));
 	ZE extend_imm12 (.out(ZEImm12), .in(imm12)); // For ADDI
-	// ALUMuxIn[0] is set by the output of forwarding_mux2
+	assign ALUMuxIn[0] = IDEX_read_data2_out;
 	assign ALUMuxIn[1] = IDEX_se_imm9_out;
 	assign ALUMuxIn[2] = IDEX_se_imm12_out;
-	assign ALUMuxIn[3] = 64'bX;
+	assign ALUMuxIn[3] = 64'bx;
 
 	mux_4to1 alu_mux (.out(ALUMuxOut), .control(IDEX_ALUSrc), .in(ALUMuxIn));
 	
@@ -115,10 +97,7 @@ module cpu_pipelined (clk, reset);
 	assign Rn = IFID_instr_out[9:5];
 	assign imm12 = IFID_instr_out[21:10]; // For ADDI
 	
-	// Standalone ZeroFlag module -- For CBZ
-	nor64 nor0 (.out(CBZZeroFlag), .in(ReadData2));
-
-	controlUnit control (.Reg2Loc, .ALUSrc, .MemToReg, .RegWrite, .MemWrite, .BrTaken, .UncondBr, .ALUOp, .X30Write, .BLCtrl, .SetFlag, .opCode, .negativeFlag, .zeroFlag(CBZZeroFlag), .overflowFlag);
+	controlUnit control (.Reg2Loc, .ALUSrc, .MemToReg, .RegWrite, .MemWrite, .BrTaken, .UncondBr, .ALUOp, .X30Write, .BLCtrl, .SetFlag, .opCode, .negativeFlag, .zeroFlag(zeroFlagTemp), .overflowFlag);
 	
 	// Compute BrTaken mux input 0
 	addSub64 pcPlus4 (.carryOut(carryout1), .result(WhichBranch[0]), .overflow(overflow1), .a(address), .b(64'd4), .carryIn(1'b0));
@@ -132,7 +111,7 @@ module cpu_pipelined (clk, reset);
 	
 	assign WhichBranch[1] = EXMEM_branch_out;
 	assign WhichBranch[2] = IDEX_read_data2_out; // For BR instruction
-	assign WhichBranch[3] = 64'bX;
+	assign WhichBranch[3] = 64'bx;
 
 	mux_4to1 brtaken_mux (.out(PCInput), .control(BrTaken), .in(WhichBranch));
 
@@ -144,12 +123,12 @@ module cpu_pipelined (clk, reset);
 
 endmodule
 
-module cpu_pipelined_testbench();
+module cpu_testbench();
 	logic clk, reset;
 	
 	parameter ClockDelay = 100000;
 	
-	cpu_pipelined dut(clk, reset);
+	cpu dut(clk, reset);
  
 	initial begin // Set up the clock
 		clk <= 0;

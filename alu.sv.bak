@@ -27,13 +27,11 @@ module alu (A, B, cntrl, result, negative, zero, overflow, carry_out);
 	logic [63:0] addsub_out, and_out, or_out, xor_out, less_than_out;
 	logic [63:0] alu_input [7:0]; 
 	
-	// Algorithmic computations occuring here. ADD, AND, OR, and XOR. The CarryOut flag is also being set. 
 	addSub64 addsub (.carryOut(carry_out), .result(addsub_out), .overflow, .a(A), .b(B), .carryIn(cntrl[0]));
 	and64 ander (.out(and_out), .a(A), .b(B));
 	or64 orer (.out(or_out), .a(A), .b(B));
 	xor64 xorer (.out(xor_out), .a(A), .b(B));
 	
-	// Each ALU operation is being assigned to the required ALU control bits
 	assign alu_input[0] = B;
 	assign alu_input[1] = 64'bx;
 	assign alu_input[2] = addsub_out;
