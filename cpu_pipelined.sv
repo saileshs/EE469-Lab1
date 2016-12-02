@@ -32,7 +32,7 @@ module cpu_pipelined (clk, reset);
 					IDEX_se_branch_out, IDEX_read_data1_out, IDEX_read_data2_out, EXMEM_branch_out, 
 					EXMEM_data2_out, EXMEM_alu_out, MEMWR_alu_out, MEMWR_data_mem_out; 
 	logic [31:0] IFID_instr_out;
-	logic [4:0] IDEX_rn_out, IDEX_rm_out, IDEX_rd_out, MEMWR_rd_out;
+	logic [4:0] IDEX_rn_out, IDEX_rm_out, IDEX_rd_out, EXMEM_rd_out, MEMWR_rd_out;
 
 	// Control wires coming out of the pipeline registers
 	logic [1:0] IDEX_ALUSrc;
@@ -63,18 +63,26 @@ module cpu_pipelined (clk, reset);
 	// Given negation of clk in order to avoid reading old values in register.
 	regfile rf (.ReadData1, .ReadData2, .ReadRegister1(Rn), .ReadRegister2(ReadRegister), .WriteRegister(X30MuxOut), .WriteData, .RegWrite(MEMWR_RegWrite), .clk(~clk));
 	
+	// Select signals for controling the Forwarding Mux A and Forwarding Mux B.
+	logic [1:0] forwardA;
+	logic [1:0] forwardB;
+	
+	// Calling the FORWARDING UNIT to handle EX hazards and Mem Hazards.
+	// Returns two 2-bit select signals, which control the ForwardingMux1 and ForwardingMux2.
+	FORWARDING_UNIT (.forward_A(forwardA), .forward_B(forwardB), .rn_in(rn_out), .rm_in(rm_out), .EXMEM_RegisterRd(EXMEM_rd_out), .MEMWB_RegisterRd(MEMWR_rd_out), .ExMem_RegWrite(EXMEM_RegWrite), .MemWr_RegWrite(MEMWR_RegWrite));
+	
 	// Forwarding Data Path
 	assign ForwardingMux1[0] = IDEX_read_data1_out;
 	assign ForwardingMux1[1] = memToRegOut;
 	assign ForwardingMux1[2] = EXMEM_alu_out;
 	assign ForwardingMux1[3] = 64'bX;
-	mux_4to1 forwarding_mux1 (.out(ALU_input_a), .control(/*Forwarding Control*/), .in(ForwardingMux1));
+	mux_4to1 forwarding_mux1 (.out(ALU_input_a), .control(forwardA), .in(ForwardingMux1));
 
 	assign ForwardingMux2[0] = IDEX_read_data2_out;
 	assign ForwardingMux2[1] = memToRegOut;
 	assign ForwardingMux2[2] = EXMEM_alu_out;
 	assign ForwardingMux2[3] = 64'bX;
-	mux_4to1 forwarding_mux2 (.out(ALUMuxIn[0]), .control(/*Forwarding Control*/), .in(ForwardingMux2));
+	mux_4to1 forwarding_mux2 (.out(ALUMuxIn[0]), .control(forwardB), .in(ForwardingMux2));
 
 	// Calling ALU unit for arithmetic operations
 	alu a (.A(ALU_input_a), .B(ALUMuxOut), .cntrl(IDEX_ALUOp), .result(ALUOut), .negative(negativeFlagTemp), .zero(zeroFlagTemp), .overflow(overflowFlagTemp), .carry_out(carryOutFlagTemp));
@@ -139,8 +147,8 @@ module cpu_pipelined (clk, reset);
 	// Pipeline registers breaking up CPU into 5 stages. 
 	IF_ID_reg reg1 (.pc_out(IFID_pc_out), .pc_plus4_out(IFID_pc_plus4_out), .instr_out(IFID_instr_out), .pc_in(address), .pc_plus4_in(WhichBranch[0]), .instr_in(instruction), .reset, .clk, .enable(1'b1));
 	ID_EX_reg reg2 (.pc_out(IDEX_pc_out), .rn_out(IDEX_rn_out), .rm_out(IDEX_rm_out), .rd_out(IDEX_rd_out), .se_imm12_out(IDEX_se_imm12_out), .se_imm9_out(IDEX_se_imm9_out), .se_branch_out(IDEX_se_branch_out), .read_data1_out(IDEX_read_data1_out), .read_data2_out(IDEX_read_data2_out), .ALUSrc_out(IDEX_ALUSrc), .ALUOp_out(IDEX_ALUOp), .MemWrite_out(IDEX_MemWrite), .MemToReg_out(IDEX_MemToReg), .RegWrite_out(IDEX_RegWrite), .SetFlags_out(IDEX_SetFlags), .pc_in(IFID_pc_out), .rn_in(Rn), .rm_in(Rm), .rd_in(Rd), .se_imm12_in(ZEImm12), .se_imm9_in(SEImm9), .se_branch_in(uncondBrOut), .read_data1_in(ReadData1), .read_data2_in(ReadData2), .ALUSrc_in(ALUSrc), .ALUOp_in(ALUOp), .MemWrite_in(MemWrite), .MemToReg_in(MemToReg), .RegWrite_in(RegWrite), .SetFlags_in(SetFlag), .reset, .clk, .enable(1'b1));
-	EX_MEM_reg reg3 (.branch_out(EXMEM_branch_out), .data2_out(EXMEM_data2_out), .alu_out(EXMEM_alu_out), .MemWrite_out(EXMEM_MemWrite), .MemToReg_out(EXMEM_MemToReg), .RegWrite_out(EXMEM_RegWrite), .branch_in(shiftedAddedBranchAddr), .data2_in(ALUMuxIn[0]), .alu_in(ALUOut), .MemWrite_in(IDEX_MemWrite), .MemToReg_in(IDEX_MemToReg), .RegWrite_in(IDEX_RegWrite), .reset, .clk, .enable(1'b1));
-	MEM_WR_reg reg4 (.alu_out(MEMWR_alu_out), .data_mem_out(MEMWR_data_mem_out), .rd_out(MEMWR_rd_out), .MemToReg_out(MEMWR_MemToReg), .RegWrite_out(MEMWR_RegWrite), .alu_in(EXMEM_alu_out), .data_mem_in(DataMemOut), .rd_in(IDEX_rd_out), .MemToReg_in(EXMEM_MemToReg), .RegWrite_in(EXMEM_RegWrite), .reset, .clk, .enable(1'b1));
+	EX_MEM_reg reg3 (.branch_out(EXMEM_branch_out), .data2_out(EXMEM_data2_out), .alu_out(EXMEM_alu_out), .ExMem_RegisterRd(EXMEM_rd_out) , .MemWrite_out(EXMEM_MemWrite), .MemToReg_out(EXMEM_MemToReg), .RegWrite_out(EXMEM_RegWrite), .branch_in(shiftedAddedBranchAddr), .data2_in(ALUMuxIn[0]), .rd_in(IDEX_rd_out) , .alu_in(ALUOut), .MemWrite_in(IDEX_MemWrite), .MemToReg_in(IDEX_MemToReg), .RegWrite_in(IDEX_RegWrite), .reset, .clk, .enable(1'b1));
+	MEM_WR_reg reg4 (.alu_out(MEMWR_alu_out), .data_mem_out(MEMWR_data_mem_out), .MemWr_RegisterRd(MEMWR_rd_out), .MemToReg_out(MEMWR_MemToReg), .RegWrite_out(MEMWR_RegWrite), .alu_in(EXMEM_alu_out), .data_mem_in(DataMemOut), .ExMem_RegisterRd(EXMEM_rd_out), .MemToReg_in(EXMEM_MemToReg), .RegWrite_in(EXMEM_RegWrite), .reset, .clk, .enable(1'b1));
 
 endmodule
 
