@@ -50,17 +50,21 @@ module ID_EX_reg (pc_out, rn_out, rm_out, rd_out, se_imm12_out, se_imm9_out, se_
 	DFF1_enable SetFlags_reg (.q(SetFlags_out), .d(SetFlags_in), .reset, .clk, .enable);
 endmodule
 
-module EX_MEM_reg (branch_out, data2_out, alu_out, MemWrite_out, MemToReg_out, RegWrite_out, branch_in, data2_in, alu_in, MemWrite_in, MemToReg_in, RegWrite_in, reset, clk, enable);
+module EX_MEM_reg (branch_out, data2_out, alu_out, ExMem_RegisterRd, MemWrite_out, MemToReg_out, RegWrite_out, branch_in, data2_in, rd_in, alu_in, MemWrite_in, MemToReg_in, RegWrite_in, reset, clk, enable);
 	
 	// Datapath logic
 
 	output logic [63:0] branch_out, data2_out, alu_out;
+	output logic [4:0] ExMem_RegisterRd;
 	input logic [63:0] branch_in, data2_in, alu_in;
+	input logic [4:0] rd_in;
 	input logic clk, reset, enable;
+
 
 	DFF64 dff1 (.q(branch_out),  .d(branch_in),  .reset, .clk, .enable);
 	DFF64 dff2 (.q(data2_out), .d(data2_in), .reset, .clk, .enable);
 	DFF64 dff3 (.q(alu_out), .d(alu_in), .reset, .clk, .enable);
+	DFF5  dff4 (.q(ExMem_RegisterRd), .d(rd_in), .reset, .clk, .enable);
 
 	// Control Logic
 
@@ -72,19 +76,19 @@ module EX_MEM_reg (branch_out, data2_out, alu_out, MemWrite_out, MemToReg_out, R
 	DFF1_enable RegWrite_reg (.q(RegWrite_out), .d(RegWrite_in), .reset, .clk, .enable);
 endmodule
 
-module MEM_WR_reg (alu_out, data_mem_out, rd_out, MemToReg_out, RegWrite_out, alu_in, data_mem_in, rd_in, MemToReg_in, RegWrite_in, reset, clk, enable);
+module MEM_WR_reg (alu_out, data_mem_out, MemWr_RegisterRd, MemToReg_out, RegWrite_out, alu_in, data_mem_in, ExMem_RegisterRd, MemToReg_in, RegWrite_in, reset, clk, enable);
 	
 	// Datapath Logic
 
 	output logic [63:0] alu_out, data_mem_out;
-	output logic [4:0] rd_out;
+	output logic [4:0] MemWr_RegisterRd;
 	input logic [63:0] alu_in, data_mem_in;
-	input logic [4:0] rd_in;
+	input logic [4:0] ExMem_RegisterRd;
 	input logic clk, reset, enable;
 	
 	DFF64 dff1 (.q(alu_out),  .d(alu_in),  .reset, .clk, .enable);
 	DFF64 dff2 (.q(data_mem_out), .d(data_mem_in), .reset, .clk, .enable);
-	DFF5  dff3 (.q(rd_out), .d(rd_in), .reset, .clk, .enable);
+	DFF5  dff3 (.q(MemWr_RegisterRd), .d(ExMem_RegisterRd), .reset, .clk, .enable);
 
 	// Control Logic
 
