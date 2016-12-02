@@ -76,19 +76,19 @@ module EX_MEM_reg (branch_out, data2_out, alu_out, ExMem_RegisterRd, MemWrite_ou
 	DFF1_enable RegWrite_reg (.q(RegWrite_out), .d(RegWrite_in), .reset, .clk, .enable);
 endmodule
 
-module MEM_WR_reg (alu_out, data_mem_out, MemWr_RegisterRd, MemToReg_out, RegWrite_out, alu_in, data_mem_in, ExMem_RegisterRd, MemToReg_in, RegWrite_in, reset, clk, enable);
+module MEM_WR_reg (alu_out, data_mem_out, MEMWR_RegisterRd, MemToReg_out, RegWrite_out, alu_in, data_mem_in, EXMEM_RegisterRd, MemToReg_in, RegWrite_in, reset, clk, enable);
 	
 	// Datapath Logic
 
 	output logic [63:0] alu_out, data_mem_out;
-	output logic [4:0] MemWr_RegisterRd;
+	output logic [4:0] MEMWR_RegisterRd;
 	input logic [63:0] alu_in, data_mem_in;
-	input logic [4:0] ExMem_RegisterRd;
+	input logic [4:0] EXMEM_RegisterRd;
 	input logic clk, reset, enable;
 	
 	DFF64 dff1 (.q(alu_out),  .d(alu_in),  .reset, .clk, .enable);
 	DFF64 dff2 (.q(data_mem_out), .d(data_mem_in), .reset, .clk, .enable);
-	DFF5  dff3 (.q(MemWr_RegisterRd), .d(ExMem_RegisterRd), .reset, .clk, .enable);
+	DFF5  dff3 (.q(MEMWR_RegisterRd), .d(EXMEM_RegisterRd), .reset, .clk, .enable);
 
 	// Control Logic
 

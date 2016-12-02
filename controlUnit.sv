@@ -18,10 +18,10 @@ module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite,
 	output logic [2:0] ALUOp;
 	
 	parameter [31:21] LDUR = 11'b11111000010, STUR = 11'b11111000000,
-							B = 11'b000101xxxxx, CBZ = 11'b10110100xxx,
-							ADDI = 11'b1001000100x, ADDS = 11'b10101011000,
-							BL = 11'b100101xxxxx, BR = 11'b11010110000,
-							SUBS = 11'b11101011000, BCOND = 11'b01010100xxx;
+							B = 11'b000101?????, CBZ = 11'b10110100???,
+							ADDI = 11'b1001000100?, ADDS = 11'b10101011000,
+							BL = 11'b100101?????, BR = 11'b11010110000,
+							SUBS = 11'b11101011000, BCOND = 11'b01010100???;
 							
 	
 	logic [14:0] controlSignals;
@@ -30,13 +30,13 @@ module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite,
 	assign BLTLogic = negativeFlag ^ overflowFlag;
 	
 	// controlSignals contains the following signals:
-	// (13)Reg2Loc, (12)MemToReg, (11)RegWrite, (10)MemWrite, 
-	// (9)UncondBr, (8)X30Write, (7)BLCtrl, (6)ALUSrc[1], 
-	// (5)ALUSrc[0], (4)BrTaken[1], (3)BrTaken[0], (2)ALUOp[2], 
-	// (1)ALUOp[1], (0)ALUOp[0]
+	// (14)SetFlag, (13)Reg2Loc, (12)MemToReg, (11)RegWrite, 
+	// (10)MemWrite, (9)UncondBr, (8)X30Write, (7)BLCtrl, 
+	// (6)ALUSrc[1], (5)ALUSrc[0], (4)BrTaken[1], (3)BrTaken[0], 
+	// (2)ALUOp[2], (1)ALUOp[1], (0)ALUOp[0]
 	
 	always_comb begin
-		casex (opCode)
+		casez (opCode)
 				
 				LDUR : controlSignals = 15'b0x110x000100010;
 				
@@ -64,7 +64,7 @@ module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite,
 							controlSignals[3] = BLTLogic;
 						end
 				
-				default : controlSignals = 15'b0xxxxxxxxxxxxxx;
+				default : controlSignals = 15'b0xx00xxxxxxxxxx;
 				
 		endcase
 	end

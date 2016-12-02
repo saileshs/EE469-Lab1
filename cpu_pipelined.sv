@@ -5,6 +5,7 @@ module cpu_pipelined (clk, reset);
 	input logic clk, reset;
 	logic [4:0] chooseWriteReg [1:0]; // for X30Write mux (for BR instruction)
 	logic [4:0] ReadRegister, X30MuxOut;
+	logic PCWrite, IFIDWrite, enableMainControl; // Control signals: outputs from Hazard Detection Unit
 
 	// Control Logic
 	logic Reg2Loc, RegWrite, MemWrite, MemToReg, UncondBr, X30Write, BLCtrl, SetFlag;
@@ -114,7 +115,7 @@ module cpu_pipelined (clk, reset);
 	mux_4to1 alu_mux (.out(ALUMuxOut), .control(IDEX_ALUSrc), .in(ALUMuxIn));
 	
 	// Program counter calculates address of next instruction.
-	PC program_counter (.out(address), .in(PCInput), .reset, .clk);
+	PC program_counter (.out(address), .in(PCInput), .reset, .clk, .enable(PCWrite));
 	
 	instructmem instruction_memory (.address, .instruction, .clk);
 	assign opCode = IFID_instr_out[31:21];
@@ -143,11 +144,25 @@ module cpu_pipelined (clk, reset);
 	assign WhichBranch[3] = 64'bX;
 
 	mux_4to1 brtaken_mux (.out(PCInput), .control(BrTaken), .in(WhichBranch));
+	
+	// Hazard Detection Unit (HDU in short)
+	
+	HAZARD_DETECTION_UNIT hazardDetect (.PCWrite, .IFIDWrite, .muxControl(enableMainControl), .IDEX_MemRead(IDEX_MemToReg), .IDEX_Register_Rd(IDEX_rd_out), .IFID_Register_Rn(Rn), .IFID_Register_Rm(Rm));
 
+	// Controls are controlled by the Hazard Detection Unit
+	
+	// We need a MUX here which will control the main control singals and "0" to be passed to the ID/EX pipeline register.
+	// Since our control signals are all split into different sizes of bits and stuff, we have to do something to handle it.
+	// If we had one multibit controls bus going to the later stages then this problem would have been easy.
+	// One idea is that we have like as many muxes as there are control signals and we pass the original control signal as input a and 0 as input b.
+	
+	
+	
+	
 	// Pipeline registers breaking up CPU into 5 stages. 
-	IF_ID_reg reg1 (.pc_out(IFID_pc_out), .pc_plus4_out(IFID_pc_plus4_out), .instr_out(IFID_instr_out), .pc_in(address), .pc_plus4_in(WhichBranch[0]), .instr_in(instruction), .reset, .clk, .enable(1'b1));
+	IF_ID_reg reg1 (.pc_out(IFID_pc_out), .pc_plus4_out(IFID_pc_plus4_out), .instr_out(IFID_instr_out), .pc_in(address), .pc_plus4_in(WhichBranch[0]), .instr_in(instruction), .reset, .clk, .enable(IFIDWrite));
 	ID_EX_reg reg2 (.pc_out(IDEX_pc_out), .rn_out(IDEX_rn_out), .rm_out(IDEX_rm_out), .rd_out(IDEX_rd_out), .se_imm12_out(IDEX_se_imm12_out), .se_imm9_out(IDEX_se_imm9_out), .se_branch_out(IDEX_se_branch_out), .read_data1_out(IDEX_read_data1_out), .read_data2_out(IDEX_read_data2_out), .ALUSrc_out(IDEX_ALUSrc), .ALUOp_out(IDEX_ALUOp), .MemWrite_out(IDEX_MemWrite), .MemToReg_out(IDEX_MemToReg), .RegWrite_out(IDEX_RegWrite), .SetFlags_out(IDEX_SetFlags), .pc_in(IFID_pc_out), .rn_in(Rn), .rm_in(Rm), .rd_in(Rd), .se_imm12_in(ZEImm12), .se_imm9_in(SEImm9), .se_branch_in(uncondBrOut), .read_data1_in(ReadData1), .read_data2_in(ReadData2), .ALUSrc_in(ALUSrc), .ALUOp_in(ALUOp), .MemWrite_in(MemWrite), .MemToReg_in(MemToReg), .RegWrite_in(RegWrite), .SetFlags_in(SetFlag), .reset, .clk, .enable(1'b1));
-	EX_MEM_reg reg3 (.branch_out(EXMEM_branch_out), .data2_out(EXMEM_data2_out), .alu_out(EXMEM_alu_out), .EXMEM_RegisterRd(EXMEM_rd_out) , .MemWrite_out(EXMEM_MemWrite), .MemToReg_out(EXMEM_MemToReg), .RegWrite_out(EXMEM_RegWrite), .branch_in(shiftedAddedBranchAddr), .data2_in(ALUMuxIn[0]), .rd_in(IDEX_rd_out) , .alu_in(ALUOut), .MemWrite_in(IDEX_MemWrite), .MemToReg_in(IDEX_MemToReg), .RegWrite_in(IDEX_RegWrite), .reset, .clk, .enable(1'b1));
+	EX_MEM_reg reg3 (.branch_out(EXMEM_branch_out), .data2_out(EXMEM_data2_out), .alu_out(EXMEM_alu_out), .ExMem_RegisterRd(EXMEM_rd_out) , .MemWrite_out(EXMEM_MemWrite), .MemToReg_out(EXMEM_MemToReg), .RegWrite_out(EXMEM_RegWrite), .branch_in(shiftedAddedBranchAddr), .data2_in(ALUMuxIn[0]), .rd_in(IDEX_rd_out) , .alu_in(ALUOut), .MemWrite_in(IDEX_MemWrite), .MemToReg_in(IDEX_MemToReg), .RegWrite_in(IDEX_RegWrite), .reset, .clk, .enable(1'b1));
 	MEM_WR_reg reg4 (.alu_out(MEMWR_alu_out), .data_mem_out(MEMWR_data_mem_out), .MEMWR_RegisterRd(MEMWR_rd_out), .MemToReg_out(MEMWR_MemToReg), .RegWrite_out(MEMWR_RegWrite), .alu_in(EXMEM_alu_out), .data_mem_in(DataMemOut), .EXMEM_RegisterRd(EXMEM_rd_out), .MemToReg_in(EXMEM_MemToReg), .RegWrite_in(EXMEM_RegWrite), .reset, .clk, .enable(1'b1));
 
 endmodule
