@@ -22,7 +22,7 @@ module DFF1_enable (q, d, reset, clk, enable);
 	D_FF dff0 (.q, .d(mux_out), .reset, .clk);
 endmodule
 
-module DFF2 (q, d, reset, clk, enable);
+module DFF_2 (q, d, reset, clk, enable);
 	output logic [1:0] q;
 	input logic [1:0] d;
 	input logic reset, clk, enable;
@@ -36,7 +36,7 @@ module DFF3 (q, d, reset, clk, enable);
 	input logic [2:0] d;
 	input logic reset, clk, enable;
 
-	DFF2 dff1 (.q(q[1:0]), .d(d[1:0]), .reset, .clk, .enable);
+	DFF_2 dff1 (.q(q[1:0]), .d(d[1:0]), .reset, .clk, .enable);
 	DFF1_enable dff2 (.q(q[2]), .d(d[2]), .reset, .clk, .enable);
 endmodule
 	
@@ -46,8 +46,8 @@ module DFF4(q, d, reset, clk, enable);
 	input logic [3:0] d;
 	input logic reset, clk, enable;
 	
-	DFF2 dff1 (.q(q[1:0]), .d(d[1:0]), .reset, .clk, .enable);
-	DFF2 dff2 (.q(q[3:2]), .d(d[3:2]), .reset, .clk, .enable);
+	DFF_2 dff1 (.q(q[1:0]), .d(d[1:0]), .reset, .clk, .enable);
+	DFF_2 dff2 (.q(q[3:2]), .d(d[3:2]), .reset, .clk, .enable);
 endmodule
 
 module DFF5(q, d, reset, clk, enable);

@@ -64,7 +64,7 @@ module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite,
 							controlSignals[3] = BLTLogic;
 						end
 				
-				default : controlSignals = 15'b0xxxxxxxxxxxxxx;
+				default : controlSignals = 15'b0xx00xxxxx00xxx;
 				
 		endcase
 	end

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE1_SoC
-Thu Dec 01 19:22:35 2016
+Sun Dec 04 19:37:23 2016
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ agreement for further details.
 +--------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                             ;
 +-----------------------------+--------------------------------------------+
-; Analysis & Synthesis Status ; Failed - Thu Dec 01 19:22:35 2016          ;
+; Analysis & Synthesis Status ; Failed - Sun Dec 04 19:37:23 2016          ;
 ; Quartus II 64-Bit Version   ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name               ; DE1_SoC                                    ;
 ; Top-level Entity Name       ; cpu_pipelined                              ;
@@ -147,7 +147,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 ; Processors                 ; Number ;
 +----------------------------+--------+
-; Number detected on machine ; 8      ;
+; Number detected on machine ; 4      ;
 ; Maximum allowed            ; 1      ;
 +----------------------------+--------+
 
@@ -158,7 +158,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Thu Dec 01 19:22:27 2016
+    Info: Processing started: Sun Dec 04 19:37:11 2016
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC
 Info (12021): Found 2 design units, including 2 entities, in source file cpu_pipelined.sv
     Info (12023): Found entity 1: cpu_pipelined
@@ -168,11 +168,10 @@ Info (12021): Found 4 design units, including 4 entities, in source file pipelin
     Info (12023): Found entity 2: ID_EX_reg
     Info (12023): Found entity 3: EX_MEM_reg
     Info (12023): Found entity 4: MEM_WR_reg
-Warning (12090): Entity "DFF2" obtained from "dff.sv" instead of from Quartus II megafunction library
 Info (12021): Found 9 design units, including 9 entities, in source file dff.sv
     Info (12023): Found entity 1: D_FF
     Info (12023): Found entity 2: DFF1_enable
-    Info (12023): Found entity 3: DFF2
+    Info (12023): Found entity 3: DFF_2
     Info (12023): Found entity 4: DFF3
     Info (12023): Found entity 5: DFF4
     Info (12023): Found entity 6: DFF5
@@ -234,9 +233,6 @@ Info (12021): Found 2 design units, including 2 entities, in source file shifter
     Info (12023): Found entity 2: shift_testbench
 Info (12021): Found 1 design units, including 1 entities, in source file forwardingunit.sv
     Info (12023): Found entity 1: FORWARDING_UNIT
-Warning (10236): Verilog HDL Implicit Net warning at cpu_pipelined.sv(71): created implicit net for "rn_out"
-Warning (10236): Verilog HDL Implicit Net warning at cpu_pipelined.sv(71): created implicit net for "rm_out"
-Critical Warning (10846): Verilog HDL Instantiation warning at cpu_pipelined.sv(71): instance has no name
 Info (12127): Elaborating entity "cpu_pipelined" for the top level hierarchy
 Info (12128): Elaborating entity "mux_2to1_5bit" for hierarchy "mux_2to1_5bit:reg_mux"
 Info (12128): Elaborating entity "mux_2to1" for hierarchy "mux_2to1:BL_mux"
@@ -248,30 +244,45 @@ Info (12128): Elaborating entity "DFF64" for hierarchy "regfile:rf|DFF64:eachReg
 Info (12128): Elaborating entity "DFF32" for hierarchy "regfile:rf|DFF64:eachRegister[0].register|DFF32:dff1"
 Info (12128): Elaborating entity "DFF16" for hierarchy "regfile:rf|DFF64:eachRegister[0].register|DFF32:dff1|DFF16:dff1"
 Info (12128): Elaborating entity "DFF4" for hierarchy "regfile:rf|DFF64:eachRegister[0].register|DFF32:dff1|DFF16:dff1|DFF4:dff1"
-Info (12128): Elaborating entity "DFF2" for hierarchy "regfile:rf|DFF64:eachRegister[0].register|DFF32:dff1|DFF16:dff1|DFF4:dff1|DFF2:dff1"
-Info (12128): Elaborating entity "DFF1_enable" for hierarchy "regfile:rf|DFF64:eachRegister[0].register|DFF32:dff1|DFF16:dff1|DFF4:dff1|DFF2:dff1|DFF1_enable:dff1"
-Info (12128): Elaborating entity "mux_2to1_1bit" for hierarchy "regfile:rf|DFF64:eachRegister[0].register|DFF32:dff1|DFF16:dff1|DFF4:dff1|DFF2:dff1|DFF1_enable:dff1|mux_2to1_1bit:m"
-Info (12128): Elaborating entity "D_FF" for hierarchy "regfile:rf|DFF64:eachRegister[0].register|DFF32:dff1|DFF16:dff1|DFF4:dff1|DFF2:dff1|DFF1_enable:dff1|D_FF:dff0"
+Info (12128): Elaborating entity "DFF_2" for hierarchy "regfile:rf|DFF64:eachRegister[0].register|DFF32:dff1|DFF16:dff1|DFF4:dff1|DFF_2:dff1"
+Info (12128): Elaborating entity "DFF1_enable" for hierarchy "regfile:rf|DFF64:eachRegister[0].register|DFF32:dff1|DFF16:dff1|DFF4:dff1|DFF_2:dff1|DFF1_enable:dff1"
+Info (12128): Elaborating entity "mux_2to1_1bit" for hierarchy "regfile:rf|DFF64:eachRegister[0].register|DFF32:dff1|DFF16:dff1|DFF4:dff1|DFF_2:dff1|DFF1_enable:dff1|mux_2to1_1bit:m"
+Info (12128): Elaborating entity "D_FF" for hierarchy "regfile:rf|DFF64:eachRegister[0].register|DFF32:dff1|DFF16:dff1|DFF4:dff1|DFF_2:dff1|DFF1_enable:dff1|D_FF:dff0"
 Info (12128): Elaborating entity "mux_32to1" for hierarchy "regfile:rf|mux_32to1:readRegister1"
 Info (12128): Elaborating entity "mux_16to1" for hierarchy "regfile:rf|mux_32to1:readRegister1|mux_16to1:mux0"
 Info (12128): Elaborating entity "mux_4to1" for hierarchy "regfile:rf|mux_32to1:readRegister1|mux_16to1:mux0|mux_4to1:mux0"
-Info (12128): Elaborating entity "FORWARDING_UNIT" for hierarchy "FORWARDING_UNIT:comb_152"
-Warning (10240): Verilog HDL Always Construct warning at forwardingUnit.sv(10): inferring latch(es) for variable "forward_B", which holds its previous value in one or more paths through the always construct
-Error (10166): SystemVerilog RTL Coding error at forwardingUnit.sv(10): always_comb construct does not infer purely combinational logic. File: C:/Users/MandeepPlaha/Downloads/EE469-Lab1/forwardingUnit.sv Line: 10
-Info (10041): Inferred latch for "forward_B[0]" at forwardingUnit.sv(23)
-Info (10041): Inferred latch for "forward_B[1]" at forwardingUnit.sv(23)
-Error (12152): Can't elaborate user hierarchy "FORWARDING_UNIT:comb_152" File: C:/Users/MandeepPlaha/Downloads/EE469-Lab1/cpu_pipelined.sv Line: 71
-Info (144001): Generated suppressed messages file C:/Users/MandeepPlaha/Downloads/EE469-Lab1/output_files/DE1_SoC.map.smsg
-Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 2 errors, 5 warnings
-    Error: Peak virtual memory: 628 megabytes
-    Error: Processing ended: Thu Dec 01 19:22:36 2016
-    Error: Elapsed time: 00:00:09
-    Error: Total CPU time (on all processors): 00:00:09
+Info (12128): Elaborating entity "FORWARDING_UNIT" for hierarchy "FORWARDING_UNIT:forward"
+Info (12128): Elaborating entity "alu" for hierarchy "alu:a"
+Info (12128): Elaborating entity "addSub64" for hierarchy "alu:a|addSub64:addsub"
+Info (12128): Elaborating entity "not64" for hierarchy "alu:a|addSub64:addsub|not64:invert"
+Info (12128): Elaborating entity "addSub" for hierarchy "alu:a|addSub64:addsub|addSub:add0"
+Info (12128): Elaborating entity "and64" for hierarchy "alu:a|and64:ander"
+Info (12128): Elaborating entity "or64" for hierarchy "alu:a|or64:orer"
+Info (12128): Elaborating entity "xor64" for hierarchy "alu:a|xor64:xorer"
+Info (12128): Elaborating entity "mux_8to1" for hierarchy "alu:a|mux_8to1:m"
+Info (12128): Elaborating entity "nor64" for hierarchy "alu:a|nor64:nor0"
+Info (12128): Elaborating entity "or_multi" for hierarchy "alu:a|nor64:nor0|or_multi:or0"
+Info (12128): Elaborating entity "or_multi" for hierarchy "alu:a|nor64:nor0|or_multi:or1"
+Info (12128): Elaborating entity "or_multi" for hierarchy "alu:a|nor64:nor0|or_multi:or2"
+Info (12128): Elaborating entity "datamem" for hierarchy "datamem:memory"
+Warning (10175): Verilog HDL warning at datamem.sv(23): ignoring unsupported system task
+Info (10264): Verilog HDL Case Statement information at datamem.sv(43): all case item expressions in this case statement are onehot
+Error (10232): Verilog HDL error at datamem.sv(58): index 71 cannot fall outside the declared range [63:0] for vector "read_data" File: D:/EE 469/Processor Lab/datamem.sv Line: 58
+Error (10232): Verilog HDL error at datamem.sv(58): index 64 cannot fall outside the declared range [63:0] for vector "read_data" File: D:/EE 469/Processor Lab/datamem.sv Line: 58
+Warning (10240): Verilog HDL Always Construct warning at datamem.sv(55): inferring latch(es) for variable "i", which holds its previous value in one or more paths through the always construct
+Error (10166): SystemVerilog RTL Coding error at datamem.sv(55): always_comb construct does not infer purely combinational logic. File: D:/EE 469/Processor Lab/datamem.sv Line: 55
+Error (12152): Can't elaborate user hierarchy "datamem:memory" File: D:/EE 469/Processor Lab/cpu_pipelined.sv Line: 98
+Info (144001): Generated suppressed messages file D:/EE 469/Processor Lab/output_files/DE1_SoC.map.smsg
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 4 errors, 2 warnings
+    Error: Peak virtual memory: 656 megabytes
+    Error: Processing ended: Sun Dec 04 19:37:24 2016
+    Error: Elapsed time: 00:00:13
+    Error: Total CPU time (on all processors): 00:00:11
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in C:/Users/MandeepPlaha/Downloads/EE469-Lab1/output_files/DE1_SoC.map.smsg.
+The suppressed messages can be found in D:/EE 469/Processor Lab/output_files/DE1_SoC.map.smsg.
 
 

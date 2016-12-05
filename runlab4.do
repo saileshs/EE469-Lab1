@@ -23,6 +23,7 @@ vlog "./controlUnit.sv"
 vlog "./pipelineReg.sv"
 vlog "./dff.sv"
 vlog "./cpu_pipelined.sv"
+vlog "./forwardingUnit.sv"
 
 # Call vsim to invoke simulator
 #     Make sure the last item on the line is the name of the
