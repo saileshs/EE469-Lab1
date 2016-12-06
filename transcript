@@ -199,36 +199,104 @@ do runlab4.do
 # 
 #           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
 # 
-#           Attempting to use alternate WLF file "./wlftjbrfc0".
+#           Attempting to use alternate WLF file "./wlfta9dk8h".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
 # 
-#           Using alternate file: ./wlftjbrfc0
+#           Using alternate file: ./wlfta9dk8h
 # 
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
 # .main_pane.objects.interior.cs.body.tree
-# Running benchmark: ./benchmarks/test01_AddiB.arm
+# Running benchmark: ./benchmarks/test04_LdurStur.arm
 # Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
 # Simulation Breakpoint: Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
 # MACRO ./runlab4.do PAUSED at line 44
-add wave -position 22  sim:/cpu_pipelined_testbench/dut/a/negative
-add wave -position 23  sim:/cpu_pipelined_testbench/dut/a/zero
-add wave -position 24  sim:/cpu_pipelined_testbench/dut/a/overflow
-add wave -position 25  sim:/cpu_pipelined_testbench/dut/a/carry_out
-add wave -position 26  sim:/cpu_pipelined_testbench/dut/a/result
-add wave -position 27  sim:/cpu_pipelined_testbench/dut/a/A
-add wave -position 28  sim:/cpu_pipelined_testbench/dut/a/B
-add wave -position 29  sim:/cpu_pipelined_testbench/dut/a/cntrl
-add wave -position 30  sim:/cpu_pipelined_testbench/dut/a/addsub_out
-add wave -position 31  sim:/cpu_pipelined_testbench/dut/a/and_out
-add wave -position 32  sim:/cpu_pipelined_testbench/dut/a/or_out
-add wave -position 33  sim:/cpu_pipelined_testbench/dut/a/xor_out
-add wave -position 34  sim:/cpu_pipelined_testbench/dut/a/less_than_out
-add wave -position 35  sim:/cpu_pipelined_testbench/dut/a/alu_input
-add wave -position 16  sim:/cpu_pipelined_testbench/dut/forwarding_mux1/in
-add wave -position 17  sim:/cpu_pipelined_testbench/dut/forwarding_mux2/in
+# WARNING: No extended dataflow license exists
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
 write format wave -window .main_pane.wave.interior.cs.body.pw.wf {D:/EE 469/Processor Lab/cpu_pipeline_wave.do}
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf {D:/EE 469/Processor Lab/cpu_pipeline_wave.do}
 do runlab4.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # 
@@ -381,6 +449,17 @@ do runlab4.do
 # Top level modules:
 # 	FORWARDING_UNIT
 # vsim -lib work -voptargs=\"+acc\" -t 1ps cpu_pipelined_testbench 
+# **** Error: RestartPrepQ cmd: Wave::RestartPrep .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        invalid command name ".main_pane.dataflow.interior.cs.body.pw.wf.top.tree"
+# invalid command name ".main_pane.dataflow.interior.cs.body.pw.wf.top.tree"
+#     while executing
+# "$treeObj restartprepare $namespace"
+#     (procedure "Wave::RestartPrep" line 2)
+#     invoked from within
+# "Wave::RestartPrep .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
 # Loading sv_std.std
 # Loading work.cpu_pipelined_testbench
 # Loading work.cpu_pipelined
@@ -425,22 +504,297 @@ do runlab4.do
 # Loading work.DFF3
 # Loading work.EX_MEM_reg
 # Loading work.MEM_WR_reg
+# **** Error: RestartQ cmd: winRestart .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        Window .main_pane.dataflow.interior.cs.body.pw.wf.top.tree does not exist
+# Window .main_pane.dataflow.interior.cs.body.pw.wf.top.tree does not exist
+#     while executing
+# "winRestart .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: ConfigureQ cmd: Wave::ConfigQ .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:trees)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:trees)": no such element in array
+#     while executing
+# "foreach tree $vsimPriv($winname:trees) {
+# 	    eval $tree $args
+# 	}"
+#     (procedure "notify_trees" line 3)
+#     invoked from within
+# "notify_trees $winname update"
+#     (procedure "Wave::ConfigQ" line 5)
+#     invoked from within
+# "Wave::ConfigQ .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: ConfigureQ cmd: Wave::ConfigQ .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:trees)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:trees)": no such element in array
+#     while executing
+# "foreach tree $vsimPriv($winname:trees) {
+# 	    eval $tree $args
+# 	}"
+#     (procedure "notify_trees" line 3)
+#     invoked from within
+# "notify_trees $winname update"
+#     (procedure "Wave::ConfigQ" line 5)
+#     invoked from within
+# "Wave::ConfigQ .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 # 
 #           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
 # 
-#           Attempting to use alternate WLF file "./wlftgb4snx".
+#           Attempting to use alternate WLF file "./wlftghyjc8".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
 # 
-#           Using alternate file: ./wlftgb4snx
+#           Using alternate file: ./wlftghyjc8
 # 
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
 # .main_pane.objects.interior.cs.body.tree
-# Running benchmark: ./benchmarks/test01_AddiB.arm
+# Running benchmark: ./benchmarks/test05_Blt.arm
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
 # Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
+# **** Error: RunQ cmd: Wave::WinUpdate .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        invalid command name ".main_pane.dataflow.interior.cs.body.pw.wf.top.tree"
+# invalid command name ".main_pane.dataflow.interior.cs.body.pw.wf.top.tree"
+#     while executing
+# "$treeObj seetime -percent 95 $Now"
+#     (procedure "Wave::WinUpdate" line 6)
+#     invoked from within
+# "Wave::WinUpdate .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
 # Simulation Breakpoint: Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
 # MACRO ./runlab4.do PAUSED at line 44
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
 do runlab4.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # 
@@ -593,6 +947,17 @@ do runlab4.do
 # Top level modules:
 # 	FORWARDING_UNIT
 # vsim -lib work -voptargs=\"+acc\" -t 1ps cpu_pipelined_testbench 
+# **** Error: RestartPrepQ cmd: Wave::RestartPrep .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        invalid command name ".main_pane.dataflow.interior.cs.body.pw.wf.top.tree"
+# invalid command name ".main_pane.dataflow.interior.cs.body.pw.wf.top.tree"
+#     while executing
+# "$treeObj restartprepare $namespace"
+#     (procedure "Wave::RestartPrep" line 2)
+#     invoked from within
+# "Wave::RestartPrep .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
 # Loading sv_std.std
 # Loading work.cpu_pipelined_testbench
 # Loading work.cpu_pipelined
@@ -616,9 +981,6 @@ do runlab4.do
 # Loading work.mux_8to1
 # Loading work.nor64
 # Loading work.or_multi
-# Loading work.DFF1_enable
-# Loading work.mux_2to1_1bit
-# Loading work.D_FF
 # Loading work.datamem
 # Loading work.SE
 # Loading work.ZE
@@ -628,6 +990,9 @@ do runlab4.do
 # Loading work.DFF16
 # Loading work.DFF4
 # Loading work.DFF_2
+# Loading work.DFF1_enable
+# Loading work.mux_2to1_1bit
+# Loading work.D_FF
 # Loading work.instructmem
 # Loading work.controlUnit
 # Loading work.shifter
@@ -637,22 +1002,259 @@ do runlab4.do
 # Loading work.DFF3
 # Loading work.EX_MEM_reg
 # Loading work.MEM_WR_reg
+# **** Error: RestartQ cmd: winRestart .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        Window .main_pane.dataflow.interior.cs.body.pw.wf.top.tree does not exist
+# Window .main_pane.dataflow.interior.cs.body.pw.wf.top.tree does not exist
+#     while executing
+# "winRestart .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: ConfigureQ cmd: Wave::ConfigQ .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:trees)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:trees)": no such element in array
+#     while executing
+# "foreach tree $vsimPriv($winname:trees) {
+# 	    eval $tree $args
+# 	}"
+#     (procedure "notify_trees" line 3)
+#     invoked from within
+# "notify_trees $winname update"
+#     (procedure "Wave::ConfigQ" line 5)
+#     invoked from within
+# "Wave::ConfigQ .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: ConfigureQ cmd: Wave::ConfigQ .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:trees)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:trees)": no such element in array
+#     while executing
+# "foreach tree $vsimPriv($winname:trees) {
+# 	    eval $tree $args
+# 	}"
+#     (procedure "notify_trees" line 3)
+#     invoked from within
+# "notify_trees $winname update"
+#     (procedure "Wave::ConfigQ" line 5)
+#     invoked from within
+# "Wave::ConfigQ .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 # 
 #           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
 # 
-#           Attempting to use alternate WLF file "./wlftbzgzn5".
+#           Attempting to use alternate WLF file "./wlfta6qy1b".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
 # 
-#           Using alternate file: ./wlftbzgzn5
+#           Using alternate file: ./wlfta6qy1b
 # 
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
 # .main_pane.objects.interior.cs.body.tree
-# Running benchmark: ./benchmarks/test01_AddiB.arm
+# Running benchmark: ./benchmarks/test05_Blt.arm
 # Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
+# **** Error: RunQ cmd: Wave::WinUpdate .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        invalid command name ".main_pane.dataflow.interior.cs.body.pw.wf.top.tree"
+# invalid command name ".main_pane.dataflow.interior.cs.body.pw.wf.top.tree"
+#     while executing
+# "$treeObj seetime -percent 95 $Now"
+#     (procedure "Wave::WinUpdate" line 6)
+#     invoked from within
+# "Wave::WinUpdate .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
 # Simulation Breakpoint: Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
 # MACRO ./runlab4.do PAUSED at line 44
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+do runlab4.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module regfile
+# 
+# Top level modules:
+# 	regfile
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module regstim
+# 
+# Top level modules:
+# 	regstim
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module decoder_5to32
+# -- Compiling module decoder_2to4
+# -- Compiling module decoder_3to8
+# -- Compiling module decoder_testbench
+# 
+# Top level modules:
+# 	decoder_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux_2to1_1bit
+# -- Compiling module mux_2to1
+# -- Compiling module mux_2to1_5bit
+# -- Compiling module mux_4to1
+# -- Compiling module mux_8to1
+# -- Compiling module mux_16to1
+# -- Compiling module mux_32to1
+# -- Compiling module mux_testbench
+# 
+# Top level modules:
+# 	mux_2to1_1bit
+# 	mux_2to1_5bit
+# 	mux_32to1
+# 	mux_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module alustim
+# 
+# Top level modules:
+# 	alustim
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module addSub64
+# -- Compiling module addSub
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module and64
+# -- Compiling module or64
+# -- Compiling module xor64
+# -- Compiling module not64
+# -- Compiling module nor64
+# -- Compiling module or_multi
+# -- Compiling module nor_testbench
+# 
+# Top level modules:
+# 	and64
+# 	or64
+# 	xor64
+# 	not64
+# 	nor_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	alu
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module ZE
+# 
+# Top level modules:
+# 	ZE
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module SE
+# -- Compiling module SE_testbench
+# 
+# Top level modules:
+# 	SE_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module shifter
+# -- Compiling module shift_testbench
+# 
+# Top level modules:
+# 	shift_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PC
+# 
+# Top level modules:
+# 	PC
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module instructmem
+# -- Compiling module instructmem_testbench
+# 
+# Top level modules:
+# 	instructmem_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module datamem
+# -- Compiling module datamem_testbench
+# 
+# Top level modules:
+# 	datamem_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module cpu
+# -- Compiling module cpu_testbench
+# 
+# Top level modules:
+# 	cpu_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module controlUnit
+# -- Compiling module controlUnit_testbench
+# 
+# Top level modules:
+# 	controlUnit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module IF_ID_reg
+# -- Compiling module ID_EX_reg
+# ** Error: ./pipelineReg.sv(48): (vlog-2730) Undefined variable: 'SetFlags_out'.
+# 
+# ** Error: ./pipelineReg.sv(15): Identifier must be declared with a port mode: SetFlags_out.
+# ** Error: ./pipelineReg.sv(48): (vlog-2730) Undefined variable: 'SetFlags_in'.
+# 
+# ** Error: ./pipelineReg.sv(15): Identifier must be declared with a port mode: SetFlags_in.
+# -- Compiling module EX_MEM_reg
+# -- Compiling module MEM_WR_reg
+# ** Error: C:/altera/14.0/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./runlab4.do line 23
+# C:/altera/14.0/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog "./pipelineReg.sv""
 do runlab4.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # 
@@ -805,6 +1407,17 @@ do runlab4.do
 # Top level modules:
 # 	FORWARDING_UNIT
 # vsim -lib work -voptargs=\"+acc\" -t 1ps cpu_pipelined_testbench 
+# **** Error: RestartPrepQ cmd: Wave::RestartPrep .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        invalid command name ".main_pane.dataflow.interior.cs.body.pw.wf.top.tree"
+# invalid command name ".main_pane.dataflow.interior.cs.body.pw.wf.top.tree"
+#     while executing
+# "$treeObj restartprepare $namespace"
+#     (procedure "Wave::RestartPrep" line 2)
+#     invoked from within
+# "Wave::RestartPrep .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
 # Loading sv_std.std
 # Loading work.cpu_pipelined_testbench
 # Loading work.cpu_pipelined
@@ -828,9 +1441,6 @@ do runlab4.do
 # Loading work.mux_8to1
 # Loading work.nor64
 # Loading work.or_multi
-# Loading work.DFF1_enable
-# Loading work.mux_2to1_1bit
-# Loading work.D_FF
 # Loading work.datamem
 # Loading work.SE
 # Loading work.ZE
@@ -840,6 +1450,9 @@ do runlab4.do
 # Loading work.DFF16
 # Loading work.DFF4
 # Loading work.DFF_2
+# Loading work.DFF1_enable
+# Loading work.mux_2to1_1bit
+# Loading work.D_FF
 # Loading work.instructmem
 # Loading work.controlUnit
 # Loading work.shifter
@@ -849,19 +1462,562 @@ do runlab4.do
 # Loading work.DFF3
 # Loading work.EX_MEM_reg
 # Loading work.MEM_WR_reg
+# **** Error: RestartQ cmd: winRestart .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        Window .main_pane.dataflow.interior.cs.body.pw.wf.top.tree does not exist
+# Window .main_pane.dataflow.interior.cs.body.pw.wf.top.tree does not exist
+#     while executing
+# "winRestart .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: ConfigureQ cmd: Wave::ConfigQ .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:trees)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:trees)": no such element in array
+#     while executing
+# "foreach tree $vsimPriv($winname:trees) {
+# 	    eval $tree $args
+# 	}"
+#     (procedure "notify_trees" line 3)
+#     invoked from within
+# "notify_trees $winname update"
+#     (procedure "Wave::ConfigQ" line 5)
+#     invoked from within
+# "Wave::ConfigQ .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: ConfigureQ cmd: Wave::ConfigQ .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:trees)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:trees)": no such element in array
+#     while executing
+# "foreach tree $vsimPriv($winname:trees) {
+# 	    eval $tree $args
+# 	}"
+#     (procedure "notify_trees" line 3)
+#     invoked from within
+# "notify_trees $winname update"
+#     (procedure "Wave::ConfigQ" line 5)
+#     invoked from within
+# "Wave::ConfigQ .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 # 
 #           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
 # 
-#           Attempting to use alternate WLF file "./wlftg4ty7f".
+#           Attempting to use alternate WLF file "./wlft9j5896".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
 # 
-#           Using alternate file: ./wlftg4ty7f
+#           Using alternate file: ./wlft9j5896
 # 
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
 # .main_pane.objects.interior.cs.body.tree
-# Running benchmark: ./benchmarks/test02_AddsSubs.arm
-# Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
-# Simulation Breakpoint: Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
+# Running benchmark: ./benchmarks/test06_BlBr.arm
+# ** Error: Assertion error.
+#    Time: 1450 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 1450 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 1550 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 1550 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 1650 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 1650 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 1750 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 1750 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 1850 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 1850 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 1950 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 1950 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 2050 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 2050 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 2150 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 2150 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 2250 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 2250 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 2350 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 2350 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 2450 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 2450 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 2550 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 2550 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 2650 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 2650 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 2750 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 2750 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 2850 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 2850 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 2950 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 2950 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 3050 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 3050 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 3150 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 3150 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 3250 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 3250 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 3350 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 3350 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 3450 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 3450 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 3550 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 3550 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 3650 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 3650 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 3750 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 3750 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 3850 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 3850 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 3950 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 3950 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 4050 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 4050 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 4150 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 4150 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 4250 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 4250 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 4350 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 4350 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 4450 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 4450 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 4550 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 4550 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 4650 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 4650 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 4750 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 4750 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 4850 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 4850 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 4950 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 4950 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 5050 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 5050 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 5150 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 5150 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 5250 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 5250 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 5350 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 5350 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 5450 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 5450 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 5550 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 5550 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 5650 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 5650 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 5750 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 5750 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 5850 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 5850 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 5950 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 5950 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 6050 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 6050 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 6150 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 6150 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 6250 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 6250 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 6350 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 6350 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 6450 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 6450 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 6550 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 6550 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 6650 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 6650 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 6750 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 6750 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 6850 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 6850 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 6950 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 6950 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 7050 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 7050 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 7150 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 7150 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 7250 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 7250 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 7350 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 7350 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 7450 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 7450 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 7550 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 7550 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 7650 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 7650 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 7750 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 7750 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 7850 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 7850 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 7950 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 7950 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 8050 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 8050 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 8150 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 8150 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 8250 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 8250 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 8350 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 8350 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 8450 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 8450 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 8550 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 8550 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 8650 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 8650 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 8750 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 8750 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 8850 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 8850 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 8950 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 8950 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 9050 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 9050 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 9150 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 9150 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 9250 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 9250 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 9350 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 9350 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 9450 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 9450 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 9550 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 9550 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 9650 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 9650 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 9750 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 9750 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 9850 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 9850 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 9950 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 9950 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 10050 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 10050 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# ** Error: Assertion error.
+#    Time: 10150 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 36
+# ** Error: Assertion error.
+#    Time: 10150 us  Scope: cpu_pipelined_testbench.dut.instruction_memory File: ./instructmem.sv Line: 37
+# Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 169
+# **** Error: RunQ cmd: Wave::WinUpdate .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        invalid command name ".main_pane.dataflow.interior.cs.body.pw.wf.top.tree"
+# invalid command name ".main_pane.dataflow.interior.cs.body.pw.wf.top.tree"
+#     while executing
+# "$treeObj seetime -percent 95 $Now"
+#     (procedure "Wave::WinUpdate" line 6)
+#     invoked from within
+# "Wave::WinUpdate .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# Simulation Breakpoint: Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 169
 # MACRO ./runlab4.do PAUSED at line 44
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# **** Error: SelectedSignalQ cmd: Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim
+# ****        can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+# can't read "vsimPriv(.main_pane.dataflow.interior.cs.body:grid)": no such element in array
+#     while executing
+# "set grid $vsimPriv($grid:grid)"
+#     (procedure "ginfo" line 10)
+#     invoked from within
+# "ginfo trees $w"
+#     (procedure "Wave::SelectSigCmd" line 8)
+#     invoked from within
+# "Wave::SelectSigCmd .main_pane.dataflow.interior.cs.body.pw.wf.top.tree sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
