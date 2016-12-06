@@ -13,6 +13,8 @@ entity ID_EX_reg is
         MemToReg_out    : out    vl_logic;
         RegWrite_out    : out    vl_logic;
         SetFlags_out    : out    vl_logic;
+        BLCtrl_out      : out    vl_logic;
+        X30Write_out    : out    vl_logic;
         rd_in           : in     vl_logic_vector(4 downto 0);
         se_imm12_in     : in     vl_logic_vector(63 downto 0);
         se_imm9_in      : in     vl_logic_vector(63 downto 0);
@@ -24,6 +26,8 @@ entity ID_EX_reg is
         MemToReg_in     : in     vl_logic;
         RegWrite_in     : in     vl_logic;
         SetFlags_in     : in     vl_logic;
+        BLCtrl_in       : in     vl_logic;
+        X30Write_in     : in     vl_logic;
         reset           : in     vl_logic;
         clk             : in     vl_logic;
         enable          : in     vl_logic
