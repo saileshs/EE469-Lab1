@@ -9,7 +9,6 @@ entity EX_MEM_reg is
         MemWrite_out    : out    vl_logic;
         MemToReg_out    : out    vl_logic;
         RegWrite_out    : out    vl_logic;
-        BLCtrl_out      : out    vl_logic;
         X30Write_out    : out    vl_logic;
         pc_plus4_in     : in     vl_logic_vector(63 downto 0);
         data2_in        : in     vl_logic_vector(63 downto 0);
@@ -18,7 +17,6 @@ entity EX_MEM_reg is
         MemWrite_in     : in     vl_logic;
         MemToReg_in     : in     vl_logic;
         RegWrite_in     : in     vl_logic;
-        BLCtrl_in       : in     vl_logic;
         X30Write_in     : in     vl_logic;
         reset           : in     vl_logic;
         clk             : in     vl_logic;
