@@ -199,10 +199,10 @@ do runlab4.do
 # 
 #           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
 # 
-#           Attempting to use alternate WLF file "./wlft4zgxfs".
+#           Attempting to use alternate WLF file "./wlftjbrfc0".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
 # 
-#           Using alternate file: ./wlft4zgxfs
+#           Using alternate file: ./wlftjbrfc0
 # 
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
@@ -211,1295 +211,22 @@ do runlab4.do
 # Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
 # Simulation Breakpoint: Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
 # MACRO ./runlab4.do PAUSED at line 44
-do runlab4.do
-# ** Warning: (vlib-34) Library already exists at "work".
-# 
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# 
-# Top level modules:
-# 	regfile
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regstim
-# 
-# Top level modules:
-# 	regstim
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module decoder_5to32
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_testbench
-# 
-# Top level modules:
-# 	decoder_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module mux_2to1_1bit
-# -- Compiling module mux_2to1
-# -- Compiling module mux_2to1_5bit
-# -- Compiling module mux_4to1
-# -- Compiling module mux_8to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# -- Compiling module mux_testbench
-# 
-# Top level modules:
-# 	mux_2to1_1bit
-# 	mux_2to1_5bit
-# 	mux_32to1
-# 	mux_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module alustim
-# 
-# Top level modules:
-# 	alustim
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module addSub64
-# -- Compiling module addSub
-# -- Compiling module adder_testbench
-# 
-# Top level modules:
-# 	adder_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module and64
-# -- Compiling module or64
-# -- Compiling module xor64
-# -- Compiling module not64
-# -- Compiling module nor64
-# -- Compiling module or_multi
-# -- Compiling module nor_testbench
-# 
-# Top level modules:
-# 	and64
-# 	or64
-# 	xor64
-# 	not64
-# 	nor_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module alu
-# 
-# Top level modules:
-# 	alu
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module ZE
-# 
-# Top level modules:
-# 	ZE
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module SE
-# -- Compiling module SE_testbench
-# 
-# Top level modules:
-# 	SE_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module shifter
-# -- Compiling module shift_testbench
-# 
-# Top level modules:
-# 	shift_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module PC
-# 
-# Top level modules:
-# 	PC
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module instructmem
-# -- Compiling module instructmem_testbench
-# 
-# Top level modules:
-# 	instructmem_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module datamem
-# -- Compiling module datamem_testbench
-# 
-# Top level modules:
-# 	datamem_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module cpu
-# -- Compiling module cpu_testbench
-# 
-# Top level modules:
-# 	cpu_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module controlUnit
-# -- Compiling module controlUnit_testbench
-# 
-# Top level modules:
-# 	controlUnit_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module IF_ID_reg
-# -- Compiling module ID_EX_reg
-# -- Compiling module EX_MEM_reg
-# -- Compiling module MEM_WR_reg
-# 
-# Top level modules:
-# 	IF_ID_reg
-# 	ID_EX_reg
-# 	EX_MEM_reg
-# 	MEM_WR_reg
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module D_FF
-# -- Compiling module DFF1_enable
-# -- Compiling module DFF_2
-# -- Compiling module DFF3
-# -- Compiling module DFF4
-# -- Compiling module DFF5
-# -- Compiling module DFF16
-# -- Compiling module DFF32
-# -- Compiling module DFF64
-# 
-# Top level modules:
-# 	DFF3
-# 	DFF5
-# 	DFF64
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module cpu_pipelined
-# -- Compiling module cpu_pipelined_testbench
-# 
-# Top level modules:
-# 	cpu_pipelined_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module FORWARDING_UNIT
-# 
-# Top level modules:
-# 	FORWARDING_UNIT
-# vsim -lib work -voptargs=\"+acc\" -t 1ps cpu_pipelined_testbench 
-# Loading sv_std.std
-# Loading work.cpu_pipelined_testbench
-# Loading work.cpu_pipelined
-# Loading work.mux_2to1_5bit
-# Loading work.mux_2to1
-# Loading work.regfile
-# Loading work.decoder_5to32
-# Loading work.decoder_2to4
-# Loading work.decoder_3to8
-# Loading work.mux_32to1
-# Loading work.mux_16to1
-# Loading work.mux_4to1
-# Loading work.FORWARDING_UNIT
-# Loading work.alu
-# Loading work.addSub64
-# Loading work.not64
-# Loading work.addSub
-# Loading work.and64
-# Loading work.or64
-# Loading work.xor64
-# Loading work.mux_8to1
-# Loading work.nor64
-# Loading work.or_multi
-# Loading work.DFF1_enable
-# Loading work.mux_2to1_1bit
-# Loading work.D_FF
-# Loading work.datamem
-# Loading work.SE
-# Loading work.ZE
-# Loading work.PC
-# Loading work.DFF64
-# Loading work.DFF32
-# Loading work.DFF16
-# Loading work.DFF4
-# Loading work.DFF_2
-# Loading work.instructmem
-# Loading work.controlUnit
-# Loading work.shifter
-# Loading work.IF_ID_reg
-# Loading work.ID_EX_reg
-# Loading work.DFF5
-# Loading work.DFF3
-# Loading work.EX_MEM_reg
-# Loading work.MEM_WR_reg
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-# 
-#           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
-# 
-#           Attempting to use alternate WLF file "./wlftxi73rz".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-# 
-#           Using alternate file: ./wlftxi73rz
-# 
-# .main_pane.wave.interior.cs.body.pw.wf
-# .main_pane.structure.interior.cs.body.struct
-# .main_pane.objects.interior.cs.body.tree
-# Running benchmark: ./benchmarks/test01_AddiB.arm
-# Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
-# Simulation Breakpoint: Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
-# MACRO ./runlab4.do PAUSED at line 44
-do runlab4.do
-# ** Warning: (vlib-34) Library already exists at "work".
-# 
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# 
-# Top level modules:
-# 	regfile
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regstim
-# 
-# Top level modules:
-# 	regstim
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module decoder_5to32
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_testbench
-# 
-# Top level modules:
-# 	decoder_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module mux_2to1_1bit
-# -- Compiling module mux_2to1
-# -- Compiling module mux_2to1_5bit
-# -- Compiling module mux_4to1
-# -- Compiling module mux_8to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# -- Compiling module mux_testbench
-# 
-# Top level modules:
-# 	mux_2to1_1bit
-# 	mux_2to1_5bit
-# 	mux_32to1
-# 	mux_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module alustim
-# 
-# Top level modules:
-# 	alustim
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module addSub64
-# -- Compiling module addSub
-# -- Compiling module adder_testbench
-# 
-# Top level modules:
-# 	adder_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module and64
-# -- Compiling module or64
-# -- Compiling module xor64
-# -- Compiling module not64
-# -- Compiling module nor64
-# -- Compiling module or_multi
-# -- Compiling module nor_testbench
-# 
-# Top level modules:
-# 	and64
-# 	or64
-# 	xor64
-# 	not64
-# 	nor_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module alu
-# 
-# Top level modules:
-# 	alu
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module ZE
-# 
-# Top level modules:
-# 	ZE
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module SE
-# -- Compiling module SE_testbench
-# 
-# Top level modules:
-# 	SE_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module shifter
-# -- Compiling module shift_testbench
-# 
-# Top level modules:
-# 	shift_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module PC
-# 
-# Top level modules:
-# 	PC
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module instructmem
-# -- Compiling module instructmem_testbench
-# 
-# Top level modules:
-# 	instructmem_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module datamem
-# -- Compiling module datamem_testbench
-# 
-# Top level modules:
-# 	datamem_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module cpu
-# -- Compiling module cpu_testbench
-# 
-# Top level modules:
-# 	cpu_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module controlUnit
-# -- Compiling module controlUnit_testbench
-# 
-# Top level modules:
-# 	controlUnit_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module IF_ID_reg
-# -- Compiling module ID_EX_reg
-# -- Compiling module EX_MEM_reg
-# -- Compiling module MEM_WR_reg
-# 
-# Top level modules:
-# 	IF_ID_reg
-# 	ID_EX_reg
-# 	EX_MEM_reg
-# 	MEM_WR_reg
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module D_FF
-# -- Compiling module DFF1_enable
-# -- Compiling module DFF_2
-# -- Compiling module DFF3
-# -- Compiling module DFF4
-# -- Compiling module DFF5
-# -- Compiling module DFF16
-# -- Compiling module DFF32
-# -- Compiling module DFF64
-# 
-# Top level modules:
-# 	DFF3
-# 	DFF5
-# 	DFF64
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module cpu_pipelined
-# -- Compiling module cpu_pipelined_testbench
-# 
-# Top level modules:
-# 	cpu_pipelined_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module FORWARDING_UNIT
-# 
-# Top level modules:
-# 	FORWARDING_UNIT
-# vsim -lib work -voptargs=\"+acc\" -t 1ps cpu_pipelined_testbench 
-# Loading sv_std.std
-# Loading work.cpu_pipelined_testbench
-# Loading work.cpu_pipelined
-# Loading work.mux_2to1_5bit
-# Loading work.mux_2to1
-# Loading work.regfile
-# Loading work.decoder_5to32
-# Loading work.decoder_2to4
-# Loading work.decoder_3to8
-# Loading work.mux_32to1
-# Loading work.mux_16to1
-# Loading work.mux_4to1
-# Loading work.FORWARDING_UNIT
-# Loading work.alu
-# Loading work.addSub64
-# Loading work.not64
-# Loading work.addSub
-# Loading work.and64
-# Loading work.or64
-# Loading work.xor64
-# Loading work.mux_8to1
-# Loading work.nor64
-# Loading work.or_multi
-# Loading work.DFF1_enable
-# Loading work.mux_2to1_1bit
-# Loading work.D_FF
-# Loading work.datamem
-# Loading work.SE
-# Loading work.ZE
-# Loading work.PC
-# Loading work.DFF64
-# Loading work.DFF32
-# Loading work.DFF16
-# Loading work.DFF4
-# Loading work.DFF_2
-# Loading work.instructmem
-# Loading work.controlUnit
-# Loading work.shifter
-# Loading work.IF_ID_reg
-# Loading work.ID_EX_reg
-# Loading work.DFF5
-# Loading work.DFF3
-# Loading work.EX_MEM_reg
-# Loading work.MEM_WR_reg
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-# 
-#           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
-# 
-#           Attempting to use alternate WLF file "./wlftj5v4ie".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-# 
-#           Using alternate file: ./wlftj5v4ie
-# 
-# .main_pane.wave.interior.cs.body.pw.wf
-# .main_pane.structure.interior.cs.body.struct
-# .main_pane.objects.interior.cs.body.tree
-# Running benchmark: ./benchmarks/test01_AddiB.arm
-# Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
-# Simulation Breakpoint: Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
-# MACRO ./runlab4.do PAUSED at line 44
-do runlab4.do
-# ** Warning: (vlib-34) Library already exists at "work".
-# 
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# 
-# Top level modules:
-# 	regfile
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regstim
-# 
-# Top level modules:
-# 	regstim
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module decoder_5to32
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_testbench
-# 
-# Top level modules:
-# 	decoder_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module mux_2to1_1bit
-# -- Compiling module mux_2to1
-# -- Compiling module mux_2to1_5bit
-# -- Compiling module mux_4to1
-# -- Compiling module mux_8to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# -- Compiling module mux_testbench
-# 
-# Top level modules:
-# 	mux_2to1_1bit
-# 	mux_2to1_5bit
-# 	mux_32to1
-# 	mux_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module alustim
-# 
-# Top level modules:
-# 	alustim
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module addSub64
-# -- Compiling module addSub
-# -- Compiling module adder_testbench
-# 
-# Top level modules:
-# 	adder_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module and64
-# -- Compiling module or64
-# -- Compiling module xor64
-# -- Compiling module not64
-# -- Compiling module nor64
-# -- Compiling module or_multi
-# -- Compiling module nor_testbench
-# 
-# Top level modules:
-# 	and64
-# 	or64
-# 	xor64
-# 	not64
-# 	nor_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module alu
-# 
-# Top level modules:
-# 	alu
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module ZE
-# 
-# Top level modules:
-# 	ZE
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module SE
-# -- Compiling module SE_testbench
-# 
-# Top level modules:
-# 	SE_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module shifter
-# -- Compiling module shift_testbench
-# 
-# Top level modules:
-# 	shift_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module PC
-# 
-# Top level modules:
-# 	PC
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module instructmem
-# -- Compiling module instructmem_testbench
-# 
-# Top level modules:
-# 	instructmem_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module datamem
-# -- Compiling module datamem_testbench
-# 
-# Top level modules:
-# 	datamem_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module cpu
-# -- Compiling module cpu_testbench
-# 
-# Top level modules:
-# 	cpu_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module controlUnit
-# -- Compiling module controlUnit_testbench
-# 
-# Top level modules:
-# 	controlUnit_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module IF_ID_reg
-# -- Compiling module ID_EX_reg
-# -- Compiling module EX_MEM_reg
-# -- Compiling module MEM_WR_reg
-# 
-# Top level modules:
-# 	IF_ID_reg
-# 	ID_EX_reg
-# 	EX_MEM_reg
-# 	MEM_WR_reg
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module D_FF
-# -- Compiling module DFF1_enable
-# -- Compiling module DFF_2
-# -- Compiling module DFF3
-# -- Compiling module DFF4
-# -- Compiling module DFF5
-# -- Compiling module DFF16
-# -- Compiling module DFF32
-# -- Compiling module DFF64
-# 
-# Top level modules:
-# 	DFF3
-# 	DFF5
-# 	DFF64
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module cpu_pipelined
-# -- Compiling module cpu_pipelined_testbench
-# 
-# Top level modules:
-# 	cpu_pipelined_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module FORWARDING_UNIT
-# 
-# Top level modules:
-# 	FORWARDING_UNIT
-# vsim -lib work -voptargs=\"+acc\" -t 1ps cpu_pipelined_testbench 
-# Loading sv_std.std
-# Loading work.cpu_pipelined_testbench
-# Loading work.cpu_pipelined
-# Loading work.mux_2to1_5bit
-# Loading work.mux_2to1
-# Loading work.regfile
-# Loading work.decoder_5to32
-# Loading work.decoder_2to4
-# Loading work.decoder_3to8
-# Loading work.mux_32to1
-# Loading work.mux_16to1
-# Loading work.mux_4to1
-# Loading work.FORWARDING_UNIT
-# Loading work.alu
-# Loading work.addSub64
-# Loading work.not64
-# Loading work.addSub
-# Loading work.and64
-# Loading work.or64
-# Loading work.xor64
-# Loading work.mux_8to1
-# Loading work.nor64
-# Loading work.or_multi
-# Loading work.DFF1_enable
-# Loading work.mux_2to1_1bit
-# Loading work.D_FF
-# Loading work.datamem
-# Loading work.SE
-# Loading work.ZE
-# Loading work.PC
-# Loading work.DFF64
-# Loading work.DFF32
-# Loading work.DFF16
-# Loading work.DFF4
-# Loading work.DFF_2
-# Loading work.instructmem
-# Loading work.controlUnit
-# Loading work.shifter
-# Loading work.IF_ID_reg
-# Loading work.ID_EX_reg
-# Loading work.DFF5
-# Loading work.DFF3
-# Loading work.EX_MEM_reg
-# Loading work.MEM_WR_reg
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-# 
-#           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
-# 
-#           Attempting to use alternate WLF file "./wlftf9man3".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-# 
-#           Using alternate file: ./wlftf9man3
-# 
-# .main_pane.wave.interior.cs.body.pw.wf
-# .main_pane.structure.interior.cs.body.struct
-# .main_pane.objects.interior.cs.body.tree
-# Running benchmark: ./benchmarks/test01_AddiB.arm
-# Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
-# Simulation Breakpoint: Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
-# MACRO ./runlab4.do PAUSED at line 44
-add wave -position end  sim:/cpu_pipelined_testbench/dut/reg2/read_data1_in
-add wave -position end  sim:/cpu_pipelined_testbench/dut/reg2/read_data2_in
-add wave -position end  sim:/cpu_pipelined_testbench/dut/reg2/read_data1_out
-add wave -position end  sim:/cpu_pipelined_testbench/dut/reg2/read_data2_out
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf {D:/EE 469/Processor Lab/cpu_pipeline_wave.do}
-do runlab4.do
-# ** Warning: (vlib-34) Library already exists at "work".
-# 
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# 
-# Top level modules:
-# 	regfile
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regstim
-# 
-# Top level modules:
-# 	regstim
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module decoder_5to32
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_testbench
-# 
-# Top level modules:
-# 	decoder_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module mux_2to1_1bit
-# -- Compiling module mux_2to1
-# -- Compiling module mux_2to1_5bit
-# -- Compiling module mux_4to1
-# -- Compiling module mux_8to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# -- Compiling module mux_testbench
-# 
-# Top level modules:
-# 	mux_2to1_1bit
-# 	mux_2to1_5bit
-# 	mux_32to1
-# 	mux_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module alustim
-# 
-# Top level modules:
-# 	alustim
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module addSub64
-# -- Compiling module addSub
-# -- Compiling module adder_testbench
-# 
-# Top level modules:
-# 	adder_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module and64
-# -- Compiling module or64
-# -- Compiling module xor64
-# -- Compiling module not64
-# -- Compiling module nor64
-# -- Compiling module or_multi
-# -- Compiling module nor_testbench
-# 
-# Top level modules:
-# 	and64
-# 	or64
-# 	xor64
-# 	not64
-# 	nor_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module alu
-# 
-# Top level modules:
-# 	alu
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module ZE
-# 
-# Top level modules:
-# 	ZE
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module SE
-# -- Compiling module SE_testbench
-# 
-# Top level modules:
-# 	SE_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module shifter
-# -- Compiling module shift_testbench
-# 
-# Top level modules:
-# 	shift_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module PC
-# 
-# Top level modules:
-# 	PC
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module instructmem
-# -- Compiling module instructmem_testbench
-# 
-# Top level modules:
-# 	instructmem_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module datamem
-# -- Compiling module datamem_testbench
-# 
-# Top level modules:
-# 	datamem_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module cpu
-# -- Compiling module cpu_testbench
-# 
-# Top level modules:
-# 	cpu_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module controlUnit
-# -- Compiling module controlUnit_testbench
-# 
-# Top level modules:
-# 	controlUnit_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module IF_ID_reg
-# -- Compiling module ID_EX_reg
-# -- Compiling module EX_MEM_reg
-# -- Compiling module MEM_WR_reg
-# 
-# Top level modules:
-# 	IF_ID_reg
-# 	ID_EX_reg
-# 	EX_MEM_reg
-# 	MEM_WR_reg
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module D_FF
-# -- Compiling module DFF1_enable
-# -- Compiling module DFF_2
-# -- Compiling module DFF3
-# -- Compiling module DFF4
-# -- Compiling module DFF5
-# -- Compiling module DFF16
-# -- Compiling module DFF32
-# -- Compiling module DFF64
-# 
-# Top level modules:
-# 	DFF3
-# 	DFF5
-# 	DFF64
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module cpu_pipelined
-# -- Compiling module cpu_pipelined_testbench
-# 
-# Top level modules:
-# 	cpu_pipelined_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module FORWARDING_UNIT
-# 
-# Top level modules:
-# 	FORWARDING_UNIT
-# vsim -lib work -voptargs=\"+acc\" -t 1ps cpu_pipelined_testbench 
-# Loading sv_std.std
-# Loading work.cpu_pipelined_testbench
-# Loading work.cpu_pipelined
-# Loading work.mux_2to1_5bit
-# Loading work.mux_2to1
-# Loading work.regfile
-# Loading work.decoder_5to32
-# Loading work.decoder_2to4
-# Loading work.decoder_3to8
-# Loading work.mux_32to1
-# Loading work.mux_16to1
-# Loading work.mux_4to1
-# Loading work.FORWARDING_UNIT
-# Loading work.alu
-# Loading work.addSub64
-# Loading work.not64
-# Loading work.addSub
-# Loading work.and64
-# Loading work.or64
-# Loading work.xor64
-# Loading work.mux_8to1
-# Loading work.nor64
-# Loading work.or_multi
-# Loading work.DFF1_enable
-# Loading work.mux_2to1_1bit
-# Loading work.D_FF
-# Loading work.datamem
-# Loading work.SE
-# Loading work.ZE
-# Loading work.PC
-# Loading work.DFF64
-# Loading work.DFF32
-# Loading work.DFF16
-# Loading work.DFF4
-# Loading work.DFF_2
-# Loading work.instructmem
-# Loading work.controlUnit
-# Loading work.shifter
-# Loading work.IF_ID_reg
-# Loading work.ID_EX_reg
-# Loading work.DFF5
-# Loading work.DFF3
-# Loading work.EX_MEM_reg
-# Loading work.MEM_WR_reg
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-# 
-#           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
-# 
-#           Attempting to use alternate WLF file "./wlftq6djez".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-# 
-#           Using alternate file: ./wlftq6djez
-# 
-# .main_pane.wave.interior.cs.body.pw.wf
-# .main_pane.structure.interior.cs.body.struct
-# .main_pane.objects.interior.cs.body.tree
-# Running benchmark: ./benchmarks/test01_AddiB.arm
-# Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
-# Simulation Breakpoint: Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
-# MACRO ./runlab4.do PAUSED at line 44
-do runlab4.do
-# ** Warning: (vlib-34) Library already exists at "work".
-# 
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# 
-# Top level modules:
-# 	regfile
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regstim
-# 
-# Top level modules:
-# 	regstim
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module decoder_5to32
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_testbench
-# 
-# Top level modules:
-# 	decoder_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module mux_2to1_1bit
-# -- Compiling module mux_2to1
-# -- Compiling module mux_2to1_5bit
-# -- Compiling module mux_4to1
-# -- Compiling module mux_8to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# -- Compiling module mux_testbench
-# 
-# Top level modules:
-# 	mux_2to1_1bit
-# 	mux_2to1_5bit
-# 	mux_32to1
-# 	mux_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module alustim
-# 
-# Top level modules:
-# 	alustim
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module addSub64
-# -- Compiling module addSub
-# -- Compiling module adder_testbench
-# 
-# Top level modules:
-# 	adder_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module and64
-# -- Compiling module or64
-# -- Compiling module xor64
-# -- Compiling module not64
-# -- Compiling module nor64
-# -- Compiling module or_multi
-# -- Compiling module nor_testbench
-# 
-# Top level modules:
-# 	and64
-# 	or64
-# 	xor64
-# 	not64
-# 	nor_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module alu
-# 
-# Top level modules:
-# 	alu
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module ZE
-# 
-# Top level modules:
-# 	ZE
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module SE
-# -- Compiling module SE_testbench
-# 
-# Top level modules:
-# 	SE_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module shifter
-# -- Compiling module shift_testbench
-# 
-# Top level modules:
-# 	shift_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module PC
-# 
-# Top level modules:
-# 	PC
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module instructmem
-# -- Compiling module instructmem_testbench
-# 
-# Top level modules:
-# 	instructmem_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module datamem
-# -- Compiling module datamem_testbench
-# 
-# Top level modules:
-# 	datamem_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module cpu
-# -- Compiling module cpu_testbench
-# 
-# Top level modules:
-# 	cpu_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module controlUnit
-# -- Compiling module controlUnit_testbench
-# 
-# Top level modules:
-# 	controlUnit_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module IF_ID_reg
-# -- Compiling module ID_EX_reg
-# -- Compiling module EX_MEM_reg
-# -- Compiling module MEM_WR_reg
-# 
-# Top level modules:
-# 	IF_ID_reg
-# 	ID_EX_reg
-# 	EX_MEM_reg
-# 	MEM_WR_reg
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module D_FF
-# -- Compiling module DFF1_enable
-# -- Compiling module DFF_2
-# -- Compiling module DFF3
-# -- Compiling module DFF4
-# -- Compiling module DFF5
-# -- Compiling module DFF16
-# -- Compiling module DFF32
-# -- Compiling module DFF64
-# 
-# Top level modules:
-# 	DFF3
-# 	DFF5
-# 	DFF64
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module cpu_pipelined
-# -- Compiling module cpu_pipelined_testbench
-# 
-# Top level modules:
-# 	cpu_pipelined_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module FORWARDING_UNIT
-# 
-# Top level modules:
-# 	FORWARDING_UNIT
-# vsim -lib work -voptargs=\"+acc\" -t 1ps cpu_pipelined_testbench 
-# Loading sv_std.std
-# Loading work.cpu_pipelined_testbench
-# Loading work.cpu_pipelined
-# Loading work.mux_2to1_5bit
-# Loading work.mux_2to1
-# Loading work.regfile
-# Loading work.decoder_5to32
-# Loading work.decoder_2to4
-# Loading work.decoder_3to8
-# Loading work.mux_32to1
-# Loading work.mux_16to1
-# Loading work.mux_4to1
-# Loading work.FORWARDING_UNIT
-# Loading work.alu
-# Loading work.addSub64
-# Loading work.not64
-# Loading work.addSub
-# Loading work.and64
-# Loading work.or64
-# Loading work.xor64
-# Loading work.mux_8to1
-# Loading work.nor64
-# Loading work.or_multi
-# Loading work.DFF1_enable
-# Loading work.mux_2to1_1bit
-# Loading work.D_FF
-# Loading work.datamem
-# Loading work.SE
-# Loading work.ZE
-# Loading work.PC
-# Loading work.DFF64
-# Loading work.DFF32
-# Loading work.DFF16
-# Loading work.DFF4
-# Loading work.DFF_2
-# Loading work.instructmem
-# Loading work.controlUnit
-# Loading work.shifter
-# Loading work.IF_ID_reg
-# Loading work.ID_EX_reg
-# Loading work.DFF5
-# Loading work.DFF3
-# Loading work.EX_MEM_reg
-# Loading work.MEM_WR_reg
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-# 
-#           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
-# 
-#           Attempting to use alternate WLF file "./wlftfcmzv1".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-# 
-#           Using alternate file: ./wlftfcmzv1
-# 
-# .main_pane.wave.interior.cs.body.pw.wf
-# .main_pane.structure.interior.cs.body.struct
-# .main_pane.objects.interior.cs.body.tree
-# Running benchmark: ./benchmarks/test01_AddiB.arm
-# Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
-# Simulation Breakpoint: Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
-# MACRO ./runlab4.do PAUSED at line 44
-do runlab4.do
-# ** Warning: (vlib-34) Library already exists at "work".
-# 
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regfile
-# 
-# Top level modules:
-# 	regfile
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module regstim
-# 
-# Top level modules:
-# 	regstim
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module decoder_5to32
-# -- Compiling module decoder_2to4
-# -- Compiling module decoder_3to8
-# -- Compiling module decoder_testbench
-# 
-# Top level modules:
-# 	decoder_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module mux_2to1_1bit
-# -- Compiling module mux_2to1
-# -- Compiling module mux_2to1_5bit
-# -- Compiling module mux_4to1
-# -- Compiling module mux_8to1
-# -- Compiling module mux_16to1
-# -- Compiling module mux_32to1
-# -- Compiling module mux_testbench
-# 
-# Top level modules:
-# 	mux_2to1_1bit
-# 	mux_2to1_5bit
-# 	mux_32to1
-# 	mux_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module alustim
-# 
-# Top level modules:
-# 	alustim
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module addSub64
-# -- Compiling module addSub
-# -- Compiling module adder_testbench
-# 
-# Top level modules:
-# 	adder_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module and64
-# -- Compiling module or64
-# -- Compiling module xor64
-# -- Compiling module not64
-# -- Compiling module nor64
-# -- Compiling module or_multi
-# -- Compiling module nor_testbench
-# 
-# Top level modules:
-# 	and64
-# 	or64
-# 	xor64
-# 	not64
-# 	nor_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module alu
-# 
-# Top level modules:
-# 	alu
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module ZE
-# 
-# Top level modules:
-# 	ZE
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module SE
-# -- Compiling module SE_testbench
-# 
-# Top level modules:
-# 	SE_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module shifter
-# -- Compiling module shift_testbench
-# 
-# Top level modules:
-# 	shift_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module PC
-# 
-# Top level modules:
-# 	PC
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module instructmem
-# -- Compiling module instructmem_testbench
-# 
-# Top level modules:
-# 	instructmem_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module datamem
-# -- Compiling module datamem_testbench
-# 
-# Top level modules:
-# 	datamem_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module cpu
-# -- Compiling module cpu_testbench
-# 
-# Top level modules:
-# 	cpu_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module controlUnit
-# -- Compiling module controlUnit_testbench
-# 
-# Top level modules:
-# 	controlUnit_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module IF_ID_reg
-# -- Compiling module ID_EX_reg
-# -- Compiling module EX_MEM_reg
-# -- Compiling module MEM_WR_reg
-# 
-# Top level modules:
-# 	IF_ID_reg
-# 	ID_EX_reg
-# 	EX_MEM_reg
-# 	MEM_WR_reg
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module D_FF
-# -- Compiling module DFF1_enable
-# -- Compiling module DFF_2
-# -- Compiling module DFF3
-# -- Compiling module DFF4
-# -- Compiling module DFF5
-# -- Compiling module DFF16
-# -- Compiling module DFF32
-# -- Compiling module DFF64
-# 
-# Top level modules:
-# 	DFF3
-# 	DFF5
-# 	DFF64
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module cpu_pipelined
-# -- Compiling module cpu_pipelined_testbench
-# 
-# Top level modules:
-# 	cpu_pipelined_testbench
-# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
-# -- Compiling module FORWARDING_UNIT
-# 
-# Top level modules:
-# 	FORWARDING_UNIT
-# vsim -lib work -voptargs=\"+acc\" -t 1ps cpu_pipelined_testbench 
-# Loading sv_std.std
-# Loading work.cpu_pipelined_testbench
-# Loading work.cpu_pipelined
-# Loading work.mux_2to1_5bit
-# Loading work.mux_2to1
-# Loading work.regfile
-# Loading work.decoder_5to32
-# Loading work.decoder_2to4
-# Loading work.decoder_3to8
-# Loading work.mux_32to1
-# Loading work.mux_16to1
-# Loading work.mux_4to1
-# Loading work.FORWARDING_UNIT
-# Loading work.alu
-# Loading work.addSub64
-# Loading work.not64
-# Loading work.addSub
-# Loading work.and64
-# Loading work.or64
-# Loading work.xor64
-# Loading work.mux_8to1
-# Loading work.nor64
-# Loading work.or_multi
-# Loading work.DFF1_enable
-# Loading work.mux_2to1_1bit
-# Loading work.D_FF
-# Loading work.datamem
-# Loading work.SE
-# Loading work.ZE
-# Loading work.PC
-# Loading work.DFF64
-# Loading work.DFF32
-# Loading work.DFF16
-# Loading work.DFF4
-# Loading work.DFF_2
-# Loading work.instructmem
-# Loading work.controlUnit
-# Loading work.shifter
-# Loading work.IF_ID_reg
-# Loading work.ID_EX_reg
-# Loading work.DFF5
-# Loading work.DFF3
-# Loading work.EX_MEM_reg
-# Loading work.MEM_WR_reg
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-# 
-#           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
-# 
-#           Attempting to use alternate WLF file "./wlftjd33q0".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-# 
-#           Using alternate file: ./wlftjd33q0
-# 
-# .main_pane.wave.interior.cs.body.pw.wf
-# .main_pane.structure.interior.cs.body.struct
-# .main_pane.objects.interior.cs.body.tree
-# Running benchmark: ./benchmarks/test01_AddiB.arm
-# Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
-# Simulation Breakpoint: Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
-# MACRO ./runlab4.do PAUSED at line 44
-add wave -position insertpoint  \
-sim:/cpu_pipelined_testbench/dut/rf/ReadData1 \
-sim:/cpu_pipelined_testbench/dut/rf/ReadData2 \
-sim:/cpu_pipelined_testbench/dut/rf/ReadRegister1 \
-sim:/cpu_pipelined_testbench/dut/rf/ReadRegister2 \
-sim:/cpu_pipelined_testbench/dut/rf/WriteRegister \
-sim:/cpu_pipelined_testbench/dut/rf/WriteData \
-sim:/cpu_pipelined_testbench/dut/rf/RegWrite \
-sim:/cpu_pipelined_testbench/dut/rf/clk \
-sim:/cpu_pipelined_testbench/dut/rf/registerOutput \
-sim:/cpu_pipelined_testbench/dut/rf/enableRegister \
-sim:/cpu_pipelined_testbench/dut/rf/reset
+add wave -position 22  sim:/cpu_pipelined_testbench/dut/a/negative
+add wave -position 23  sim:/cpu_pipelined_testbench/dut/a/zero
+add wave -position 24  sim:/cpu_pipelined_testbench/dut/a/overflow
+add wave -position 25  sim:/cpu_pipelined_testbench/dut/a/carry_out
+add wave -position 26  sim:/cpu_pipelined_testbench/dut/a/result
+add wave -position 27  sim:/cpu_pipelined_testbench/dut/a/A
+add wave -position 28  sim:/cpu_pipelined_testbench/dut/a/B
+add wave -position 29  sim:/cpu_pipelined_testbench/dut/a/cntrl
+add wave -position 30  sim:/cpu_pipelined_testbench/dut/a/addsub_out
+add wave -position 31  sim:/cpu_pipelined_testbench/dut/a/and_out
+add wave -position 32  sim:/cpu_pipelined_testbench/dut/a/or_out
+add wave -position 33  sim:/cpu_pipelined_testbench/dut/a/xor_out
+add wave -position 34  sim:/cpu_pipelined_testbench/dut/a/less_than_out
+add wave -position 35  sim:/cpu_pipelined_testbench/dut/a/alu_input
+add wave -position 16  sim:/cpu_pipelined_testbench/dut/forwarding_mux1/in
+add wave -position 17  sim:/cpu_pipelined_testbench/dut/forwarding_mux2/in
 write format wave -window .main_pane.wave.interior.cs.body.pw.wf {D:/EE 469/Processor Lab/cpu_pipeline_wave.do}
 write format wave -window .main_pane.wave.interior.cs.body.pw.wf {D:/EE 469/Processor Lab/cpu_pipeline_wave.do}
 do runlab4.do
@@ -1702,10 +429,10 @@ do runlab4.do
 # 
 #           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
 # 
-#           Attempting to use alternate WLF file "./wlft747rwf".
+#           Attempting to use alternate WLF file "./wlftgb4snx".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
 # 
-#           Using alternate file: ./wlft747rwf
+#           Using alternate file: ./wlftgb4snx
 # 
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
@@ -1914,10 +641,10 @@ do runlab4.do
 # 
 #           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
 # 
-#           Attempting to use alternate WLF file "./wlftexv025".
+#           Attempting to use alternate WLF file "./wlftbzgzn5".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
 # 
-#           Using alternate file: ./wlftexv025
+#           Using alternate file: ./wlftbzgzn5
 # 
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
@@ -1926,5 +653,215 @@ do runlab4.do
 # Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
 # Simulation Breakpoint: Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
 # MACRO ./runlab4.do PAUSED at line 44
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf {D:/EE 469/Processor Lab/cpu_pipeline_wave.do}
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf {D:/EE 469/Processor Lab/cpu_pipeline_wave.do}
+do runlab4.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module regfile
+# 
+# Top level modules:
+# 	regfile
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module regstim
+# 
+# Top level modules:
+# 	regstim
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module decoder_5to32
+# -- Compiling module decoder_2to4
+# -- Compiling module decoder_3to8
+# -- Compiling module decoder_testbench
+# 
+# Top level modules:
+# 	decoder_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux_2to1_1bit
+# -- Compiling module mux_2to1
+# -- Compiling module mux_2to1_5bit
+# -- Compiling module mux_4to1
+# -- Compiling module mux_8to1
+# -- Compiling module mux_16to1
+# -- Compiling module mux_32to1
+# -- Compiling module mux_testbench
+# 
+# Top level modules:
+# 	mux_2to1_1bit
+# 	mux_2to1_5bit
+# 	mux_32to1
+# 	mux_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module alustim
+# 
+# Top level modules:
+# 	alustim
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module addSub64
+# -- Compiling module addSub
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module and64
+# -- Compiling module or64
+# -- Compiling module xor64
+# -- Compiling module not64
+# -- Compiling module nor64
+# -- Compiling module or_multi
+# -- Compiling module nor_testbench
+# 
+# Top level modules:
+# 	and64
+# 	or64
+# 	xor64
+# 	not64
+# 	nor_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	alu
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module ZE
+# 
+# Top level modules:
+# 	ZE
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module SE
+# -- Compiling module SE_testbench
+# 
+# Top level modules:
+# 	SE_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module shifter
+# -- Compiling module shift_testbench
+# 
+# Top level modules:
+# 	shift_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PC
+# 
+# Top level modules:
+# 	PC
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module instructmem
+# -- Compiling module instructmem_testbench
+# 
+# Top level modules:
+# 	instructmem_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module datamem
+# -- Compiling module datamem_testbench
+# 
+# Top level modules:
+# 	datamem_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module cpu
+# -- Compiling module cpu_testbench
+# 
+# Top level modules:
+# 	cpu_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module controlUnit
+# -- Compiling module controlUnit_testbench
+# 
+# Top level modules:
+# 	controlUnit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module IF_ID_reg
+# -- Compiling module ID_EX_reg
+# -- Compiling module EX_MEM_reg
+# -- Compiling module MEM_WR_reg
+# 
+# Top level modules:
+# 	IF_ID_reg
+# 	ID_EX_reg
+# 	EX_MEM_reg
+# 	MEM_WR_reg
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module D_FF
+# -- Compiling module DFF1_enable
+# -- Compiling module DFF_2
+# -- Compiling module DFF3
+# -- Compiling module DFF4
+# -- Compiling module DFF5
+# -- Compiling module DFF16
+# -- Compiling module DFF32
+# -- Compiling module DFF64
+# 
+# Top level modules:
+# 	DFF3
+# 	DFF5
+# 	DFF64
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module cpu_pipelined
+# -- Compiling module cpu_pipelined_testbench
+# 
+# Top level modules:
+# 	cpu_pipelined_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module FORWARDING_UNIT
+# 
+# Top level modules:
+# 	FORWARDING_UNIT
+# vsim -lib work -voptargs=\"+acc\" -t 1ps cpu_pipelined_testbench 
+# Loading sv_std.std
+# Loading work.cpu_pipelined_testbench
+# Loading work.cpu_pipelined
+# Loading work.mux_2to1_5bit
+# Loading work.mux_2to1
+# Loading work.regfile
+# Loading work.decoder_5to32
+# Loading work.decoder_2to4
+# Loading work.decoder_3to8
+# Loading work.mux_32to1
+# Loading work.mux_16to1
+# Loading work.mux_4to1
+# Loading work.FORWARDING_UNIT
+# Loading work.alu
+# Loading work.addSub64
+# Loading work.not64
+# Loading work.addSub
+# Loading work.and64
+# Loading work.or64
+# Loading work.xor64
+# Loading work.mux_8to1
+# Loading work.nor64
+# Loading work.or_multi
+# Loading work.DFF1_enable
+# Loading work.mux_2to1_1bit
+# Loading work.D_FF
+# Loading work.datamem
+# Loading work.SE
+# Loading work.ZE
+# Loading work.PC
+# Loading work.DFF64
+# Loading work.DFF32
+# Loading work.DFF16
+# Loading work.DFF4
+# Loading work.DFF_2
+# Loading work.instructmem
+# Loading work.controlUnit
+# Loading work.shifter
+# Loading work.IF_ID_reg
+# Loading work.ID_EX_reg
+# Loading work.DFF5
+# Loading work.DFF3
+# Loading work.EX_MEM_reg
+# Loading work.MEM_WR_reg
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+# 
+#           File in use by: Sailesh  Hostname: SAILESH-PC  ProcessID: 5140
+# 
+#           Attempting to use alternate WLF file "./wlftg4ty7f".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+# 
+#           Using alternate file: ./wlftg4ty7f
+# 
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# Running benchmark: ./benchmarks/test02_AddsSubs.arm
+# Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
+# Simulation Breakpoint: Break in Module cpu_pipelined_testbench at ./cpu_pipelined.sv line 175
+# MACRO ./runlab4.do PAUSED at line 44

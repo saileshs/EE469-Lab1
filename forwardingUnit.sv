@@ -9,8 +9,7 @@ module FORWARDING_UNIT (forward_A, forward_B, rn_in, rm_in, IDEX_RegisterRd, EXM
 
 	always_comb begin
 
-		if (EXMEM_RegWrite && (EXMEM_RegisterRd != 5'b11111) && !(IDEX_RegWrite && (IDEX_RegisterRd != 5'b11111)
-					&& (IDEX_RegisterRd != rn_in)) && EXMEM_RegisterRd == rn_in)
+		if (EXMEM_RegWrite && (EXMEM_RegisterRd != 5'b11111) && IDEX_RegisterRd != rn_in && EXMEM_RegisterRd == rn_in)
 			forward_A = 2'b10;
 			
 		else if (IDEX_RegWrite && (IDEX_RegisterRd != 5'b11111) && (IDEX_RegisterRd == rn_in))
@@ -19,8 +18,7 @@ module FORWARDING_UNIT (forward_A, forward_B, rn_in, rm_in, IDEX_RegisterRd, EXM
 		else
 			forward_A = 2'b00;
 
-		if (EXMEM_RegWrite && (EXMEM_RegisterRd != 5'b11111) && !(IDEX_RegWrite && (IDEX_RegisterRd != 5'b11111)
-					&& (IDEX_RegisterRd != rm_in)) && EXMEM_RegisterRd == rm_in)
+		if (EXMEM_RegWrite && (EXMEM_RegisterRd != 5'b11111) && IDEX_RegisterRd != rm_in && EXMEM_RegisterRd == rm_in)
 			forward_B = 2'b10;
 		
 		else if (IDEX_RegWrite && (IDEX_RegisterRd != 5'b11111) && (IDEX_RegisterRd == rm_in))
