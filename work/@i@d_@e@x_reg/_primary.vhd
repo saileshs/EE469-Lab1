@@ -2,6 +2,7 @@ library verilog;
 use verilog.vl_types.all;
 entity ID_EX_reg is
     port(
+        pc_plus4_out    : out    vl_logic_vector(63 downto 0);
         rd_out          : out    vl_logic_vector(4 downto 0);
         se_imm12_out    : out    vl_logic_vector(63 downto 0);
         se_imm9_out     : out    vl_logic_vector(63 downto 0);
@@ -14,6 +15,7 @@ entity ID_EX_reg is
         RegWrite_out    : out    vl_logic;
         BLCtrl_out      : out    vl_logic;
         X30Write_out    : out    vl_logic;
+        pc_plus4_in     : in     vl_logic_vector(63 downto 0);
         rd_in           : in     vl_logic_vector(4 downto 0);
         se_imm12_in     : in     vl_logic_vector(63 downto 0);
         se_imm9_in      : in     vl_logic_vector(63 downto 0);

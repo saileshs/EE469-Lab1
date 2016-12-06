@@ -29,8 +29,9 @@ module cpu_pipelined (clk, reset);
 
 	// Datapath Wires coming out of the pipeline registers
 	logic [63:0]	IFID_pc_out, IFID_pc_plus4_out, IDEX_se_imm12_out, IDEX_se_imm9_out, 
-					IDEX_read_data1_out, IDEX_read_data2_out, 
-					EXMEM_data2_out, EXMEM_alu_out, MEMWR_data_out; 
+					IDEX_read_data1_out, IDEX_read_data2_out, IDEX_pc_plus4_out,
+					EXMEM_pc_plus4_out, EXMEM_data2_out, EXMEM_alu_out, 
+					MEMWR_pc_plus4_out, MEMWR_data_out; 
 	logic [31:0] IFID_instr_out;
 	logic [4:0] IDEX_rd_out, EXMEM_rd_out, MEMWR_rd_out;
 
@@ -55,7 +56,7 @@ module cpu_pipelined (clk, reset);
 	assign chooseWriteReg[0] = MEMWR_rd_out;
 	assign chooseWriteReg[1] = 5'b11110; // X30 register for BL instruction
 	assign WhichWriteData[0] = MEMWR_data_out;
-	assign WhichWriteData[1] = IFID_pc_plus4_out;
+	assign WhichWriteData[1] = MEMWR_pc_plus4_out;
 	mux_2to1_5bit x30_write_mux (.out(X30MuxOut), .control(MEMWR_X30Write), .in(chooseWriteReg)); // Choosing between Rd and X30 for Write Register
 	mux_2to1 BL_mux (.out(WriteData), .control(MEMWR_BLCtrl), .in(WhichWriteData)); // Choosing which data to write to register
 	
@@ -132,17 +133,17 @@ module cpu_pipelined (clk, reset);
 	addSub64 branch_imm_adder (.carryOut(carryout2), .result(shiftedAddedBranchAddr), .overflow(overflow2), .a(IFID_pc_out), .b(brShifterOut), .carryIn(1'b0));
 	
 	assign WhichBranch[1] = shiftedAddedBranchAddr;
-	assign WhichBranch[2] = ALUMuxIn[0]; // For BR instruction
+	assign WhichBranch[2] = forwarding_B_output; // For BR instruction
 	assign WhichBranch[3] = 64'bX;
 
 	mux_4to1 brtaken_mux (.out(PCInput), .control(BrTaken), .in(WhichBranch));
 
 	// Pipeline registers breaking up CPU into 5 stages. 
 	IF_ID_reg reg1 (.pc_out(IFID_pc_out), .pc_plus4_out(IFID_pc_plus4_out), .instr_out(IFID_instr_out), .pc_in(address), .pc_plus4_in(WhichBranch[0]), .instr_in(instruction), .reset, .clk, .enable(1'b1));
-	ID_EX_reg reg2 (.rd_out(IDEX_rd_out), .se_imm12_out(IDEX_se_imm12_out), .se_imm9_out(IDEX_se_imm9_out), .read_data1_out(IDEX_read_data1_out), .read_data2_out(IDEX_read_data2_out), .ALUSrc_out(IDEX_ALUSrc), .ALUOp_out(IDEX_ALUOp), .MemWrite_out(IDEX_MemWrite), .MemToReg_out(IDEX_MemToReg), .RegWrite_out(IDEX_RegWrite), .BLCtrl_out(IDEX_BLCtrl), .X30Write_out(IDEX_X30Write), .rd_in(Rd), .se_imm12_in(ZEImm12), .se_imm9_in(SEImm9), .read_data1_in(forwarding_A_output), .read_data2_in(forwarding_B_output), .ALUSrc_in(ALUSrc), .ALUOp_in(ALUOp), .MemWrite_in(MemWrite), .MemToReg_in(MemToReg), .RegWrite_in(RegWrite),
-	 .BLCtrl_in(BLCtrl), .X30Write_in(X30Write), .reset, .clk, .enable(1'b1));
-	EX_MEM_reg reg3 (.data2_out(EXMEM_data2_out), .alu_out(EXMEM_alu_out), .EXMEM_RegisterRd(EXMEM_rd_out) , .MemWrite_out(EXMEM_MemWrite), .MemToReg_out(EXMEM_MemToReg), .RegWrite_out(EXMEM_RegWrite), .BLCtrl_out(EXMEM_BLCtrl), .X30Write_out(EXMEM_X30Write), .data2_in(ALUMuxIn[0]), .rd_in(IDEX_rd_out) , .alu_in(ALUOut), .MemWrite_in(IDEX_MemWrite), .MemToReg_in(IDEX_MemToReg), .RegWrite_in(IDEX_RegWrite), .BLCtrl_in(IDEX_BLCtrl), .X30Write_in(IDEX_X30Write), .reset, .clk, .enable(1'b1));
-	MEM_WR_reg reg4 (.data_out(MEMWR_data_out), .MEMWR_RegisterRd(MEMWR_rd_out), .RegWrite_out(MEMWR_RegWrite), .BLCtrl_out(MEMWR_BLCtrl), .X30Write_out(MEMWR_X30Write), .data_in(memToRegOut), .EXMEM_RegisterRd(EXMEM_rd_out), .RegWrite_in(EXMEM_RegWrite), .BLCtrl_in(EXMEM_BLCtrl), .X30Write_in(EXMEM_X30Write), .reset, .clk, .enable(1'b1));
+	ID_EX_reg reg2 (.pc_plus4_out(IDEX_pc_plus4_out), .rd_out(IDEX_rd_out), .se_imm12_out(IDEX_se_imm12_out), .se_imm9_out(IDEX_se_imm9_out), .read_data1_out(IDEX_read_data1_out), .read_data2_out(IDEX_read_data2_out), .ALUSrc_out(IDEX_ALUSrc), .ALUOp_out(IDEX_ALUOp), .MemWrite_out(IDEX_MemWrite), .MemToReg_out(IDEX_MemToReg), .RegWrite_out(IDEX_RegWrite), .BLCtrl_out(IDEX_BLCtrl), .X30Write_out(IDEX_X30Write), 
+					.pc_plus4_in(IFID_pc_plus4_out), .rd_in(Rd), .se_imm12_in(ZEImm12), .se_imm9_in(SEImm9), .read_data1_in(forwarding_A_output), .read_data2_in(forwarding_B_output), .ALUSrc_in(ALUSrc), .ALUOp_in(ALUOp), .MemWrite_in(MemWrite), .MemToReg_in(MemToReg), .RegWrite_in(RegWrite), .BLCtrl_in(BLCtrl), .X30Write_in(X30Write), .reset, .clk, .enable(1'b1));
+	EX_MEM_reg reg3 (.pc_plus4_out(EXMEM_pc_plus4_out), .data2_out(EXMEM_data2_out), .alu_out(EXMEM_alu_out), .EXMEM_RegisterRd(EXMEM_rd_out) , .MemWrite_out(EXMEM_MemWrite), .MemToReg_out(EXMEM_MemToReg), .RegWrite_out(EXMEM_RegWrite), .BLCtrl_out(EXMEM_BLCtrl), .X30Write_out(EXMEM_X30Write), .pc_plus4_in(IDEX_pc_plus4_out), .data2_in(ALUMuxIn[0]), .rd_in(IDEX_rd_out) , .alu_in(ALUOut), .MemWrite_in(IDEX_MemWrite), .MemToReg_in(IDEX_MemToReg), .RegWrite_in(IDEX_RegWrite), .BLCtrl_in(IDEX_BLCtrl), .X30Write_in(IDEX_X30Write), .reset, .clk, .enable(1'b1));
+	MEM_WR_reg reg4 (.pc_plus4_out(MEMWR_pc_plus4_out), .data_out(MEMWR_data_out), .MEMWR_RegisterRd(MEMWR_rd_out), .RegWrite_out(MEMWR_RegWrite), .BLCtrl_out(MEMWR_BLCtrl), .X30Write_out(MEMWR_X30Write), .pc_plus4_in(EXMEM_pc_plus4_out), .data_in(memToRegOut), .EXMEM_RegisterRd(EXMEM_rd_out), .RegWrite_in(EXMEM_RegWrite), .BLCtrl_in(EXMEM_BLCtrl), .X30Write_in(EXMEM_X30Write), .reset, .clk, .enable(1'b1));
 
 endmodule
 
