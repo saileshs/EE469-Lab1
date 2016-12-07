@@ -13,7 +13,7 @@ module cpu_pipelined (clk, reset);
 	
 	logic negativeFlag, zeroFlag, overflowFlag, carryOutFlag;
 	logic negativeFlag_temp, overflowFlag_temp, carryOutFlag_temp, zeroFlag_temp;
-	logic overflow1, overflow2, carryout1, carryout2; // Output flags from adders
+	logic overflow1, overflow2, carryout1, carryout2, cbz_zero_flag; // Output flags from adders
 	logic [63:0] ReadData1, ReadData2, ALUOut, DataMemOut, PCInput, uncondBrOut, brShifterOut, memToRegOut, ALUMuxOut;
 	logic [63:0] address;
 	logic [4:0] RegRmRd [1:0]; // For Reg2Loc mux
@@ -115,9 +115,9 @@ module cpu_pipelined (clk, reset);
 	assign imm12 = IFID_instr_out[21:10]; // For ADDI
 	
 	// Standalone ZeroFlag module -- For CBZ
-	nor64 nor0 (.out(zeroFlag_temp), .in(forwarding_B_output));
+	nor64 nor0 (.out(cbz_zero_flag), .in(forwarding_B_output));
 
-	controlUnit control (.Reg2Loc, .ALUSrc, .MemToReg, .RegWrite, .MemWrite, .BrTaken, .UncondBr, .ALUOp, .X30Write, .SetFlag, .opCode, .negativeFlag(negativeFlag_temp), .zeroFlag(zeroFlag_temp), .overflowFlag(overflowFlag_temp), .DFF_negativeFlag(negativeFlag), .DFF_overflowFlag(overflowFlag), .IDEX_SetFlag, .reset, .clk);
+	controlUnit control (.Reg2Loc, .ALUSrc, .MemToReg, .RegWrite, .MemWrite, .BrTaken, .UncondBr, .ALUOp, .X30Write, .SetFlag, .opCode, .negativeFlag(negativeFlag_temp), .zeroFlag(cbz_zero_flag), .overflowFlag(overflowFlag_temp), .DFF_negativeFlag(negativeFlag), .DFF_overflowFlag(overflowFlag), .IDEX_SetFlag, .reset, .clk);
 	
 	// Compute BrTaken mux input 0
 	addSub64 pcPlus4 (.carryOut(carryout1), .result(WhichBranch[0]), .overflow(overflow1), .a(address), .b(64'd4), .carryIn(1'b0));
@@ -169,7 +169,7 @@ module cpu_pipelined_testbench();
 		begin
 			reset<=1;	@(posedge clk);
 			reset<=0;	@(posedge clk);
-			for (i = 0; i < 100; i++)
+			for (i = 0; i < 700; i++)
 				@(posedge clk);
 		$stop(); // end the simulation
 	end
