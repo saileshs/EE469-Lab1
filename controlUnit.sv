@@ -2,13 +2,13 @@
 
 module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite, 
 						 MemWrite, BrTaken, UncondBr, ALUOp, 
-						 X30Write, SetFlag, opCode, negativeFlag, zeroFlag, overflowFlag, DFF_negativeFlag, DFF_overflowFlag, IDEX_SetFlag, reset, clk);
+						 X30Write, SetFlag, opCode, negativeFlag, zeroFlag, overflowFlag, DFF_negativeFlag, DFF_overflowFlag, IDEX_SetFlag);
 
 	// To Store the 11-bit opCode 
 	input logic [31:21] opCode;
 
 	// ALU Flags
-	input logic negativeFlag, zeroFlag, overflowFlag, IDEX_SetFlag, DFF_negativeFlag, DFF_overflowFlag, reset, clk;
+	input logic negativeFlag, zeroFlag, overflowFlag, IDEX_SetFlag, DFF_negativeFlag, DFF_overflowFlag;
 
 	// Control Signals for the datapath
 	output logic Reg2Loc, MemToReg, RegWrite, MemWrite, 
@@ -18,16 +18,18 @@ module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite,
 	output logic [2:0] ALUOp;
 	
 	parameter [31:21] LDUR = 11'b11111000010, STUR = 11'b11111000000,
-							B = 11'b000101xxxxx, CBZ = 11'b10110100xxx,
-							ADDI = 11'b1001000100x, ADDS = 11'b10101011000,
-							BL = 11'b100101xxxxx, BR = 11'b11010110000,
-							SUBS = 11'b11101011000, BCOND = 11'b01010100xxx;
+							B = 11'b000101?????, CBZ = 11'b10110100???,
+							ADDI = 11'b1001000100?, ADDS = 11'b10101011000,
+							BL = 11'b100101?????, BR = 11'b11010110000,
+							SUBS = 11'b11101011000, BCOND = 11'b01010100???;
 							
 	
 	logic [13:0] controlSignals;
 
 	logic BLTLogic;
 
+	// Uses stored DFF flags for conditional branches if the instruction before 
+	// B.Cond does not set flags.
 	always_comb begin
 		if (IDEX_SetFlag)
 			assign BLTLogic = negativeFlag ^ overflowFlag;
@@ -37,13 +39,13 @@ module controlUnit(Reg2Loc, ALUSrc, MemToReg, RegWrite,
 	end
 
 	// controlSignals contains the following signals:
-	// (13)Reg2Loc, (12)MemToReg, (11)RegWrite, (10)MemWrite, 
-	// (9)UncondBr, (8)X30Write, (7)BLCtrl, (6)ALUSrc[1], 
+	// (13)SetFlag, (12)Reg2Loc, (11)MemToReg, (10)RegWrite, (9)MemWrite, 
+	// (8)UncondBr, (7)X30Write, (6)ALUSrc[1], 
 	// (5)ALUSrc[0], (4)BrTaken[1], (3)BrTaken[0], (2)ALUOp[2], 
 	// (1)ALUOp[1], (0)ALUOp[0]
 	
 	always_comb begin
-		casex (opCode)
+		casez (opCode)
 				
 				LDUR : controlSignals = 14'b0x110x00100010;
 				

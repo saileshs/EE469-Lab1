@@ -4,14 +4,14 @@ entity controlUnit is
     generic(
         LDUR            : vl_logic_vector(31 downto 21) := (Hi1, Hi1, Hi1, Hi1, Hi1, Hi0, Hi0, Hi0, Hi0, Hi1, Hi0);
         STUR            : vl_logic_vector(31 downto 21) := (Hi1, Hi1, Hi1, Hi1, Hi1, Hi0, Hi0, Hi0, Hi0, Hi0, Hi0);
-        B               : vl_logic_vector(31 downto 21) := (Hi0, Hi0, Hi0, Hi1, Hi0, Hi1, HiX, HiX, HiX, HiX, HiX);
-        CBZ             : vl_logic_vector(31 downto 21) := (Hi1, Hi0, Hi1, Hi1, Hi0, Hi1, Hi0, Hi0, HiX, HiX, HiX);
-        ADDI            : vl_logic_vector(31 downto 21) := (Hi1, Hi0, Hi0, Hi1, Hi0, Hi0, Hi0, Hi1, Hi0, Hi0, HiX);
+        B               : vl_logic_vector(31 downto 21) := (Hi0, Hi0, Hi0, Hi1, Hi0, Hi1, HiZ, HiZ, HiZ, HiZ, HiZ);
+        CBZ             : vl_logic_vector(31 downto 21) := (Hi1, Hi0, Hi1, Hi1, Hi0, Hi1, Hi0, Hi0, HiZ, HiZ, HiZ);
+        ADDI            : vl_logic_vector(31 downto 21) := (Hi1, Hi0, Hi0, Hi1, Hi0, Hi0, Hi0, Hi1, Hi0, Hi0, HiZ);
         ADDS            : vl_logic_vector(31 downto 21) := (Hi1, Hi0, Hi1, Hi0, Hi1, Hi0, Hi1, Hi1, Hi0, Hi0, Hi0);
-        BL              : vl_logic_vector(31 downto 21) := (Hi1, Hi0, Hi0, Hi1, Hi0, Hi1, HiX, HiX, HiX, HiX, HiX);
+        BL              : vl_logic_vector(31 downto 21) := (Hi1, Hi0, Hi0, Hi1, Hi0, Hi1, HiZ, HiZ, HiZ, HiZ, HiZ);
         BR              : vl_logic_vector(31 downto 21) := (Hi1, Hi1, Hi0, Hi1, Hi0, Hi1, Hi1, Hi0, Hi0, Hi0, Hi0);
         SUBS            : vl_logic_vector(31 downto 21) := (Hi1, Hi1, Hi1, Hi0, Hi1, Hi0, Hi1, Hi1, Hi0, Hi0, Hi0);
-        BCOND           : vl_logic_vector(31 downto 21) := (Hi0, Hi1, Hi0, Hi1, Hi0, Hi1, Hi0, Hi0, HiX, HiX, HiX)
+        BCOND           : vl_logic_vector(31 downto 21) := (Hi0, Hi1, Hi0, Hi1, Hi0, Hi1, Hi0, Hi0, HiZ, HiZ, HiZ)
     );
     port(
         Reg2Loc         : out    vl_logic;
@@ -30,9 +30,7 @@ entity controlUnit is
         overflowFlag    : in     vl_logic;
         DFF_negativeFlag: in     vl_logic;
         DFF_overflowFlag: in     vl_logic;
-        IDEX_SetFlag    : in     vl_logic;
-        reset           : in     vl_logic;
-        clk             : in     vl_logic
+        IDEX_SetFlag    : in     vl_logic
     );
     attribute mti_svvh_generic_type : integer;
     attribute mti_svvh_generic_type of LDUR : constant is 2;

@@ -1,6 +1,9 @@
 `timescale 1ns/10ps
 
-// I will comment this module once we know for sure that this is correct
+// Forwarding Unit Control logic to decide which register values should be passed to the Exec stage. 
+// This unit detects hazards if we using a register that is still being written to by a previous instruction.
+// The result of the register being written to is taken from the MEM stage or the EXEC stage and ported back to the 
+// Reg/Dec stage for the instruction that needs to read the updated value of the respective register.
 
 module FORWARDING_UNIT (forward_A, forward_B, rn_in, rm_in, IDEX_RegisterRd, EXMEM_RegisterRd, IDEX_RegWrite, EXMEM_RegWrite);
 	output logic [1:0] forward_A, forward_B;

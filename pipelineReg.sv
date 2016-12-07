@@ -1,5 +1,6 @@
 `timescale 1ns/10ps
 
+// Instruction Fetch Stage
 module IF_ID_reg (pc_out, pc_plus4_out, instr_out, pc_in, pc_plus4_in, instr_in, reset, clk, enable);
 	output logic [63:0] pc_out, pc_plus4_out;
 	output logic [31:0] instr_out;
@@ -12,6 +13,7 @@ module IF_ID_reg (pc_out, pc_plus4_out, instr_out, pc_in, pc_plus4_in, instr_in,
 	DFF32 dff3 (.q(instr_out), .d(instr_in), .reset, .clk, .enable);
 endmodule
 
+// Reg/Dec Stage
 module ID_EX_reg (pc_plus4_out, rd_out, se_imm12_out, se_imm9_out, read_data1_out, read_data2_out, ALUSrc_out, ALUOp_out, MemWrite_out, MemToReg_out, RegWrite_out, SetFlag_out, pc_plus4_in, rd_in, se_imm12_in, se_imm9_in, read_data1_in, read_data2_in, ALUSrc_in, ALUOp_in, MemWrite_in, MemToReg_in, RegWrite_in, SetFlag_in, reset, clk, enable);
 	
 	// Datapath Logic
@@ -47,6 +49,7 @@ module ID_EX_reg (pc_plus4_out, rd_out, se_imm12_out, se_imm9_out, read_data1_ou
 	DFF1_enable SetFlag_reg (.q(SetFlag_out), .d(SetFlag_in), .reset, .clk, .enable);
 endmodule
 
+// Execute Stage
 module EX_MEM_reg (pc_plus4_out, data2_out, alu_out, EXMEM_RegisterRd, MemWrite_out, MemToReg_out, RegWrite_out, pc_plus4_in, data2_in, rd_in, alu_in, MemWrite_in, MemToReg_in, RegWrite_in, reset, clk, enable);
 	
 	// Datapath logic
@@ -72,6 +75,7 @@ module EX_MEM_reg (pc_plus4_out, data2_out, alu_out, EXMEM_RegisterRd, MemWrite_
 	DFF1_enable RegWrite_reg (.q(RegWrite_out), .d(RegWrite_in), .reset, .clk, .enable);
 endmodule
 
+// Mem Stage
 module MEM_WR_reg (pc_plus4_out, data_out, MEMWR_RegisterRd, RegWrite_out, pc_plus4_in, data_in, EXMEM_RegisterRd, RegWrite_in, reset, clk, enable);
 	
 	// Datapath Logic
@@ -93,3 +97,5 @@ module MEM_WR_reg (pc_plus4_out, data_out, MEMWR_RegisterRd, RegWrite_out, pc_pl
 
 	DFF1_enable RegWrite_reg (.q(RegWrite_out), .d(RegWrite_in), .reset, .clk, .enable);
 endmodule
+
+// WR Stage
