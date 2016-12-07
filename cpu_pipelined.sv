@@ -7,11 +7,12 @@ module cpu_pipelined (clk, reset);
 	logic [4:0] ReadRegister, X30MuxOutForward;
 
 	// Control Logic
-	logic Reg2Loc, RegWrite, MemWrite, MemToReg, UncondBr, X30Write;
+	logic Reg2Loc, RegWrite, MemWrite, MemToReg, UncondBr, X30Write, SetFlag;
 	logic [1:0] ALUSrc, BrTaken;
 	logic [2:0] ALUOp;
 	
-	logic negativeFlag, zeroFlag, overflowFlag, carryOutFlag, CBZZeroFlag;
+	logic negativeFlag, zeroFlag, overflowFlag, carryOutFlag;
+	logic negativeFlag_temp, overflowFlag_temp, carryOutFlag_temp, zeroFlag_temp;
 	logic overflow1, overflow2, carryout1, carryout2; // Output flags from adders
 	logic [63:0] ReadData1, ReadData2, ALUOut, DataMemOut, PCInput, uncondBrOut, brShifterOut, memToRegOut, ALUMuxOut;
 	logic [63:0] address;
@@ -37,7 +38,7 @@ module cpu_pipelined (clk, reset);
 	// Control wires coming out of the pipeline registers
 	logic [1:0] IDEX_ALUSrc;
 	logic [2:0] IDEX_ALUOp;
-	logic 	IDEX_MemWrite, IDEX_MemToReg, IDEX_RegWrite, EXMEM_MemWrite, EXMEM_MemToReg, EXMEM_RegWrite,
+	logic 	IDEX_MemWrite, IDEX_MemToReg, IDEX_RegWrite, IDEX_SetFlag, EXMEM_MemWrite, EXMEM_MemToReg, EXMEM_RegWrite,
 			MEMWR_RegWrite;
 
 	// Forwarding Logic
@@ -66,7 +67,7 @@ module cpu_pipelined (clk, reset);
 	
 	// Calling the FORWARDING UNIT to handle EX hazards and Mem Hazards.
 	// Returns two 2-bit select signals, which control the ForwardingMux1 and ForwardingMux2.
-	FORWARDING_UNIT forward (.forward_A(forwardA), .forward_B(forwardB), .rn_in(Rn), .rm_in(Rm), .IDEX_RegisterRd(IDEX_rd_out), .EXMEM_RegisterRd(EXMEM_rd_out), .IDEX_RegWrite(IDEX_RegWrite), .EXMEM_RegWrite(EXMEM_RegWrite));
+	FORWARDING_UNIT forward (.forward_A(forwardA), .forward_B(forwardB), .rn_in(Rn), .rm_in(ReadRegister), .IDEX_RegisterRd(IDEX_rd_out), .EXMEM_RegisterRd(EXMEM_rd_out), .IDEX_RegWrite(IDEX_RegWrite), .EXMEM_RegWrite(EXMEM_RegWrite));
 	
 	// Forwarding Data Path
 	assign ForwardingMux1[0] = ReadData1;
@@ -82,7 +83,7 @@ module cpu_pipelined (clk, reset);
 	mux_4to1 forwarding_mux2 (.out(forwarding_B_output), .control(forwardB), .in(ForwardingMux2));
 
 	// Calling ALU unit for arithmetic operations
-	alu a (.A(IDEX_read_data1_out), .B(ALUMuxOut), .cntrl(IDEX_ALUOp), .result(ALUOut), .negative(negativeFlag), .zero(zeroFlag), .overflow(overflowFlag), .carry_out(carryOutFlag));
+	alu a (.A(IDEX_read_data1_out), .B(ALUMuxOut), .cntrl(IDEX_ALUOp), .result(ALUOut), .negative(negativeFlag_temp), .zero(zeroFlag_temp), .overflow(overflowFlag_temp), .carry_out(carryOutFlag_temp));
 	
 	// Calling Data Memory unit to store to and read from memory.
 	datamem memory (.address(EXMEM_alu_out), .write_enable(EXMEM_MemWrite), .read_enable(EXMEM_MemToReg), .write_data(EXMEM_data2_out), .clk, .xfer_size(`XFER_SIZE), .read_data(DataMemOut));
@@ -114,9 +115,9 @@ module cpu_pipelined (clk, reset);
 	assign imm12 = IFID_instr_out[21:10]; // For ADDI
 	
 	// Standalone ZeroFlag module -- For CBZ
-	nor64 nor0 (.out(CBZZeroFlag), .in(ReadData2));
+	nor64 nor0 (.out(zeroFlag_temp), .in(forwarding_B_output));
 
-	controlUnit control (.Reg2Loc, .ALUSrc, .MemToReg, .RegWrite, .MemWrite, .BrTaken, .UncondBr, .ALUOp, .X30Write, .opCode, .negativeFlag, .zeroFlag(CBZZeroFlag), .overflowFlag);
+	controlUnit control (.Reg2Loc, .ALUSrc, .MemToReg, .RegWrite, .MemWrite, .BrTaken, .UncondBr, .ALUOp, .X30Write, .SetFlag, .opCode, .negativeFlag(negativeFlag_temp), .zeroFlag(zeroFlag_temp), .overflowFlag(overflowFlag_temp), .DFF_negativeFlag(negativeFlag), .DFF_overflowFlag(overflowFlag), .IDEX_SetFlag, .reset, .clk);
 	
 	// Compute BrTaken mux input 0
 	addSub64 pcPlus4 (.carryOut(carryout1), .result(WhichBranch[0]), .overflow(overflow1), .a(address), .b(64'd4), .carryIn(1'b0));
@@ -136,10 +137,17 @@ module cpu_pipelined (clk, reset);
 
 	// Pipeline registers breaking up CPU into 5 stages. 
 	IF_ID_reg reg1 (.pc_out(IFID_pc_out), .pc_plus4_out(IFID_pc_plus4_out), .instr_out(IFID_instr_out), .pc_in(address), .pc_plus4_in(WhichBranch[0]), .instr_in(instruction), .reset, .clk, .enable(1'b1));
-	ID_EX_reg reg2 (.pc_plus4_out(IDEX_pc_plus4_out), .rd_out(IDEX_rd_out), .se_imm12_out(IDEX_se_imm12_out), .se_imm9_out(IDEX_se_imm9_out), .read_data1_out(IDEX_read_data1_out), .read_data2_out(IDEX_read_data2_out), .ALUSrc_out(IDEX_ALUSrc), .ALUOp_out(IDEX_ALUOp), .MemWrite_out(IDEX_MemWrite), .MemToReg_out(IDEX_MemToReg), .RegWrite_out(IDEX_RegWrite), 
-					.pc_plus4_in(IFID_pc_plus4_out), .rd_in(X30MuxOutForward), .se_imm12_in(ZEImm12), .se_imm9_in(SEImm9), .read_data1_in(forwarding_A_output), .read_data2_in(forwarding_B_output), .ALUSrc_in(ALUSrc), .ALUOp_in(ALUOp), .MemWrite_in(MemWrite), .MemToReg_in(MemToReg), .RegWrite_in(RegWrite), .reset, .clk, .enable(1'b1));
+	ID_EX_reg reg2 (.pc_plus4_out(IDEX_pc_plus4_out), .rd_out(IDEX_rd_out), .se_imm12_out(IDEX_se_imm12_out), .se_imm9_out(IDEX_se_imm9_out), .read_data1_out(IDEX_read_data1_out), .read_data2_out(IDEX_read_data2_out), .ALUSrc_out(IDEX_ALUSrc), .ALUOp_out(IDEX_ALUOp), .MemWrite_out(IDEX_MemWrite), .MemToReg_out(IDEX_MemToReg), .RegWrite_out(IDEX_RegWrite), .SetFlag_out(IDEX_SetFlag),
+					.pc_plus4_in(IFID_pc_plus4_out), .rd_in(X30MuxOutForward), .se_imm12_in(ZEImm12), .se_imm9_in(SEImm9), .read_data1_in(forwarding_A_output), .read_data2_in(forwarding_B_output), .ALUSrc_in(ALUSrc), .ALUOp_in(ALUOp), .MemWrite_in(MemWrite), .MemToReg_in(MemToReg), .RegWrite_in(RegWrite), .SetFlag_in(SetFlag), .reset, .clk, .enable(1'b1));
 	EX_MEM_reg reg3 (.pc_plus4_out(EXMEM_pc_plus4_out), .data2_out(EXMEM_data2_out), .alu_out(EXMEM_alu_out), .EXMEM_RegisterRd(EXMEM_rd_out), .MemWrite_out(EXMEM_MemWrite), .MemToReg_out(EXMEM_MemToReg), .RegWrite_out(EXMEM_RegWrite), .pc_plus4_in(IDEX_pc_plus4_out), .data2_in(ALUMuxIn[0]), .rd_in(IDEX_rd_out), .alu_in(ALUOut), .MemWrite_in(IDEX_MemWrite), .MemToReg_in(IDEX_MemToReg), .RegWrite_in(IDEX_RegWrite), .reset, .clk, .enable(1'b1));
 	MEM_WR_reg reg4 (.pc_plus4_out(MEMWR_pc_plus4_out), .data_out(MEMWR_data_out), .MEMWR_RegisterRd(MEMWR_rd_out), .RegWrite_out(MEMWR_RegWrite), .pc_plus4_in(EXMEM_pc_plus4_out), .data_in(memToRegOut), .EXMEM_RegisterRd(EXMEM_rd_out), .RegWrite_in(EXMEM_RegWrite), .reset, .clk, .enable(1'b1));
+
+
+	DFF1_enable negative_reg (.q(negativeFlag), .d(negativeFlag_temp), .reset, .clk, .enable(IDEX_SetFlag));
+	DFF1_enable overflow_reg (.q(overflowFlag), .d(overflowFlag_temp), .reset, .clk, .enable(IDEX_SetFlag));
+	DFF1_enable zero_reg (.q(zeroFlag), .d(zeroFlag_temp), .reset, .clk, .enable(IDEX_SetFlag));
+	DFF1_enable carryOut_reg (.q(carryOutFlag), .d(carryOutFlag_temp), .reset, .clk, .enable(IDEX_SetFlag));
+
 
 endmodule
 
@@ -161,7 +169,7 @@ module cpu_pipelined_testbench();
 		begin
 			reset<=1;	@(posedge clk);
 			reset<=0;	@(posedge clk);
-			for (i = 0; i < 50; i++)
+			for (i = 0; i < 100; i++)
 				@(posedge clk);
 		$stop(); // end the simulation
 	end

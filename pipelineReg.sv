@@ -12,7 +12,7 @@ module IF_ID_reg (pc_out, pc_plus4_out, instr_out, pc_in, pc_plus4_in, instr_in,
 	DFF32 dff3 (.q(instr_out), .d(instr_in), .reset, .clk, .enable);
 endmodule
 
-module ID_EX_reg (pc_plus4_out, rd_out, se_imm12_out, se_imm9_out, read_data1_out, read_data2_out, ALUSrc_out, ALUOp_out, MemWrite_out, MemToReg_out, RegWrite_out, pc_plus4_in, rd_in, se_imm12_in, se_imm9_in, read_data1_in, read_data2_in, ALUSrc_in, ALUOp_in, MemWrite_in, MemToReg_in, RegWrite_in,reset, clk, enable);
+module ID_EX_reg (pc_plus4_out, rd_out, se_imm12_out, se_imm9_out, read_data1_out, read_data2_out, ALUSrc_out, ALUOp_out, MemWrite_out, MemToReg_out, RegWrite_out, SetFlag_out, pc_plus4_in, rd_in, se_imm12_in, se_imm9_in, read_data1_in, read_data2_in, ALUSrc_in, ALUOp_in, MemWrite_in, MemToReg_in, RegWrite_in, SetFlag_in, reset, clk, enable);
 	
 	// Datapath Logic
 
@@ -33,17 +33,18 @@ module ID_EX_reg (pc_plus4_out, rd_out, se_imm12_out, se_imm9_out, read_data1_ou
 
 	output logic [1:0] ALUSrc_out;
 	output logic [2:0] ALUOp_out;
-	output logic MemWrite_out, MemToReg_out, RegWrite_out;
+	output logic MemWrite_out, MemToReg_out, RegWrite_out, SetFlag_out;
 
 	input logic [1:0] ALUSrc_in;
 	input logic [2:0] ALUOp_in;
-	input logic MemWrite_in, MemToReg_in, RegWrite_in;
+	input logic MemWrite_in, MemToReg_in, RegWrite_in, SetFlag_in;
 
 	DFF_2 ALUSrc_reg (.q(ALUSrc_out), .d(ALUSrc_in), .reset, .clk, .enable);
 	DFF3 ALUOp_reg (.q(ALUOp_out), .d(ALUOp_in), .reset, .clk, .enable);
 	DFF1_enable MemWrite_reg (.q(MemWrite_out), .d(MemWrite_in), .reset, .clk, .enable);
 	DFF1_enable MemToReg_reg (.q(MemToReg_out), .d(MemToReg_in), .reset, .clk, .enable);
 	DFF1_enable RegWrite_reg (.q(RegWrite_out), .d(RegWrite_in), .reset, .clk, .enable);
+	DFF1_enable SetFlag_reg (.q(SetFlag_out), .d(SetFlag_in), .reset, .clk, .enable);
 endmodule
 
 module EX_MEM_reg (pc_plus4_out, data2_out, alu_out, EXMEM_RegisterRd, MemWrite_out, MemToReg_out, RegWrite_out, pc_plus4_in, data2_in, rd_in, alu_in, MemWrite_in, MemToReg_in, RegWrite_in, reset, clk, enable);
