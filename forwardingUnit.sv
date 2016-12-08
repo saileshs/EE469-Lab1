@@ -11,19 +11,19 @@ module FORWARDING_UNIT (forward_A, forward_B, rn_in, rm_in, IDEX_RegisterRd, EXM
 	input logic [4:0] rn_in, rm_in, IDEX_RegisterRd, EXMEM_RegisterRd;
 
 	always_comb begin
-
+		// Mem Hazard
 		if ((EXMEM_RegWrite) && (EXMEM_RegisterRd != 5'b11111) && IDEX_RegisterRd != rn_in && EXMEM_RegisterRd == rn_in)
 			forward_A = 2'b10;
-			
+		// Exec Hazard
 		else if ((IDEX_RegWrite) && (IDEX_RegisterRd != 5'b11111) && (IDEX_RegisterRd == rn_in))
 			forward_A = 2'b01;
 		
 		else
 			forward_A = 2'b00;
-
+		// Mem Hazard
 		if ((EXMEM_RegWrite) && (EXMEM_RegisterRd != 5'b11111) && IDEX_RegisterRd != rm_in && EXMEM_RegisterRd == rm_in)
 			forward_B = 2'b10;
-		
+		// Exec Hazard
 		else if ((IDEX_RegWrite) && (IDEX_RegisterRd != 5'b11111) && (IDEX_RegisterRd == rm_in))
 			forward_B = 2'b01;
 		
